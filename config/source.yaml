@@ -1,0 +1,44 @@
+# What to fetch, and how.
+# Each source references a registered spider by name (see `engine spiders`).
+
+retry:
+  max_retries: 3
+  base_delay: 10.0        # seconds
+  factor: 2.0
+  jitter: true
+
+embedding:
+  use_embed: false        # set true (or pass --use-embed) to personalise
+  model: text-embedding-v4
+  dimensions: 2048
+
+max_items_per_source: 200
+
+sources:
+  - spider: arxiv
+    url: cs.CV
+    subject: paper
+  - spider: arxiv
+    url: cs.CL
+    subject: paper
+  - spider: arxiv
+    url: cs.RO
+    subject: paper
+    enabled: false        # add/remove lines to turn sources on/off
+
+  # - spider: biorxiv
+  #   url: https://www.biorxiv.org/collection/biochemistry
+  #   subject: biology
+
+  # - spider: rss            # generic RSS / RSSHub feed
+  #   url: https://mshibanami.github.io/GitHubTrendingRSS/daily/all.xml
+  #   subject: coding
+  #   html_summary: false
+
+  # - spider: zhihu          # requires ZHIHU_COOKIE (GH secret)
+  #   url: https://www.zhihu.com/
+  #   subject: feed
+
+  # - spider: bilibili       # requires BILIBILI_COOKIE (GH secret)
+  #   url: https://www.bilibili.com/
+  #   subject: feed

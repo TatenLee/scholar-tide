@@ -1,0 +1,80 @@
+name: daily
+
+on:
+  schedule:
+    # 04:50 UTC daily — a bit early to survive GitHub's action delay
+    - cron: "50 4 * * *"
+  workflow_dispatch:
+    inputs:
+      EXPIRED_DAYTIME:
+        description: 'Optional cutoff "%Y/%m/%d %H:%M" UTC; empty = yesterday'
+        required: false
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Resolve incremental cutoff
+        run: |
+          if [ "${{ github.event_name }}" = "schedule" ]; then
+            # start from last successful scheduled run, else yesterday
+            LAST=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+              "https://api.github.com/repos/${{ github.repository }}/actions/workflows/daily.yaml/runs?event=schedule&status=success&per_page=1" \
+              | jq -r '.workflow_runs[0].created_at // empty')
+            if [ -n "$LAST" ]; then
+              echo "EXPIRED_DAYTIME=$(date -d "$LAST" '+%Y/%m/%d %H:%M')" >> "$GITHUB_ENV"
+            else
+              echo "EXPIRED_DAYTIME=$(date -d 'yesterday' '+%Y/%m/%d %H:%M')" >> "$GITHUB_ENV"
+            fi
+          else
+            INPUT="${{ github.event.inputs.EXPIRED_DAYTIME }}"
+            if [ -z "$INPUT" ]; then
+              echo "EXPIRED_DAYTIME=$(date -d 'yesterday' '+%Y/%m/%d %H:%M')" >> "$GITHUB_ENV"
+            else
+              echo "EXPIRED_DAYTIME=$INPUT" >> "$GITHUB_ENV"
+            fi
+          fi
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install package
+        run: |
+          pip install -e ".[all]"
+
+      - name: Fetch and render
+        env:
+          EXPIRED_DAYTIME: ${{ env.EXPIRED_DAYTIME }}
+        run: python -m engine build --expired-after "$EXPIRED_DAYTIME"
+
+      - name: Personalised re-rank (needs OPENAI_API_KEY)
+        if: ${{ env.OPENAI_API_KEY != '' }}
+        env:
+          EXPIRED_DAYTIME: ${{ env.EXPIRED_DAYTIME }}
+        run: python -m engine build --use-embed --expired-after "$EXPIRED_DAYTIME"
+
+      - name: Upload frontend as pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: frontend
+
+      - name: Upload report markdown
+        uses: actions/upload-artifact@v4
+        with:
+          name: output.md
+          path: output.md
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4

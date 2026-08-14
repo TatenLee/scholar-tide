@@ -1,0 +1,17 @@
+# python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+dist/
+build/
+
+# runtime artifacts
+output.md
+output.json
+frontend/data/report.json
+
+# editors / os
+.DS_Store
+.idea/
+.vscode/
