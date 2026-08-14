@@ -12,9 +12,10 @@ The outline structure:
 """
 from __future__ import annotations
 
-from datetime import datetime
+from datetime import datetime, timezone
 
 from engine.core.type import InfoItem
+from engine.core.util import to_beijing
 
 
 def _render_links(item: InfoItem) -> str:
@@ -29,17 +30,18 @@ def _render_item(item: InfoItem) -> str:
     if item.links:
         lines.append(_render_links(item))
         lines.append("")
-    lines.append(item.published_at.strftime(r"%Y/%m/%d %H:%M") + " UTC")
+    lines.append(to_beijing(item.published_at).strftime(r"%Y/%m/%d %H:%M") + " CST")
     lines.append("")
     lines.append(item.content)
     return "\n".join(lines)
 
 
 def render_markdown(items: list[InfoItem], generated_at: datetime | None = None) -> str:
-    generated_at = generated_at or datetime.utcnow()
+    generated_at = generated_at or datetime.now(timezone.utc).replace(tzinfo=None)
+    beijing = to_beijing(generated_at)
     header = [
         "# Daily News",
-        f"Generated at {generated_at.strftime('%Y-%m-%d %H:%M:%S')} UTC",
+        f"Generated at {beijing.strftime('%Y-%m-%d %H:%M:%S')} CST (UTC+8)",
         f"{len(items)} news from your selected sources.",
     ]
 

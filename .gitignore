@@ -9,7 +9,7 @@ build/
 # runtime artifacts
 output.md
 output.json
-frontend/data/report.json
+.serve/
 
 # editors / os
 .DS_Store

@@ -15,7 +15,7 @@ import requests
 
 from engine.core.registry import register
 from engine.core.type import InfoItem, Link
-from engine.core.util import html_to_markdown
+from engine.core.util import html_to_markdown, utc_now
 
 _COOKIE_ENV = "ZHIHU_COOKIE"
 MAX_CONTENT_LEN = 5000
@@ -45,7 +45,7 @@ def _extract_question(content: bytes, url: str) -> InfoItem:
     return InfoItem(
         title=title.text.strip() if title else url,
         content=_clip(html_to_markdown(answer.prettify())) if answer else "",
-        published_at=datetime.now(),
+        published_at=utc_now(),
         links=[Link("zhihu", url)],
         source="zhihu",
     )
@@ -58,7 +58,7 @@ def _extract_article(content: bytes, url: str) -> InfoItem:
     return InfoItem(
         title=title.text.strip() if title else url,
         content=_clip(html_to_markdown(body.prettify())) if body else "",
-        published_at=datetime.now(),
+        published_at=utc_now(),
         links=[Link("zhihu", url)],
         source="zhihu",
     )
@@ -73,7 +73,7 @@ def _parse_card(card: bs4.Tag) -> InfoItem:
     return InfoItem(
         title=title,
         content=summary + "...",
-        published_at=datetime.now(),
+        published_at=utc_now(),
         links=[Link("zhihu", url)],
         source="zhihu",
     )

@@ -11,7 +11,7 @@ import requests
 
 from engine.core.registry import register
 from engine.core.type import InfoItem, Link
-from engine.core.util import html_to_markdown, struct_time_to_datetime
+from engine.core.util import html_to_markdown, struct_time_to_datetime, utc_now
 
 
 @register("rss")
@@ -48,7 +48,7 @@ def get_info(
                 content=content,
                 published_at=struct_time_to_datetime(published_parsed)
                 if published_parsed
-                else datetime.now(),
+                else utc_now(),
                 links=links,
                 source="rss",
             )

@@ -150,5 +150,7 @@ https://www.bilibili.com/
 | output | destination | purpose |
 |---|---|---|
 | `output.md` | project root | plain-text report (issues, newsletters…) |
-| `frontend/data/report.json` | frontend | data source for the web page |
+| `data/report.json` | project root | latest build, data source for the web page |
+| `data/report-YYYY-MM-DD.json` | project root | daily archive (history browser) |
+| `data/index.json` | project root | manifest of archived days |
 | deployed site | GitHub Pages | static card feed of all articles |

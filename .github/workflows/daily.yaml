@@ -11,7 +11,7 @@ on:
         required: false
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -65,10 +65,26 @@ jobs:
           EXPIRED_DAYTIME: ${{ env.EXPIRED_DAYTIME }}
         run: python -m engine build --use-embed --expired-after "$EXPIRED_DAYTIME"
 
+      - name: Commit daily archive
+        run: |
+          git config user.name "scholar-tide[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data
+          if ! git diff --cached --quiet; then
+            git commit -m "build: archive daily report $(TZ=Asia/Shanghai date +%Y-%m-%d)"
+            git push
+          fi
+
+      - name: Stage site (frontend + data at root)
+        run: |
+          mkdir -p _site
+          cp -r frontend/* _site/
+          cp -r data _site/data
+
       - name: Upload frontend as pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: frontend
+          path: _site
 
       - name: Upload report markdown
         uses: actions/upload-artifact@v4

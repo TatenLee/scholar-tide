@@ -3,7 +3,21 @@
 from __future__ import annotations
 
 import re
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
+
+BEIJING = timezone(timedelta(hours=8))
+
+
+def utc_now() -> datetime:
+    """Current time as a naive UTC datetime (the pipeline's canonical clock)."""
+    return datetime.now(timezone.utc).replace(tzinfo=None)
+
+
+def to_beijing(dt: datetime) -> datetime:
+    """Interpret a naive datetime as UTC and shift it to Beijing time (UTC+8)."""
+    if dt.tzinfo is None:
+        dt = dt.replace(tzinfo=timezone.utc)
+    return dt.astimezone(BEIJING)
 
 
 def struct_time_to_datetime(struct_time) -> datetime:

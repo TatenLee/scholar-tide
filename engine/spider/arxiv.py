@@ -19,7 +19,7 @@ import requests
 
 from engine.core.registry import register
 from engine.core.type import InfoItem, Link
-from engine.core.util import struct_time_to_datetime
+from engine.core.util import struct_time_to_datetime, utc_now
 
 
 def _paper_links(arxiv_number: str) -> list[Link]:
@@ -38,7 +38,7 @@ def _convert_entry(entry: Any, cat: str) -> InfoItem:
         content=entry["summary"],
         published_at=struct_time_to_datetime(entry["published_parsed"])
         if "published_parsed" in entry
-        else datetime.now(),
+        else utc_now(),
         links=_paper_links(entry["link"].split("/")[-1]),
         source="arxiv",
         tags=[cat],
@@ -63,7 +63,7 @@ def get_info(
         cat = url
 
     timeout = timeout or 60.0
-    now = datetime.now()
+    now = utc_now()
     expired_str = expired_after.strftime(r"%Y%m%d%H%M") if expired_after else "197001010000"
     now_str = now.strftime(r"%Y%m%d%H%M")
 

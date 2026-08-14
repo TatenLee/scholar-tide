@@ -15,7 +15,7 @@ from bs4 import BeautifulSoup
 
 from engine.core.registry import register
 from engine.core.type import InfoItem, Link
-from engine.core.util import html_to_markdown
+from engine.core.util import html_to_markdown, utc_now
 
 _MONTHS = {
     m: i
@@ -36,7 +36,7 @@ def _parse_posted_date(text: str) -> datetime:
         text,
     )
     if not match:
-        return datetime.now()
+        return utc_now()
     month, day, year = match.groups()
     return datetime(int(year), _MONTHS[month.lower()], int(day), 23, 59, 59)
 

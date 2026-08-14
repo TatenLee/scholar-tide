@@ -31,8 +31,24 @@ def build_cmd(args: argparse.Namespace) -> None:
 def serve_cmd(args: argparse.Namespace) -> None:
     import functools
     import http.server
+    import shutil
 
-    root = Path(args.dir).resolve()
+    if args.dir:
+        root = Path(args.dir).resolve()
+    else:
+        # Mirror the deployed layout (frontend at root + data/) so that
+        # relative fetches resolve exactly like they do on GitHub Pages.
+        root = Path(".serve").resolve()
+        if root.exists():
+            shutil.rmtree(root)
+        root.mkdir(parents=True)
+        frontend = Path("frontend")
+        for child in frontend.iterdir():
+            dest = root / child.name
+            (shutil.copytree if child.is_dir() else shutil.copy2)(child, dest)
+        data_dir = Path("data")
+        if data_dir.is_dir():
+            shutil.copytree(data_dir, root / "data")
     handler = functools.partial(
         http.server.SimpleHTTPRequestHandler, directory=str(root)
     )
@@ -63,7 +79,8 @@ def make_parser() -> argparse.ArgumentParser:
     p.set_defaults(func=build_cmd)
 
     p = sub.add_parser("serve", help="preview the frontend locally")
-    p.add_argument("--dir", default="frontend")
+    p.add_argument("--dir", default=None,
+                   help="serve this directory as-is (default: stage .serve/ like the deployed site)")
     p.add_argument("--port", type=int, default=8000)
     p.set_defaults(func=serve_cmd)
 

@@ -6,7 +6,7 @@ Every spider returns a list of InfoItem. Every downstream stage
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from datetime import datetime
+from datetime import datetime, timezone
 
 
 @dataclass
@@ -34,7 +34,9 @@ class InfoItem:
         return {
             "title": self.title,
             "content": self.content,
-            "published_at": self.published_at.strftime(r"%Y/%m/%d %H:%M"),
+            "published_at": self.published_at.replace(
+                tzinfo=timezone.utc
+            ).isoformat(),
             "links": [{"label": l.label, "url": l.url} for l in self.links],
             "tags": self.tags,
             "subject": self.subject,

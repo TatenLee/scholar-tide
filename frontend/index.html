@@ -25,7 +25,14 @@
   </header>
 
   <main class="container">
-    <nav class="toolbar">
+    <nav class="toolbar" aria-label="filters">
+      <div class="datebar">
+        <select id="dateSelect" aria-label="date scope"></select>
+        <input id="startDate" type="date" aria-label="range start" />
+        <span class="sep">→</span>
+        <input id="endDate" type="date" aria-label="range end" />
+        <button id="applyRange" class="btn" type="button">Apply range</button>
+      </div>
       <div id="subjectPills" class="pills" aria-label="filter by subject"></div>
       <input id="search" type="search" placeholder="Filter by title or keyword…" autocomplete="off" />
     </nav>

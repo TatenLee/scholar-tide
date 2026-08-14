@@ -13,7 +13,7 @@ import requests
 
 from engine.core.registry import register
 from engine.core.type import InfoItem, Link
-from engine.core.util import html_to_markdown
+from engine.core.util import html_to_markdown, utc_now
 
 _COOKIE_ENV = "BILIBILI_COOKIE"
 
@@ -45,7 +45,7 @@ def _extract_video(url: str, timeout: float) -> InfoItem:
     return InfoItem(
         title=title,
         content=f"{author} posted at {published}\n\n{desc}",
-        published_at=datetime.now(),
+        published_at=utc_now(),
         links=[Link("bilibili", url)],
         source="bilibili",
     )

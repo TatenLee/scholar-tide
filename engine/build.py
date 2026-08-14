@@ -8,13 +8,14 @@ so the flow reads top to bottom like a recipe.
 from __future__ import annotations
 
 import logging
+from datetime import datetime, timezone
 from pathlib import Path
 
 from engine.core.config import AppConfig
 from engine.pipeline.embed import EmbeddingClient
 from engine.pipeline.fetch import fetch
 from engine.pipeline.rank import compute_projection, score_and_sort_by_subject
-from engine.render.json import dump_json
+from engine.render.json import dump_daily, dump_json, rebuild_index
 from engine.render.markdown import render_markdown
 
 logger = logging.getLogger(__name__)
@@ -24,7 +25,7 @@ def build(
     config: AppConfig,
     *,
     markdown_path: Path = Path("output.md"),
-    json_path: Path = Path("frontend/data/report.json"),
+    data_dir: Path = Path("data"),
     max_workers: int = 4,
 ) -> dict:
     items = fetch(config, max_workers=max_workers)
@@ -43,8 +44,15 @@ def build(
     else:
         logger.info("embedding disabled (use --use-embed to personalise)")
 
-    markdown_path.write_text(render_markdown(items), encoding="utf-8")
-    dump_json(items, json_path)
+    generated_at = datetime.now(timezone.utc)
+    markdown_path.write_text(
+        render_markdown(items, generated_at=generated_at), encoding="utf-8"
+    )
+    dump_json(items, data_dir / "report.json", generated_at)
+    dump_daily(items, data_dir, generated_at)
+    rebuild_index(data_dir)
 
-    logger.info("wrote %s and %s", markdown_path, json_path)
+    logger.info(
+        "wrote %s and data in %s", markdown_path, data_dir
+    )
     return {"items": items, "projection": projection}
