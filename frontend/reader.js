@@ -119,7 +119,9 @@
           ensureTargets();
           translateButton.hidden = true;
           translateAllButton.hidden = true;
-          status(`夜间预译全文已加载，共 ${blocks.length} 段。英中两列按段同步滚动，中文为机器初译。`);
+          const apiCount = saved.blocks.filter((block) => block.translation_engine === 'azure-f0').length;
+          const engineNote = apiCount ? `其中 ${apiCount} 段使用 Azure API 翻译。` : '';
+          status(`夜间预译全文已加载，共 ${blocks.length} 段。${engineNote}英中两列按段同步滚动，中文为机器初译。`);
           if (blocks.some((block) => !block.text)) {
             status(`中文已加载，正在补充 ${blocks.length} 段英文原文…`);
             try {
@@ -133,7 +135,7 @@
                 blocks[index].text = block.text;
                 sourceTargets[index].textContent = block.text;
               });
-              status(`英中全文已加载，共 ${blocks.length} 段。两列按段同步滚动；中文为机器初译。`);
+              status(`英中全文已加载，共 ${blocks.length} 段。${engineNote}两列按段同步滚动；中文为机器初译。`);
             } catch (error) {
               status(`中文全文已加载；英文原文补充失败：${error.message || error}。可切换 PDF 对照。`);
             }

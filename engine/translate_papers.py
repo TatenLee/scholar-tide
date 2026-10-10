@@ -15,6 +15,7 @@ import requests
 from bs4 import BeautifulSoup, Tag
 
 from engine.translate_archive import _argos_translator
+from engine.translation_api import ApiFirstTranslator
 
 logger = logging.getLogger(__name__)
 ARXIV_ID = re.compile(r"^https://arxiv\.org/abs/([\w.\-]+)$")
@@ -167,7 +168,10 @@ def translate_recent(
         pending.append((archive_date, article, paper_id, path, checkpoint))
     if not pending:
         return 0, 0, pruned
-    translator = translator or _argos_translator(Path.home() / ".cache/scholar-tide/models")
+    if translator is None:
+        translator = ApiFirstTranslator.from_environment(
+            lambda: _argos_translator(Path.home() / ".cache/scholar-tide/models")
+        )
     session = requests.Session()
     session.headers.update({"User-Agent": "ScholarTide/1.0 (+https://github.com/TatenLee/scholar-tide)"})
     fetch_html = fetch_html or (lambda paper_id: session.get(f"https://arxiv.org/html/{paper_id}", timeout=30))
@@ -219,14 +223,27 @@ def translate_recent(
                 if time.monotonic() - started >= max_minutes * 60:
                     budget_reached = True
                     break
-                if "en" in block:
-                    block["zh"] = translator(block["en"])
-                    if not block["zh"]:
-                        raise ValueError("empty translation")
-                if block_number % 10 == 0:
-                    _write_json(path, payload)
-                if block_number % 20 == 0:
-                    logger.info("%s: translated %d/%d blocks", paper_id, block_number, len(blocks))
+                batch_indices = [block_number - 1]
+                batch_chars = len(block["en"])
+                for next_index in range(block_number, len(blocks)):
+                    next_block = blocks[next_index]
+                    if next_block.get("zh") or len(batch_indices) >= 12 or batch_chars + len(next_block["en"]) > 4_000:
+                        break
+                    batch_indices.append(next_index)
+                    batch_chars += len(next_block["en"])
+                texts = [blocks[block_index]["en"] for block_index in batch_indices]
+                if hasattr(translator, "translate_many"):
+                    results = translator.translate_many(texts)
+                else:
+                    results = [(translator(text), "local") for text in texts]
+                if len(results) != len(batch_indices) or any(not result[0] for result in results):
+                    raise ValueError("incomplete translation batch")
+                for block_index, (translated_text, engine) in zip(batch_indices, results):
+                    blocks[block_index]["zh"] = translated_text
+                    blocks[block_index]["translation_engine"] = engine
+                _write_json(path, payload)
+                if (block_number + len(batch_indices) - 1) // 20 > (block_number - 1) // 20:
+                    logger.info("%s: translated %d/%d blocks", paper_id, block_number + len(batch_indices) - 1, len(blocks))
             if budget_reached:
                 _write_json(path, payload)
                 logger.info("time budget reached during %s at %d/%d blocks", paper_id, sum(bool(block.get("zh")) for block in blocks), len(blocks))

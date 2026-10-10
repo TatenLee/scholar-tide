@@ -177,19 +177,38 @@ and is licensed CC BY 4.0; see the model package README for attribution.
 Chinese titles and abstracts are displayed first when a translation is present. The
 English title remains below the Chinese title, and the English abstract can be shown
 with **显示英文摘要**. Older entries without pretranslation can still use the browser's
-translation button. Each night, a separate backfill step translates up to 200 older
+translation button. Each full-paper workflow run also backfills up to 30 older
 arXiv titles and abstracts, so historical results gradually become Chinese-first too.
 
 At 14:37, 22:37, and 06:37 Beijing/Hong Kong time, `nightly-translate.yaml` uses
 four parallel GitHub Actions jobs in a public repository to download available arXiv
-HTML and translate the full text offline. The first pass follows the daily discovery
+HTML and translate the full text. The first pass follows the daily discovery
 build. It publishes paired English and Chinese text as
 `data/papers/<arxiv-id>.json` on GitHub Pages; the reader loads complete translations
 directly, without waiting for a browser model. Each job spends at most 300 minutes
 translating, below GitHub's six-hour job limit. It saves finished papers and partial
 paragraph checkpoints to the repository; later runs skip finished papers and resume
 partial ones. Papers from the last 21 days are eligible, and stored translation files
-are kept for at most 21 days or 256 MiB. To run one paper locally:
+are kept for at most 21 days or 256 MiB.
+
+For full text, the runner first uses Azure Translator's **F0 free text API** when
+`AZURE_TRANSLATOR_F0_KEY` is configured. It batches nearby paragraphs while keeping
+their order, and falls back to the offline Argos model if the API is unavailable or
+its quota is exhausted. Translation files record the engine used for each new block.
+The browser never receives the API key. Titles and abstracts in the daily report
+continue to use the offline model, preserving the F0 quota for full papers.
+
+To enable the API, create an [Azure Translator F0 resource](https://learn.microsoft.com/en-us/azure/cognitive-services/translator/how-to-create-translator-resource)
+and add its key in GitHub repository **Settings → Secrets and variables → Actions**
+as `AZURE_TRANSLATOR_F0_KEY`. If the resource is regional, add its region as the
+repository variable `AZURE_TRANSLATOR_REGION` (for example `eastasia`). The F0 tier
+has a 2-million-character monthly allowance and stops serving requests when its
+quota is exhausted. Select **F0** when creating the resource; the workflow cannot
+infer the pricing tier from an API key. Without the secret, full-text translation
+continues offline as before. Existing complete translations are kept as-is; newly
+translated papers use the configured API first.
+
+To run one paper locally:
 
 ```sh
 pip install -e ".[translate]"

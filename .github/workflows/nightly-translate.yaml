@@ -53,6 +53,8 @@ jobs:
         env:
           PAPER_ID: ${{ github.event.inputs.paper_id }}
           SHARD: ${{ matrix.shard }}
+          AZURE_TRANSLATOR_F0_KEY: ${{ secrets.AZURE_TRANSLATOR_F0_KEY }}
+          AZURE_TRANSLATOR_REGION: ${{ vars.AZURE_TRANSLATOR_REGION }}
         run: |
           mkdir -p _paper_outputs/papers
           touch _paper_outputs/papers/empty.txt
