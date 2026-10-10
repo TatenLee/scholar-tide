@@ -153,4 +153,86 @@ https://www.bilibili.com/
 | `data/report.json` | project root | latest build, data source for the web page |
 | `data/report-YYYY-MM-DD.json` | project root | daily archive (history browser) |
 | `data/index.json` | project root | manifest of archived days |
+| `data/search-index.json` | project root | compact, deduplicated title/tag catalogue for historical search |
 | deployed site | GitHub Pages | static card feed of all articles |
+
+## Reading papers without a server or API key
+
+The site works on GitHub Pages without a custom domain. Click an arXiv paper title or
+**双语阅读** to open the reader. English source text and Chinese translation appear
+side by side, paired by paragraph in a single scrolling area. **英中对照 / 仅英文 /
+仅中文 / PDF 对照** switch the view. The source text is extracted from arXiv's HTML
+version of the same paper, which preserves paragraph order more reliably than PDF
+text extraction. The original PDF remains available in **PDF 对照** or a separate tab.
+When HTML is unavailable, the reader falls back to the daily report's abstract.
+
+The daily GitHub Actions build pretranslates new arXiv titles and abstracts with the
+offline Argos English-to-Chinese model. They load immediately from the static JSON;
+no API key is needed. The workflow caches the model between runs. To run the same
+step locally, install `pip install -e ".[translate]"` and run
+`python -m engine.translate_archive` after a build.
+The Argos model derives from OPUS-MT by Jörg Tiedemann and Santhosh Thottingal
+and is licensed CC BY 4.0; see the model package README for attribution.
+
+Chinese titles and abstracts are displayed first when a translation is present. The
+English title remains below the Chinese title, and the English abstract can be shown
+with **显示英文摘要**. Older entries without pretranslation can still use the browser's
+translation button. Each night, a separate backfill step translates up to 200 older
+arXiv titles and abstracts, so historical results gradually become Chinese-first too.
+
+At 14:37, 22:37, and 06:37 Beijing/Hong Kong time, `nightly-translate.yaml` uses
+four parallel GitHub Actions jobs in a public repository to download available arXiv
+HTML and translate the full text offline. The first pass follows the daily discovery
+build. It publishes paired English and Chinese text as
+`data/papers/<arxiv-id>.json` on GitHub Pages; the reader loads complete translations
+directly, without waiting for a browser model. Each job spends at most 300 minutes
+translating, below GitHub's six-hour job limit. It saves finished papers and partial
+paragraph checkpoints to the repository; later runs skip finished papers and resume
+partial ones. Papers from the last 21 days are eligible, and stored translation files
+are kept for at most 21 days or 256 MiB. To run one paper locally:
+
+```sh
+pip install -e ".[translate]"
+python -m engine.translate_papers --id 2610.12469v1
+```
+
+The same workflow also supports manual dispatch with a `paper_id` input when one
+specific paper should be translated before the next night.
+
+arXiv does not provide usable HTML for every paper. Those papers still show the
+pretranslated abstract, and the browser reader can attempt its local translation
+when HTML becomes available. GitHub Pages is static hosting: it cannot translate a
+paper at the moment a visitor clicks it. The night job is bounded by GitHub's runner
+time and Pages size limits, so a large daily batch may finish over several nights.
+
+For older reports without pretranslation, **翻译标题与摘要** and **翻译当前列表标题**
+use the browser's built-in English-to-Chinese `Translator` API. The full-paper reader
+shows pretranslated abstracts immediately when available and falls back to browser
+translation when no nightly full-paper file exists. Translate the next four
+paragraphs on demand, or let the rest translate in the background. Browser-generated
+translations are cached in IndexedDB so revisiting a paragraph does not repeat the
+work. Chrome 138+ on desktop supports this API when the device and language pack are
+available; the first use may download a language pack. Other browsers and mobile
+devices can still browse the original PDF and read pretranslated abstracts. No model
+key is included in the site or sent to the browser. The browser fallback reports an
+error if model preparation exceeds 60 seconds or one text chunk exceeds 30 seconds,
+so the page does not remain stuck on “翻译中” indefinitely. Technical terms and equations
+should be checked against the PDF.
+
+The bilingual text view scrolls both languages together by paragraph. **PDF 对照**
+shows the original PDF beside the Chinese text, with separate scroll areas. The
+translation is not a page-perfect PDF. Some arXiv HTML conversions may omit or alter
+mathematical layout, figures, and tables.
+
+## Historical search and growth
+
+The daily build generates `data/search-index.json` from the archive. **全部历史** reads
+that compact catalogue instead of downloading every full daily report. It searches
+paper titles and tags. Opening a result's abstract loads only its original daily
+report. The feed renders 60 results at a time. Date and date-range views still read
+the selected daily reports and can search their abstracts too.
+
+This avoids running a database server on GitHub Pages. If the catalogue later grows
+too large for a single browser download, the next step is to shard it by year or
+subject and load shards on demand. SQLite FTS can help during the GitHub Actions build,
+but a SQLite file alone does not add server-side queries to a static Pages site.

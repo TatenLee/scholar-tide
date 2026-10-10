@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>双语阅读 · Scholar Tide</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="reader-page">
+  <header class="reader-header">
+    <a class="back-link" href="index.html">← 返回论文列表</a>
+    <div class="reader-heading">
+      <h1 id="paperTitle">正在加载论文…</h1>
+      <div class="reader-actions">
+        <a id="arxivLink" target="_blank" rel="noopener">arXiv 原页 ↗</a>
+        <a id="pdfLink" target="_blank" rel="noopener">独立打开 PDF ↗</a>
+      </div>
+    </div>
+    <div class="reader-controls" role="group" aria-label="阅读视图">
+      <button type="button" data-view="both" aria-pressed="true">英中对照</button>
+      <button type="button" data-view="english" aria-pressed="false">仅英文</button>
+      <button type="button" data-view="chinese" aria-pressed="false">仅中文</button>
+      <button type="button" data-view="pdf" aria-pressed="false">PDF 对照</button>
+      <button type="button" id="translatePaper" class="primary-button">翻译接下来的 4 段</button>
+      <button type="button" id="translateAll">后台翻译全文</button>
+    </div>
+    <p id="readerStatus" class="reader-status" role="status">正在获取论文文本…</p>
+  </header>
+  <main id="readerGrid" class="reader-grid" data-view="both">
+    <section id="parallelContent" class="parallel-content" aria-label="英文原文与中文译文逐段对照">
+      <div class="parallel-header"><span>英文原文文本</span><span>中文机器初译</span></div>
+      <div id="parallelRows">
+        <p class="reader-placeholder">正在加载英文原文和中文译文…</p>
+      </div>
+    </section>
+    <div id="pdfComparison" class="pdf-comparison">
+      <section class="reader-pane pdf-pane" aria-label="英文原文 PDF">
+        <div class="pane-title">英文原文 · arXiv PDF</div>
+        <iframe id="pdfFrame" title="arXiv PDF 原文" loading="lazy"></iframe>
+      </section>
+      <section class="reader-pane chinese-pane" aria-label="中文译文">
+        <div class="pane-title">中文机器初译</div>
+        <div id="translationContent" class="translation-content"></div>
+      </section>
+    </div>
+  </main>
+  <script src="translate.js"></script>
+  <script src="reader.js"></script>
+</body>
+</html>

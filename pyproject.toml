@@ -18,6 +18,7 @@ dependencies = [
 embed = ["openai>=1.0"]
 rss = ["feedparser>=6.0"]
 all = ["openai>=1.0", "feedparser>=6.0"]
+translate = ["argostranslate==1.9.6"]
 
 [project.scripts]
 scholar-tide = "engine.cli:main"

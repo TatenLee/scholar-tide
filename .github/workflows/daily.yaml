@@ -17,7 +17,7 @@ permissions:
 
 concurrency:
   group: pages
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   build:
@@ -49,21 +49,30 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+          cache: pip
+          cache-dependency-path: pyproject.toml
+
+      - name: Cache offline translation model
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cache/scholar-tide/models
+            ~/.local/share/argos-translate/packages
+          key: scholar-tide-argos-en-zh-1.9
 
       - name: Install package
         run: |
-          pip install -e ".[all]"
+          pip install -e ".[rss,translate]"
 
       - name: Fetch and render
         env:
           EXPIRED_DAYTIME: ${{ env.EXPIRED_DAYTIME }}
         run: python -m engine build --expired-after "$EXPIRED_DAYTIME"
 
-      - name: Personalised re-rank (needs OPENAI_API_KEY)
-        if: ${{ env.OPENAI_API_KEY != '' }}
-        env:
-          EXPIRED_DAYTIME: ${{ env.EXPIRED_DAYTIME }}
-        run: python -m engine build --use-embed --expired-after "$EXPIRED_DAYTIME"
+      - name: Pretranslate new arXiv titles and abstracts locally
+        id: translate_abstracts
+        continue-on-error: true
+        run: python -m engine.translate_archive
 
       - name: Commit daily archive
         run: |
@@ -94,3 +103,7 @@ jobs:
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
+
+      - name: Report translation failures
+        if: ${{ steps.translate_abstracts.outcome == 'failure' }}
+        run: exit 1

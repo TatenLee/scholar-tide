@@ -76,6 +76,7 @@ def dump_daily(items: list[InfoItem], data_dir: Path, generated_at: datetime) ->
 def rebuild_index(data_dir: Path) -> Path:
     """Scan ``report-*.json`` in the data dir and rewrite ``index.json``."""
     days: list[dict] = []
+    search_items: dict[str, dict] = {}
     for path in sorted(data_dir.glob("report-*.json")):
         try:
             payload = json.loads(path.read_text(encoding="utf-8"))
@@ -88,10 +89,36 @@ def rebuild_index(data_dir: Path) -> Path:
                 "generated_at": payload.get("generated_at", ""),
             }
         )
+        for article in payload.get("articles", []):
+            links = article.get("links") or []
+            first_url = links[0].get("url", "") if links else ""
+            key = f'{article.get("source", "")}:{first_url or article.get("title", "")}'
+            search_items[key] = {
+                "title": article.get("title", ""),
+                "title_zh": article.get("title_zh", ""),
+                "subject": article.get("subject", ""),
+                "source": article.get("source", ""),
+                "published_at": article.get("published_at", ""),
+                "tags": article.get("tags", []),
+                "url": first_url,
+                "date": path.stem.removeprefix("report-"),
+            }
     days.sort(key=lambda d: d["date"])
     index = {"latest": days[-1]["date"] if days else "", "days": days}
     index_path = data_dir / "index.json"
     index_path.write_text(
         json.dumps(index, ensure_ascii=False, indent=2), encoding="utf-8"
+    )
+    # A compact title catalogue lets the static site search years of history
+    # without downloading every full daily report and rendering every card.
+    catalogue = {
+        "generated_at": days[-1]["generated_at"] if days else "",
+        "count": len(search_items),
+        "articles": sorted(
+            search_items.values(), key=lambda article: article["published_at"], reverse=True
+        ),
+    }
+    (data_dir / "search-index.json").write_text(
+        json.dumps(catalogue, ensure_ascii=False, separators=(",", ":")), encoding="utf-8"
     )
     return index_path
