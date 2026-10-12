@@ -1,55 +1,6 @@
 {
-  "generated_at": "2026-10-12T09:26:26.729541+00:00",
-  "articles": [
-    {
-      "title": "Can machines reason non-verbally?",
-      "content": "Modern machines can solve equations, follow logic and reason through language, yet they still struggle with problems that require visual non-verbal reasoning. This is evident even in advanced systems such as DeepSeek, ChatGPT and Gemini, which remain limited on visual tasks such as completing abstract patterns or delineating ambiguous regions-of-interest. Unlike explicit intermediate steps in verbal reasoning which can be verified through logic or automated tests, visual reasoning involves implicit intermediate steps with no clear methods for verification. Non-verbal reasoning is therefore challenging to model and, as a result, remains a fundamental limitation of current machine intelligence. Here we introduce GenVerOpt, a general framework that unifies generation, verification and optimisation into a reasoning pipeline for machines. By generating candidate solutions, verifying their correctness, and iteratively refining them, GenVerOpt enables per-sample optimisation rather than relying solely on dataset-level trends captured during model training. This process mirrors human problem-solving where multiple possibilities are imagined, evaluated, and refined until a correct solution emerges. Across diverse domains, GenVerOpt demonstrates capabilities beyond existing systems: it surpasses humans on abstract IQ puzzles, matches clinicians in prostate cancer segmentation, exceeds experts in liver vessel reconstruction and outperforms state-of-the-art approaches in tumour boundary alignment. These results show that machine reasoning can extend beyond language, establishing visual non-verbal reasoning as a foundation for more flexible and generalisable intelligence.",
-      "published_at": "2026-10-09T17:54:36+00:00",
-      "links": [
-        {
-          "label": "arxiv",
-          "url": "https://arxiv.org/abs/2610.13925v1"
-        },
-        {
-          "label": "html",
-          "url": "https://arxiv.org/html/2610.13925v1"
-        },
-        {
-          "label": "pdf",
-          "url": "https://arxiv.org/pdf/2610.13925v1"
-        },
-        {
-          "label": "papers.cool",
-          "url": "https://papers.cool/arxiv/2610.13925v1"
-        }
-      ],
-      "tags": [
-        "cs.CV"
-      ],
-      "subject": "paper",
-      "source": "arxiv",
-      "score": 0.0,
-      "title_zh": "机器能否进行非言语推理？",
-      "content_zh": "现代机器能够求解方程、遵循逻辑并通过语言进行推理，但它们仍然难以处理需要视觉非言语推理的问题。这一点甚至在 DeepSeek、ChatGPT 和 Gemini 等先进系统中也很明显，这些系统在完成抽象图案或勾勒模糊感兴趣区域等视觉任务上仍然受限。与言语推理中可通过逻辑或自动化测试验证的显式中介步骤不同，视觉推理涉及隐式中介步骤，且没有明确的验证方法。因此，非言语推理难以建模，并由此成为当前机器智能的一个根本局限。在此，我们介绍 GenVerOpt，一个将生成、验证和优化统一为机器推理流水线的通用框架。通过生成候选解、验证其正确性并迭代改进它们，GenVerOpt 能够实现逐样本优化，而非仅依赖模型训练期间捕获的数据集层面趋势。这一过程类似于人类解决问题：想象多种可能性，进行评估并改进，直到正确答案出现。在不同领域中，GenVerOpt 展现出超越现有系统的能力：在抽象智商谜题上超越人类，在前列腺癌分割中与临床医生相当，在肝血管重建中超越专家，在肿瘤边界对齐中优于最先进方法。这些结果表明，机器推理可以超越语言，将视觉非言语推理确立为更灵活、更具泛化能力的智能的基础。",
-      "study": {
-        "overview": "论文提出 GenVerOpt，将 generation、verification、optimisation 统一，联合训练 generator 与 verifier，并在推理时逐样本迭代优化，用于视觉非语言推理，在抽象 IQ 题、前列腺癌与肝血管分割、MR-US 配准等任务中评估。",
-        "problem": "语言推理的中间步骤可用逻辑或自动测试验证，而视觉非语言推理的中间步骤隐式、缺少验证方法，机器在完成抽象图案、勾画模糊感兴趣区域等任务上受限。现有深度学习在模糊、冲突线索、结构复杂或跨模态医学图像任务中易失败，且依赖大量专家标注；作者探索无需语言、仅少量监督的迭代推理能否达到专家水平。",
-        "method": "GenVerOpt 含 generation、verification、optimisation：generator g(x;θ) 生成候选，verifier v(x,y;φ)∈[0,1] 估正确性；推理时 y*=argmax_{y∼g(x;θ)} E[v(x,y;φ)]，逐样本迭代采样、细化至稳定。训练用 minθ maxφ E[L(v(x,g(x;θ);φ),c(x,y))]，verifier 用 binary cross-entropy，generator 最大化其分数；RL self-play 按 logits 采样 y1,y2，相对奖励 R=v(x,y1,θ)-v(x,y2,θ) 做策略梯度。跨任务用 Reptile：各数据集 D_i 优化一步得(θ_i,φ_i)，更新 (θ,φ)←(θ,φ)+α(1/M)Σ[(θ_i,φ_i)-(θ,φ)]，64 个任务标注微调。IQ 题候选预定义并穷举搜索；医学分割与配准中生成器、验证器联合演化。",
-        "evidence": "材料称 GenVerOpt 在四类任务超越现有系统：379 个 temporal movement puzzles 上超过人类，现有模型接近 25% 随机水平；前列腺癌分割匹配临床医生、64 例训练下超过人类影像专家，显著优于 SOTA；肝血管重建超过专家，Dice 与人类观察者相当，parent–child 赋值正确率高于所有基线并略超人类，断裂血管更少；MR-US 配准 Dice 更高、TRE 更低；肿瘤边界对齐优于 state-of-the-art。消融去掉 joint training、self-play 或 RL 后 Tab.3 显示各组件均有正向贡献；数据增至 64 samples 后性能与推理时间趋于 plateau。材料未提供完整数值、统计量和全部结论。",
-        "limitations": "材料未给出作者明确陈述的局限。仅见：视觉推理验证困难、生成可能非穷尽且错误；组件仍含人类监督（如用标注示例引导生成/验证），需 verifier 分数稳定以终止优化。建议核查（非作者陈述）：Tab.1–6 具体数值、数据集规模与偏倚、划分与统计显著性、人类对比设置、医学任务泛化与临床外部验证、Reptile 对任务相关性的假设、RL self-play 稳定性与 reward hacking、verifier 偏差与 c(x,y) 标注质量、计算成本与碳足迹。",
-        "learning": [
-          "GenVerOpt 的 generation、verification、optimisation 三部分如何相互引导？为何 verification 通常比 generation 更容易，低维解空间在视觉推理中有何含义？",
-          "joint training 的 minθ maxφ 目标与 RL self-play 的相对奖励 R=v(x,y1,θ)-v(x,y2,θ) 如何对应，各自何时使用？如何用 logits 概率采样候选并迭代更新生成器？",
-          "如何为医学分割或配准定义可验证的正确性评分 c(x,y) 与评价指标（Dice、TRE、SSIM、parent–child assignments），并避免数据集偏倚、verifier 偏差与过拟合？Reptile 中 α 与任务相似性如何影响快速适应？"
-        ],
-        "basis": "full_text",
-        "model": "deepseek-v4-flash",
-        "generated_at": "2026-10-12T09:39:21.180809+00:00"
-      }
-    }
-  ],
-  "count": 1,
-  "subjects": [
-    "paper"
-  ]
+  "generated_at": "2026-10-12T12:29:32.614847+00:00",
+  "count": 0,
+  "subjects": [],
+  "articles": []
 }
