@@ -90,6 +90,8 @@ def prune(papers_dir: Path, *, keep_days: int, max_bytes: int, today: date) -> i
     for path in papers_dir.glob("*.json"):
         try:
             payload = json.loads(path.read_text(encoding="utf-8"))
+            if payload.get("published_from") == "local-llm":
+                continue # Keep user-published LLM translations for later mobile reading.
             paper_date = date.fromisoformat(payload["archive_date"])
         except (OSError, ValueError, KeyError):
             paper_date = date.min

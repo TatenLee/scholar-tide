@@ -38,9 +38,12 @@
         <label class="check-label"><input name="full_text" type="checkbox" checked>翻译可获取的全文，并基于全文文本整理笔记</label>
         <p class="field-help">关闭全文时，仅翻译标题和摘要并生成摘要笔记。全文调用次数更多，费用取决于你选用的服务。数量上限按每轮计算；已完成论文会复用结果。</p>
         <p class="field-help">自动运行需要电脑开机、联网，并保持本地服务运行。错过当天时间后，重新启动服务会补跑一次。</p>
+        <label class="check-label"><input name="auto_publish" type="checkbox">每轮完成后，自动发布译文和学习笔记到 GitHub</label>
+        <p class="field-help">发布到当前仓库的 main 分支，随后自动更新 GitHub Pages。上传的译文和笔记可公开访问；令牌、接口配置和本地日志不上传。需要这台电脑已具备 Git 推送权限。</p>
         <div class="settings-actions">
           <button type="submit" class="primary-button">保存配置</button>
           <button type="button" id="runNow">保存并立即运行</button>
+          <button type="button" id="publishNow">发布已有译文到 GitHub</button>
           <a class="back-link" href="index.html">查看论文与学习笔记 →</a>
         </div>
       </fieldset>

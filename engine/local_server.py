@@ -46,9 +46,9 @@ class LocalService:
         write_json(self.status_path, self.status)
         logger.info(message)
 
-    def start_run(self):
+    def start_run(self, *, publish_only=False):
         config = self.config()
-        config.validate(ready=True)
+        config.validate(ready=not publish_only)
         with self.guard:
             if self.status["running"]:
                 return False
@@ -58,17 +58,26 @@ class LocalService:
             except BlockingIOError:
                 lock.close()
                 raise ValueError("另一个本地进程正在运行任务，请等待其完成") from None
-            self.status = {"running": True, "started_at": datetime.now(ZONE).isoformat(), "message": "任务已开始"}
+            self.status = {"running": True, "operation": "publish" if publish_only else "daily", "started_at": datetime.now(ZONE).isoformat(), "message": "任务已开始"}
             write_json(self.status_path, self.status)
             now = datetime.now(ZONE)
-            if config.enabled and now.strftime("%H:%M") >= config.daily_time:
+            if not publish_only and config.enabled and now.strftime("%H:%M") >= config.daily_time:
                 # A manual run after today's deadline also satisfies today's scheduled run.
                 write_json(self.schedule_path, {"last_attempt": now.strftime("%Y-%m-%d")})
 
         def work():
+            from engine.publish_local import PublishError, publish_local
             try:
-                result = run_daily(self.root, config, self.progress)
-                self.status.update(result=result, outcome="partial" if result["failed"] or result["remaining"] else "complete")
+                if not publish_only:
+                    result = run_daily(self.root, config, self.progress)
+                    self.status.update(result=result, outcome="partial" if result["failed"] or result["remaining"] else "complete")
+                if publish_only or config.auto_publish:
+                    published = publish_local(self.root, tokens=(config.token, config.access_token), progress=self.progress)
+                    self.status["publication"] = published
+                    if publish_only:
+                        self.status["outcome"] = "complete"
+            except PublishError as error:
+                self.status.update(outcome="publish_failed", message=str(error))
             except Exception as error:
                 self.status.update(outcome="failed", message=f"任务未完成（{type(error).__name__}），已保存的数据会在下次运行时复用。")
                 logger.error("local daily job failed (%s)", type(error).__name__)
@@ -169,6 +178,9 @@ def make_handler(service: LocalService):
                     return self.reply(200, {"config": updated.public()})
                 if self.path == "/api/local/run":
                     started = service.start_run()
+                    return self.reply(202 if started else 200, {"started": started, "status": service.status})
+                if self.path == "/api/local/publish":
+                    started = service.start_run(publish_only=True)
                     return self.reply(202 if started else 200, {"started": started, "status": service.status})
                 return self.reply(404, {"error": "未找到接口"})
             except (ValueError, TypeError):

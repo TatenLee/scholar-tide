@@ -4,6 +4,7 @@ base_url: "" # API base URL, including /v1 if required by your provider
 model: "" # The model ID from your provider or local model server
 access_token: "" # Alternatively set SCHOLAR_LLM_TOKEN in the environment
 enabled: false # Enable the daily schedule after configuring the API
+auto_publish: false # Publish completed results to origin/main after each local run
 daily_time: "13:30" # Asia/Hong_Kong (UTC+8)
 max_papers_per_run: 10 # Newest first; unfinished papers remain queued
 full_text: true # Translate available arXiv HTML and summarize its text

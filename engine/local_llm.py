@@ -19,6 +19,7 @@ class LocalConfig:
     model: str = ""
     access_token: str = field(default="", repr=False)
     enabled: bool = False
+    auto_publish: bool = False
     daily_time: str = "13:30"
     max_papers_per_run: int = 10
     full_text: bool = True
@@ -36,7 +37,7 @@ class LocalConfig:
             raise ValueError("每轮论文数量应在 1 到 200 之间")
         if type(self.lookback_days) is not int or not 1 <= self.lookback_days <= 30:
             raise ValueError("回看天数应在 1 到 30 之间")
-        if type(self.enabled) is not bool or type(self.full_text) is not bool:
+        if type(self.enabled) is not bool or type(self.full_text) is not bool or type(self.auto_publish) is not bool:
             raise ValueError("定时运行和全文翻译应为布尔值")
         if ready:
             if not self.base_url or not self.model:

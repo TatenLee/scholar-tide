@@ -52,8 +52,29 @@ def render_json(items: list[InfoItem], generated_at: datetime | None = None) -> 
 
 def dump_json(items: list[InfoItem], path: Path, generated_at: datetime | None = None) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
+    payload = render_json(items, generated_at)
+    # Daily discovery must not erase locally published study notes when a paper reappears.
+    def key(article):
+        links = article.get("links") or [{}]
+        return links[0].get("url", ""), article.get("title", ""), article.get("content", "")
+    saved = {}
+    for archive in path.parent.glob("report-????-??-??.json"):
+        try:
+            prior = json.loads(archive.read_text(encoding="utf-8"))
+        except (OSError, ValueError):
+            continue
+        for article in prior.get("articles", []):
+            if not article.get("study"):
+                continue
+            previous = saved.get(key(article), {})
+            if article["study"].get("generated_at", "") >= previous.get("study", {}).get("generated_at", ""):
+                saved[key(article)] = article
+    for article in payload["articles"]:
+        prior = saved.get(key(article))
+        if prior:
+            article.update({field: prior[field] for field in ("title_zh", "content_zh", "study") if field in prior})
     path.write_text(
-        json.dumps(render_json(items, generated_at), ensure_ascii=False, indent=2),
+        json.dumps(payload, ensure_ascii=False, indent=2),
         encoding="utf-8",
     )
 

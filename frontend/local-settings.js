@@ -4,6 +4,7 @@
   const fields = document.getElementById('settingsFields');
   const connection = document.getElementById('connectionStatus');
   const run = document.getElementById('runNow');
+  const publish = document.getElementById('publishNow');
   let csrf = '';
   let busy = false;
 
@@ -27,6 +28,8 @@
   function showStatus(status) {
     document.getElementById('jobStatus').textContent = status.message || '等待运行';
     run.disabled = busy || status.running;
+    publish.disabled = busy || status.running;
+    publish.textContent = status.running && status.operation === 'publish' ? '正在发布…' : '发布已有译文到 GitHub';
     run.textContent = status.running ? '任务运行中…' : '保存并立即运行';
     const result = status.result;
     const time = status.finished_at ? `结束时间：${new Date(status.finished_at).toLocaleString('zh-CN', { timeZone: 'Asia/Hong_Kong' })}。` : '';
@@ -82,6 +85,19 @@
   }
   form.addEventListener('submit', (event) => { event.preventDefault(); save(false); });
   run.addEventListener('click', () => save(true));
+  publish.addEventListener('click', async () => {
+    busy = true;
+    publish.disabled = true;
+    try {
+      await api('publish', {});
+      connection.textContent = '发布任务已提交，进度见下方运行状态。';
+    } catch (error) {
+      connection.textContent = error.message;
+    } finally {
+      busy = false;
+      await refresh();
+    }
+  });
   refresh(true);
   setInterval(() => { if (!busy) refresh(fields.disabled); }, 5000);
 })();
