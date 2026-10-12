@@ -10,6 +10,10 @@ build/
 output.md
 output.json
 .serve/
+.local/
+config/llm.local.*
+.env
+.env.*
 
 # editors / os
 .DS_Store

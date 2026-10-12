@@ -26,8 +26,45 @@ scholar-tide spiders               # list registered spiders
 
 ## Configuration
 
-Everything you can change lives in two YAML files under `config/`.
+Source and preference settings live in two YAML files under `config/`.
 No code edits are needed to change behaviour.
+
+### 本地大模型：每日翻译与学习笔记
+
+在项目目录执行：
+
+```bash
+pip install -e ".[rss]"
+python -m engine local
+```
+
+打开 **http://127.0.0.1:8770/local-settings.html**，填写接口地址（Base URL）、
+模型名称和 Access Token。支持 Chat Completions 兼容接口；路径应按服务商要求填写。
+例如本机 Ollama 通常使用 `http://localhost:11434/v1`，模型名填写你已安装的模型，
+无需认证时 Token 可留空。远端服务按其实际用量计费。
+
+点击「保存并立即运行」即可抓取新论文并生成中文内容；勾选「每天自动抓取、翻译和总结」
+后，会按设定的北京时间／香港时间运行（默认 13:30）。必须保持本地服务运行、电脑开机联网。
+服务启动或电脑唤醒后，如果当天时间已过且尚未执行，会补跑一次；失败或达到数量上限时，
+可以手动再次运行。单次运行默认最多处理 10 篇，最新优先，可在设置中调至 200 篇。
+达到上限后，仍处于回看窗口中的未完成论文会在后续轮次继续处理。
+
+- 先保存抓取结果，再调用模型，避免模型失败导致新论文丢失。
+- 自动翻译标题和摘要，生成研究问题、核心方法、实验结论、局限与学习问题。
+- 开启「全文」时，翻译 arXiv HTML 可提取的正文并提供中英对照；长文分段总结后再汇总。
+  图片内容不参与理解，HTML 不可用时生成明确标注的「仅基于摘要」笔记，不声称已经阅读全文。
+- 论文卡片和双语阅读页可展开「AI 学习笔记」。完成后刷新页面即可看到结果。
+- 重复抓取不将历史论文重新列为当天新发现；译文和笔记按论文内容、接口和模型复用。
+  全文按批次保存，任务中断后继续处理未完成内容。
+
+本地设置存放于 `config/llm.local.yaml`（文件权限 600），也可参考
+`config/llm.example.yaml` 直接编辑。`SCHOLAR_LLM_TOKEN` 环境变量可覆盖文件中的令牌。
+本地数据和进度存放于 `.local/`，首次启动会复制当前 `data/` 作为起始存档，之后独立维护。
+这两个路径已被 Git 忽略，不会随 GitHub Pages 发布；浏览器不会读回已保存的明文令牌。
+本地服务只监听 `127.0.0.1`，只提供前端资源与本地报告。
+
+现有 GitHub Actions 继续按其工作流执行；本地设置不会自动配置或改变云端任务。
+使用本地结果时打开 **http://127.0.0.1:8770/**，而非旧的静态预览端口。
 
 ### `config/source.yaml` — what to fetch
 

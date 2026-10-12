@@ -83,6 +83,8 @@
       const paper = (report.articles || []).find((article) =>
         article.source === 'arxiv' && article.links?.some((link) => link.url === absUrl));
       if (paper) titleEl.textContent = paper.title_zh || paper.title;
+      const study = window.ScholarStudy?.render(paper?.study);
+      if (study) document.getElementById('paperStudy').replaceChildren(study);
       return paper;
     } catch (error) {
       console.warn('Could not load paper metadata', error);
@@ -113,15 +115,19 @@
       const response = await fetch(`data/papers/${encodeURIComponent(id)}.json`, { cache: 'no-store' });
       if (response.ok) {
         const saved = await response.json();
-        if (saved.id === id && saved.status !== 'partial' && saved.status !== 'unavailable' && Array.isArray(saved.blocks) && saved.blocks.length > 2) {
+        if (saved.id === id && saved.status !== 'unavailable' && Array.isArray(saved.blocks) && saved.blocks.length > 2) {
           blocks = saved.blocks.map((block) => ({ type: block.type, text: block.en || '' }));
           saved.blocks.forEach((block, index) => translatedBlocks.set(index, block.zh));
           ensureTargets();
           translateButton.hidden = true;
           translateAllButton.hidden = true;
           const apiCount = saved.blocks.filter((block) => block.translation_engine === 'azure-f0').length;
-          const engineNote = apiCount ? `其中 ${apiCount} 段使用 Azure API 翻译。` : '';
-          status(`夜间预译全文已加载，共 ${blocks.length} 段。${engineNote}英中两列按段同步滚动，中文为机器初译。`);
+          const llmCount = saved.blocks.filter((block) => block.translation_engine?.startsWith('llm:')).length;
+          const engineNote = llmCount ? `其中 ${llmCount} 段使用配置的大模型翻译。` : apiCount ? `其中 ${apiCount} 段使用 Azure API 翻译。` : '';
+          const done = saved.blocks.filter((block) => block.zh).length;
+          status(saved.status === 'partial'
+            ? `已保存 ${done} / ${blocks.length} 段译文。后台任务可继续翻译，刷新查看后续结果。${engineNote}`
+            : `预译全文已加载，共 ${blocks.length} 段。${engineNote}英中两列按段同步滚动，中文为机器初译。`);
           if (blocks.some((block) => !block.text)) {
             status(`中文已加载，正在补充 ${blocks.length} 段英文原文…`);
             try {

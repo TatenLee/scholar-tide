@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>本地大模型设置 · Scholar Tide</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="local-settings container">
+    <a class="back-link" href="index.html">← 返回论文列表</a>
+    <h1>让新论文变成每日学习笔记</h1>
+    <p class="settings-intro">连接你的大模型，每天抓取论文、翻译并整理研究问题、方法和学习要点。配置与结果保存在这台电脑上。</p>
+    <p id="connectionStatus" class="settings-status" role="status">正在连接本地服务…</p>
+    <form id="llmSettings">
+      <fieldset id="settingsFields" disabled>
+        <legend>大模型接口</legend>
+        <label>接口地址（Base URL）
+          <input name="base_url" type="url" placeholder="服务商提供的 API 地址，例如 http://localhost:11434/v1" required>
+        </label>
+        <p class="field-help">支持 Chat Completions 兼容接口；请保留服务商要求的 /v1 等路径。模型也可以运行在本机。</p>
+        <label>模型名称
+          <input name="model" type="text" placeholder="填写服务商或本地服务中的模型 ID" required>
+        </label>
+        <label>Access Token / API Key
+          <input name="access_token" type="password" autocomplete="new-password" placeholder="输入你的访问令牌">
+        </label>
+        <p id="tokenState" class="field-help">令牌仅保存在本地，浏览器不会读取已保存的明文。</p>
+        <label class="check-label"><input name="clear_token" type="checkbox">清除已保存的令牌</label>
+        <div class="settings-divider"></div>
+        <h2>每日学习计划</h2>
+        <label class="check-label"><input name="enabled" type="checkbox">每天自动抓取、翻译和总结</label>
+        <div class="settings-columns">
+          <label>每天开始时间（香港 / 北京时间）<input name="daily_time" type="time" value="13:30" required></label>
+          <label>每轮最多处理论文数<input name="max_papers_per_run" type="number" min="1" max="200" value="10" required></label>
+          <label>抓取最近几天的论文<input name="lookback_days" type="number" min="1" max="30" value="7" required></label>
+        </div>
+        <label class="check-label"><input name="full_text" type="checkbox" checked>翻译可获取的全文，并基于全文文本整理笔记</label>
+        <p class="field-help">关闭全文时，仅翻译标题和摘要并生成摘要笔记。全文调用次数更多，费用取决于你选用的服务。数量上限按每轮计算；已完成论文会复用结果。</p>
+        <p class="field-help">自动运行需要电脑开机、联网，并保持本地服务运行。错过当天时间后，重新启动服务会补跑一次。</p>
+        <div class="settings-actions">
+          <button type="submit" class="primary-button">保存配置</button>
+          <button type="button" id="runNow">保存并立即运行</button>
+          <a class="back-link" href="index.html">查看论文与学习笔记 →</a>
+        </div>
+      </fieldset>
+    </form>
+    <section class="settings-status" aria-live="polite">
+      <h2>运行状态</h2>
+      <p id="jobStatus">尚未运行</p>
+      <p id="jobStats" class="field-help"></p>
+    </section>
+  </main>
+  <script src="local-settings.js"></script>
+</body>
+</html>

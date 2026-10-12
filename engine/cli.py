@@ -65,6 +65,11 @@ def spiders_cmd(_args: argparse.Namespace) -> None:
         print(name)
 
 
+def local_cmd(args: argparse.Namespace) -> None:
+    from engine.local_server import serve_local
+    serve_local(Path.cwd(), args.port)
+
+
 def make_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="scholar-tide", description=__doc__)
     sub = parser.add_subparsers(dest="command", required=True)
@@ -86,6 +91,10 @@ def make_parser() -> argparse.ArgumentParser:
 
     p = sub.add_parser("spiders", help="list registered spiders")
     p.set_defaults(func=spiders_cmd)
+
+    p = sub.add_parser("local", help="local LLM settings, daily scheduler and live paper reader")
+    p.add_argument("--port", type=int, default=8770)
+    p.set_defaults(func=local_cmd)
 
     return parser
 

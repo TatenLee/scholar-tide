@@ -16,6 +16,37 @@
   --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 }
 
+[hidden] { display: none !important; }
+.local-settings.container { max-width: 900px; padding: 32px 20px 48px; }
+.local-settings h1 { margin: 18px 0 8px; }
+.settings-intro, .field-help { color: var(--muted); }
+.field-help { font-size: 13px; margin: 6px 0 16px; }
+.settings-status { margin: 20px 0; padding: 18px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--bg-soft); }
+.settings-status h2 { font-size: 17px; margin-bottom: 8px; }
+.local-settings fieldset { border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; background: var(--card); }
+.local-settings legend { padding: 0 8px; font-size: 17px; font-weight: 600; }
+.local-settings label { display: block; margin: 14px 0 8px; font-size: 14px; }
+.local-settings input:not([type="checkbox"]) { width: 100%; margin-top: 7px; padding: 11px 12px; border: 1px solid var(--border); border-radius: 8px; background: var(--bg); color: var(--text); font: inherit; }
+.local-settings input:focus { outline: 2px solid var(--accent); outline-offset: 2px; }
+.local-settings .check-label { display: flex; gap: 10px; align-items: center; }
+.local-settings input[type="checkbox"] { accent-color: var(--accent); width: 17px; height: 17px; flex-shrink: 0; }
+.settings-columns { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.settings-divider { border-top: 1px solid var(--border); margin: 25px 0; }
+.settings-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 20px; }
+.settings-actions button { font: inherit; padding: 10px 16px; border: 1px solid var(--border); border-radius: 8px; background: var(--badge); color: var(--text); cursor: pointer; }
+.settings-actions .primary-button { background: var(--accent); color: var(--bg); font-weight: 600; }
+.settings-actions button:disabled { opacity: .55; cursor: wait; }
+.study-note { border: 1px solid var(--border); border-radius: 10px; background: var(--bg-soft); margin-top: 14px; padding: 12px 14px; font-size: 14px; }
+.study-note summary { color: var(--accent); cursor: pointer; font-weight: 600; }
+.study-note h3 { font-size: 14px; margin-top: 12px; color: var(--accent-2); }
+.study-note p { white-space: pre-wrap; margin-top: 7px; overflow-wrap: anywhere; }
+.study-note small { display: block; color: var(--muted); margin-top: 12px; }
+.reader-study { max-height: 32vh; overflow-y: auto; }
+@media (max-width: 640px) {
+  .settings-columns { grid-template-columns: 1fr; gap: 0; }
+  .local-settings fieldset { padding: 16px; }
+}
+
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 html { -webkit-text-size-adjust: 100%; }

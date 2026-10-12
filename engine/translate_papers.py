@@ -122,6 +122,7 @@ def translate_recent(
     max_minutes: int = 300,
     limit: int | None = None,
     translator=None,
+    translation_profile: str | None = None,
     fetch_html=None,
     request_delay: float = 3.0,
     today: date | None = None,
@@ -155,6 +156,13 @@ def translate_recent(
         checkpoint = None
         if existing_path.exists():
             payload = json.loads(existing_path.read_text(encoding="utf-8"))
+            if translation_profile and payload.get("translation_profile") != translation_profile and payload.get("blocks"):
+                # A local model change requests a fresh translation while reusing the source text.
+                for block in payload["blocks"]:
+                    block.pop("zh", None)
+                    block.pop("translation_engine", None)
+                payload["status"] = "partial"
+                payload["translation_profile"] = translation_profile
             if payload.get("archive_date", "") < archive_date:
                 payload["archive_date"] = archive_date
                 _write_json(path, payload)
@@ -214,6 +222,7 @@ def translate_recent(
                 "source_url": f"https://arxiv.org/html/{paper_id}",
                 "status": "partial",
                 "blocks": blocks,
+                "translation_profile": translation_profile,
             }
             _write_json(path, payload)
             budget_reached = False
@@ -254,7 +263,7 @@ def translate_recent(
             logger.info("translated %d/%d: %s (%d blocks)", index, len(pending), paper_id, len(blocks))
         except Exception:
             if blocks and all(block.get("en") for block in blocks):
-                _write_json(path, {"id": paper_id, "archive_date": archive_date, "source_url": f"https://arxiv.org/html/{paper_id}", "status": "partial", "blocks": blocks})
+                _write_json(path, {"id": paper_id, "archive_date": archive_date, "source_url": f"https://arxiv.org/html/{paper_id}", "status": "partial", "blocks": blocks, "translation_profile": translation_profile})
             failed += 1
             logger.exception("could not translate full paper %s", paper_id)
     if not output_dir:

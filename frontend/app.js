@@ -349,6 +349,10 @@
         try {
           await hydrateArticle(a);
           abstract.textContent = a.content_zh || a.content || '';
+          if (!el.querySelector('.study-note')) {
+            const study = window.ScholarStudy?.render(a.study);
+            if (study) el.appendChild(study);
+          }
           const translationButton = el.querySelector('.translate-btn');
           if (a.content_zh && translationButton) translationButton.textContent = '显示英文摘要';
         } catch (error) {
@@ -364,6 +368,8 @@
     });
 
     el.append(rowTop, title, links, abstract, toggle);
+    const study = window.ScholarStudy?.render(a.study);
+    if (study) el.appendChild(study);
 
     if (a.source === 'arxiv') {
       const translateButton = document.createElement('button');
@@ -484,6 +490,11 @@
   });
 
   (async () => {
+    if (['127.0.0.1', 'localhost'].includes(location.hostname)) {
+      fetch('/api/local/config', { cache: 'no-store' }).then((response) => {
+        if (response.ok) document.getElementById('localSettingsLink').hidden = false;
+      }).catch(() => {});
+    }
     await loadIndex();
     loadData();
   })();
