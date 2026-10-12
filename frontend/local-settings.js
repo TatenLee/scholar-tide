@@ -5,6 +5,7 @@
   const connection = document.getElementById('connectionStatus');
   const run = document.getElementById('runNow');
   const publish = document.getElementById('publishNow');
+  const test = document.getElementById('testConnection');
   let csrf = '';
   let busy = false;
 
@@ -29,9 +30,14 @@
     document.getElementById('jobStatus').textContent = status.message || '等待运行';
     run.disabled = busy || status.running;
     publish.disabled = busy || status.running;
+    test.disabled = busy || status.running;
+    test.textContent = status.running && status.operation === 'test' ? '正在测试接口…' : '保存并测试接口';
     publish.textContent = status.running && status.operation === 'publish' ? '正在发布…' : '发布已有译文到 GitHub';
     run.textContent = status.running ? '任务运行中…' : '保存并立即运行';
     const result = status.result;
+    const errors = document.getElementById('jobErrors');
+    errors.textContent = status.error || (result?.errors || []).map(error => `${error.stage} · ${error.paper}\n${error.message}`).join('\n\n');
+    errors.hidden = !errors.textContent;
     const time = status.finished_at ? `结束时间：${new Date(status.finished_at).toLocaleString('zh-CN', { timeZone: 'Asia/Hong_Kong' })}。` : '';
     document.getElementById('jobStats').textContent = time + (result
       ? `抓取 ${result.fetched} 条，完成 ${result.completed} 篇，复用 ${result.cached} 篇，失败 ${result.failed} 篇，待处理 ${result.remaining} 篇。模型调用 ${result.api_calls} 次，已报告用量 ${result.tokens} tokens。`
@@ -60,7 +66,7 @@
     }
   }
 
-  async function save(start) {
+  async function save(action) {
     if (!form.reportValidity()) return;
     busy = true;
     fields.disabled = true;
@@ -73,8 +79,8 @@
       form.elements.access_token.value = '';
       form.elements.clear_token.checked = false;
       tokenStatus(data.config);
-      if (start) await api('run', {});
-      connection.textContent = start ? '任务已提交，可以返回论文列表。' : '配置已保存。';
+      if (action) await api(action, {});
+      connection.textContent = action === 'test' ? '接口测试已提交，结果见下方运行状态。' : action ? '任务已提交，可以返回论文列表。' : '配置已保存。';
     } catch (error) {
       connection.textContent = error.message;
     } finally {
@@ -84,7 +90,8 @@
     }
   }
   form.addEventListener('submit', (event) => { event.preventDefault(); save(false); });
-  run.addEventListener('click', () => save(true));
+  run.addEventListener('click', () => save('run'));
+  test.addEventListener('click', () => save('test'));
   publish.addEventListener('click', async () => {
     busy = true;
     publish.disabled = true;

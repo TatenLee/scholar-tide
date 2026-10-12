@@ -23,6 +23,7 @@
 .field-help { font-size: 13px; margin: 6px 0 16px; }
 .settings-status { margin: 20px 0; padding: 18px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--bg-soft); }
 .settings-status h2 { font-size: 17px; margin-bottom: 8px; }
+.job-errors { white-space: pre-wrap; overflow-wrap: anywhere; font: inherit; font-size: 13px; }
 .local-settings fieldset { border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; background: var(--card); }
 .local-settings legend { padding: 0 8px; font-size: 17px; font-weight: 600; }
 .local-settings label { display: block; margin: 14px 0 8px; font-size: 14px; }

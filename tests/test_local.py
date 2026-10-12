@@ -1,7 +1,9 @@
 import json
+import logging
 import stat
 import tempfile
 import threading
+import time
 import unittest
 from datetime import datetime, timedelta, timezone
 from dataclasses import replace
@@ -15,6 +17,7 @@ from engine.core.type import InfoItem, Link
 from engine.local_daily import run_daily, write_json
 from engine.local_llm import LLMClient, LLMError, LocalConfig, load_config, save_config
 from engine.local_server import LocalService, ZONE, make_handler
+from engine.local_logging import configure_logging
 
 
 def config(**kwargs):
@@ -82,6 +85,91 @@ class LocalTests(unittest.TestCase):
         client.json = lambda *args: {"translations": []}
         with self.assertRaises(LLMError):
             client.translate_many(["first"])
+
+    def test_provider_error_is_visible_redacted_and_restriction_not_retried(self):
+        client = LLMClient(config(access_token="private-secret"))
+        reply = Mock(status_code=500)
+        reply.json.return_value = {"error": {"type": "internal_error", "message": "当前仅允许官方CodeX客户端使用 private-secret Bearer other-secret"}}
+        client.session.post = Mock(return_value=reply)
+        with self.assertLogs("engine.local_llm", level="INFO") as logs, self.assertRaises(LLMError) as caught:
+            client.json("instruction", "private paper text")
+        self.assertTrue(caught.exception.stop_run)
+        self.assertEqual(client.session.post.call_count, 1)
+        self.assertIn("当前仅允许官方CodeX客户端使用", str(caught.exception))
+        self.assertIn("HTTP 500", str(caught.exception))
+        output = str(caught.exception) + str(logs.output)
+        for secret in ("private-secret", "other-secret", "private paper text"):
+            self.assertNotIn(secret, output)
+        reply.status_code = 502
+        reply.json.side_effect = ValueError
+        with self.assertRaises(LLMError):
+            client.json("instruction", "source", test=True)
+        self.assertEqual(client.session.post.call_count, 2)
+
+    def test_file_logs_redact_tracebacks_and_remain_private_after_rotation(self):
+        save_config(self.root / "config/llm.local.yaml", config(access_token="private-secret"))
+        root_logger = logging.getLogger()
+        old_handlers, old_level = list(root_logger.handlers), root_logger.level
+        old_formatters = [handler.formatter for handler in old_handlers]
+        path = configure_logging(self.root)
+        handler = root_logger.handlers[-1]
+        try:
+            try:
+                raise RuntimeError("echo private-secret Bearer another-secret")
+            except RuntimeError:
+                logging.getLogger("engine.local_llm").exception("diagnostic")
+            handler.doRollover()
+            logging.getLogger("engine.local_llm").warning("second private-secret")
+            for log in path.parent.glob("service.log*"):
+                text = log.read_text()
+                self.assertNotIn("private-secret", text)
+                self.assertNotIn("another-secret", text)
+                self.assertEqual(stat.S_IMODE(log.stat().st_mode), 0o600)
+        finally:
+            root_logger.removeHandler(handler)
+            handler.close()
+            root_logger.setLevel(old_level)
+            for old, formatter in zip(old_handlers, old_formatters):
+                old.setFormatter(formatter)
+
+    def test_test_operation_surfaces_error_without_fetch_publish_or_schedule(self):
+        service = LocalService(self.root)
+        save_config(service.config_path, config(enabled=True, auto_publish=True))
+        with patch.object(LLMClient, "json", side_effect=LLMError("HTTP 500: 客户端限制")), patch("engine.local_server.run_daily") as daily, patch("engine.publish_local.publish_local") as publish:
+            self.assertTrue(service.start_run(test_only=True))
+            deadline = time.monotonic() + 5
+            while service.status["running"] and time.monotonic() < deadline:
+                time.sleep(0.01)
+            service.worker.join(timeout=5)
+            self.assertFalse(service.status["running"])
+            self.assertEqual(service.status["error"], "HTTP 500: 客户端限制")
+            self.assertFalse(service.schedule_path.exists())
+            daily.assert_not_called()
+            publish.assert_not_called()
+
+    def test_daily_stops_on_bad_credentials_and_publication_preserves_error(self):
+        items = [InfoItem(f"Paper {n}", "Abstract", datetime.now(timezone.utc),
+                         [Link("arxiv", f"https://arxiv.org/abs/2610.0000{n}v1")], source="arxiv", subject="paper") for n in (1, 2)]
+        with patch("engine.local_daily.fetch", return_value=items), patch.object(LLMClient, "metadata", side_effect=LLMError("HTTP 401: invalid key", stop_run=True)) as metadata:
+            result = run_daily(self.root, config())
+            self.assertEqual(metadata.call_count, 1)
+            self.assertEqual(result["remaining"], 2)
+            self.assertTrue(result["stopped_early"])
+            self.assertEqual(result["errors"][0]["stage"], "标题和摘要翻译")
+        service = LocalService(self.root)
+        save_config(service.config_path, config(auto_publish=True))
+        def publish(root, *, tokens, progress):
+            progress("没有完成的笔记可发布")
+            return {"notes": 0}
+        with patch("engine.local_server.run_daily", return_value=result), patch("engine.publish_local.publish_local", side_effect=publish):
+            service.start_run()
+            deadline = time.monotonic() + 5
+            while service.status["running"] and time.monotonic() < deadline:
+                time.sleep(0.01)
+            service.worker.join(timeout=5)
+            self.assertFalse(service.status["running"])
+            self.assertIn("HTTP 401", service.status["message"])
+            self.assertEqual(service.status["outcome"], "partial")
 
     def test_daily_preserves_fetch_and_resumes_after_summary_failure(self):
         item = InfoItem("A paper", "An abstract", datetime.now(timezone.utc),

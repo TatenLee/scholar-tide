@@ -15,7 +15,7 @@ from urllib.parse import unquote, urlsplit
 from zoneinfo import ZoneInfo
 
 from engine.local_daily import run_daily, seed_data, write_json
-from engine.local_llm import LocalConfig, load_config, save_config
+from engine.local_llm import LLMClient, LLMError, LocalConfig, load_config, save_config
 
 logger = logging.getLogger(__name__)
 ZONE = ZoneInfo("Asia/Hong_Kong")
@@ -46,7 +46,7 @@ class LocalService:
         write_json(self.status_path, self.status)
         logger.info(message)
 
-    def start_run(self, *, publish_only=False):
+    def start_run(self, *, publish_only=False, test_only=False):
         config = self.config()
         config.validate(ready=not publish_only)
         with self.guard:
@@ -58,16 +58,24 @@ class LocalService:
             except BlockingIOError:
                 lock.close()
                 raise ValueError("另一个本地进程正在运行任务，请等待其完成") from None
-            self.status = {"running": True, "operation": "publish" if publish_only else "daily", "started_at": datetime.now(ZONE).isoformat(), "message": "任务已开始"}
+            self.status = {"running": True, "operation": "test" if test_only else "publish" if publish_only else "daily", "started_at": datetime.now(ZONE).isoformat(), "message": "正在测试接口…" if test_only else "任务已开始"}
             write_json(self.status_path, self.status)
             now = datetime.now(ZONE)
-            if not publish_only and config.enabled and now.strftime("%H:%M") >= config.daily_time:
+            if not publish_only and not test_only and config.enabled and now.strftime("%H:%M") >= config.daily_time:
                 # A manual run after today's deadline also satisfies today's scheduled run.
                 write_json(self.schedule_path, {"last_attempt": now.strftime("%Y-%m-%d")})
 
         def work():
             from engine.publish_local import PublishError, publish_local
             try:
+                if test_only:
+                    client = LLMClient(config)
+                    reply = client.json('返回 {"ok":true}。', "接口连通性测试", test=True)
+                    if reply.get("ok") is not True:
+                        raise LLMError("接口可连接，但模型未按要求返回测试 JSON。")
+                    self.status.update(outcome="complete", message="接口测试成功：模型已返回有效 JSON，可以运行论文任务。")
+                    logger.info("local LLM connection test succeeded")
+                    return
                 if not publish_only:
                     result = run_daily(self.root, config, self.progress)
                     self.status.update(result=result, outcome="partial" if result["failed"] or result["remaining"] else "complete")
@@ -76,6 +84,12 @@ class LocalService:
                     self.status["publication"] = published
                     if publish_only:
                         self.status["outcome"] = "complete"
+                errors = self.status.get("result", {}).get("errors", [])
+                if errors:
+                    self.status["message"] = "本轮有处理失败的论文。最近错误：" + errors[-1]["message"]
+            except LLMError as error:
+                self.status.update(outcome="failed", message=str(error), error=str(error))
+                logger.warning("local LLM task failed: %s", error)
             except PublishError as error:
                 self.status.update(outcome="publish_failed", message=str(error))
             except Exception as error:
@@ -88,6 +102,7 @@ class LocalService:
                 lock.close()
 
         worker = threading.Thread(target=work, daemon=True, name="local-daily")
+        self.worker = worker
         worker.start()
         return True
 
@@ -179,6 +194,9 @@ def make_handler(service: LocalService):
                 if self.path == "/api/local/run":
                     started = service.start_run()
                     return self.reply(202 if started else 200, {"started": started, "status": service.status})
+                if self.path == "/api/local/test":
+                    started = service.start_run(test_only=True)
+                    return self.reply(202 if started else 200, {"started": started, "status": service.status})
                 if self.path == "/api/local/publish":
                     started = service.start_run(publish_only=True)
                     return self.reply(202 if started else 200, {"started": started, "status": service.status})
@@ -195,10 +213,13 @@ def make_handler(service: LocalService):
 
 def serve_local(root: Path, port: int):
     service = LocalService(root)
+    from engine.local_logging import configure_logging
+    log_path = configure_logging(root.resolve())
     server = ThreadingHTTPServer(("127.0.0.1", port), make_handler(service))
     threading.Thread(target=service.scheduler, daemon=True, name="local-scheduler").start()
     print(f"本地设置：http://127.0.0.1:{port}/local-settings.html", flush=True)
     print("每日定时采用香港时间；请保持此进程运行。", flush=True)
+    print(f"本地日志：{log_path}", flush=True)
     try:
         server.serve_forever()
     except KeyboardInterrupt:

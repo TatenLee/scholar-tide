@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import json
+import logging
 import os
 import re
 import time
@@ -11,6 +12,18 @@ from urllib.parse import urlsplit
 
 import requests
 import yaml
+
+logger = logging.getLogger(__name__)
+
+
+def redact(value: object, config: LocalConfig) -> str:
+    text = str(value)
+    for token in sorted({config.token, config.access_token}, key=len, reverse=True):
+        if token:
+            text = text.replace(token, "[REDACTED]")
+    text = re.sub(r"(?i)Bearer\s+[^\s\"',;]+", "Bearer [REDACTED]", text)
+    text = re.sub(r"\bsk-[\w-]+", "[REDACTED]", text)
+    return text
 
 
 @dataclass
@@ -80,7 +93,11 @@ def save_config(path: Path, config: LocalConfig) -> None:
 
 
 class LLMError(RuntimeError):
-    """Safe to show in UI: never includes an upstream body or authorization header."""
+    """Sanitized diagnostic safe to show in the private local UI."""
+
+    def __init__(self, message: str, *, stop_run: bool = False):
+        super().__init__(message)
+        self.stop_run = stop_run
 
 
 STUDY_SCHEMA = {
@@ -100,8 +117,30 @@ class LLMClient:
         self.session = requests.Session()
         self.calls = 0
         self.tokens = 0
+        self.last_error = None
 
-    def json(self, instruction: str, source: object) -> dict:
+    def http_error(self, response) -> LLMError:
+        detail = ""
+        try:
+            data = response.json()
+            error = data.get("error", {}) if isinstance(data, dict) else {}
+            if isinstance(error, dict):
+                detail = "；".join(str(error[key]) for key in ("type", "code", "message")
+                                  if isinstance(error.get(key), (str, int)))
+            elif isinstance(error, str):
+                detail = error
+        except ValueError:
+            pass
+        # Do not dump arbitrary HTML, request payloads, or headers.
+        detail = " ".join(redact(detail, self.config).split())[:1000]
+        restricted = "仅允许" in detail and "客户端" in detail
+        message = f"大模型接口返回 HTTP {response.status_code}"
+        message += f"：{detail}" if detail else "（未提供 JSON 错误原因，请检查接口地址、模型和凭据）"
+        if restricted:
+            message += "。请向服务商申请允许通用 API 调用的接口和令牌，或更换服务商。"
+        return LLMError(message, stop_run=restricted or response.status_code in {400, 401, 402, 403, 404})
+
+    def json(self, instruction: str, source: object, *, test: bool = False) -> dict:
         endpoint = self.config.base_url.rstrip("/")
         if not endpoint.endswith("/chat/completions"):
             endpoint += "/chat/completions"
@@ -117,20 +156,31 @@ class LLMClient:
                 {"role": "user", "content": json.dumps(source, ensure_ascii=False)},
             ],
         }
-        for attempt in range(3):
+        attempts = 1 if test else 3
+        for attempt in range(attempts):
+            started = time.monotonic()
             try:
-                response = self.session.post(endpoint, headers=headers, json=body, timeout=(10, 180), allow_redirects=False)
-            except requests.RequestException:
-                if attempt < 2:
+                response = self.session.post(endpoint, headers=headers, json=body, timeout=(10, 45 if test else 180), allow_redirects=False)
+            except requests.RequestException as error:
+                message = f"大模型连接失败（{type(error).__name__}），请检查接口地址和网络"
+                logger.warning("%s endpoint=%s model=%s attempt=%s elapsed=%.1fs", message,
+                               redact(endpoint, self.config), redact(self.config.model, self.config), attempt + 1, time.monotonic() - started)
+                if attempt < attempts - 1:
                     time.sleep(2 ** attempt)
                     continue
-                raise LLMError("大模型连接失败或超时，请检查接口地址和网络") from None
-            if response.status_code == 429 or response.status_code >= 500:
-                if attempt < 2:
-                    time.sleep(2 ** attempt)
-                    continue
+                self.last_error = LLMError(message, stop_run=True)
+                raise self.last_error from None
+            logger.info("LLM HTTP %s endpoint=%s model=%s attempt=%s elapsed=%.1fs", response.status_code,
+                        redact(endpoint, self.config), redact(self.config.model, self.config), attempt + 1, time.monotonic() - started)
             if response.status_code != 200:
-                raise LLMError(f"大模型接口返回 HTTP {response.status_code}，请检查模型、凭据或额度")
+                error = self.http_error(response)
+                self.last_error = error
+                logger.warning("%s", error)
+                if not error.stop_run and (response.status_code == 429 or response.status_code >= 500) and attempt < attempts - 1:
+                    time.sleep(2 ** attempt)
+                    continue
+                raise error
+            self.last_error = None
             try:
                 data = response.json()
                 self.calls += 1

@@ -42,6 +42,7 @@
         <p class="field-help">发布到当前仓库的 main 分支，随后自动更新 GitHub Pages。上传的译文和笔记可公开访问；令牌、接口配置和本地日志不上传。需要这台电脑已具备 Git 推送权限。</p>
         <div class="settings-actions">
           <button type="submit" class="primary-button">保存配置</button>
+          <button type="button" id="testConnection">保存并测试接口</button>
           <button type="button" id="runNow">保存并立即运行</button>
           <button type="button" id="publishNow">发布已有译文到 GitHub</button>
           <a class="back-link" href="index.html">查看论文与学习笔记 →</a>
@@ -52,6 +53,8 @@
       <h2>运行状态</h2>
       <p id="jobStatus">尚未运行</p>
       <p id="jobStats" class="field-help"></p>
+      <pre id="jobErrors" class="job-errors" hidden></pre>
+      <p class="field-help">详细日志保存在项目目录下的 .local/logs/service.log。日志隐藏令牌，不会上传 GitHub。</p>
     </section>
   </main>
   <script src="local-settings.js"></script>

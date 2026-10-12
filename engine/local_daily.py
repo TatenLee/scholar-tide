@@ -9,7 +9,7 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 from engine.core.config import load_config as load_sources
-from engine.local_llm import LLMClient, LocalConfig
+from engine.local_llm import LLMClient, LLMError, LocalConfig
 from engine.pipeline.fetch import fetch
 from engine.render.json import rebuild_index
 from engine.translate_papers import ARXIV_ID, translate_recent
@@ -99,6 +99,8 @@ def run_daily(root: Path, config: LocalConfig, progress=lambda message: None) ->
         for other in archive.get("articles", []):
             matching.setdefault(fingerprint(other, config), []).append(other)
     completed = failed = attempted = cached = 0
+    errors = []
+    stop_processing = False
     for article in pending.values():
         digest = fingerprint(article, config)
         checkpoint_path = root / ".local/llm-cache" / f"{digest}.json"
@@ -106,11 +108,12 @@ def run_daily(root: Path, config: LocalConfig, progress=lambda message: None) ->
         was_cached = checkpoint.get("complete", False)
         if checkpoint.get("complete"):
             cached += 1
-        elif attempted >= config.max_papers_per_run:
+        elif stop_processing or attempted >= config.max_papers_per_run:
             continue
         else:
             attempted += 1
             progress(f"正在处理第 {attempted} 篇：{article['title'][:100]}")
+            stage = "标题和摘要翻译"
             try:
                 if "title_zh" not in checkpoint:
                     checkpoint.update(client.metadata(article))
@@ -122,11 +125,14 @@ def run_daily(root: Path, config: LocalConfig, progress=lambda message: None) ->
                 paper_path = data_dir / "papers" / f"{paper_id}.json"
                 full_text_failed = False
                 if config.full_text:
+                    stage = "全文翻译"
                     progress(f"正在翻译全文：{checkpoint['title_zh']}")
                     _, failures, _ = translate_recent(data_dir, paper_id=paper_id, lookback_days=31, keep_days=31,
                                                       output_dir=data_dir / "papers", max_minutes=120, translator=client,
                                                       translation_profile=digest, today=today)
                     full_text_failed = bool(failures)
+                    if full_text_failed and client.last_error:
+                        raise client.last_error
                 paper = json.loads(paper_path.read_text(encoding="utf-8")) if config.full_text and paper_path.exists() else {}
                 blocks = paper.get("blocks", [])
                 source = "\n\n".join(block.get("en", "") for block in blocks)
@@ -134,6 +140,7 @@ def run_daily(root: Path, config: LocalConfig, progress=lambda message: None) ->
                 if not source:
                     source = article["content"]
                 if "study" not in checkpoint or checkpoint["study"].get("basis") != basis:
+                    stage = "学习笔记"
                     progress(f"正在整理学习笔记：{checkpoint['title_zh']}")
                     study = client.study(article["title"] + "\n\n" + source,
                                          basis="提取的论文全文文本（不含图片）" if basis == "full_text" else "仅标题和摘要，不能声称已经阅读全文")
@@ -145,10 +152,12 @@ def run_daily(root: Path, config: LocalConfig, progress=lambda message: None) ->
                     completed += 1
                 else:
                     failed += 1
+                    errors.append({"paper": article_key(article), "stage": "全文翻译", "message": "全文尚未完成，已保存进度；详见本地日志。"})
             except Exception as error:
                 # Upstream client exceptions are sanitized; do not expose raw request/response details.
-                from engine.local_llm import LLMError
-                message = str(error) if isinstance(error, LLMError) else "处理失败，已保存进度"
+                message = str(error) if isinstance(error, LLMError) else f"处理失败（{type(error).__name__}），已保存进度"
+                errors.append({"paper": article_key(article), "stage": stage, "message": message})
+                stop_processing = isinstance(error, LLMError) and error.stop_run
                 logger.warning("paper processing failed (%s): %s", type(error).__name__, message)
                 progress(message)
                 failed += 1
@@ -159,6 +168,8 @@ def run_daily(root: Path, config: LocalConfig, progress=lambda message: None) ->
             save_reports()
     save_reports()
     result = {"fetched": len(items), "completed": completed, "cached": cached, "failed": failed,
-              "remaining": max(0, len(pending) - completed - cached), "api_calls": client.calls, "tokens": client.tokens}
-    progress(f"本轮结束：完成 {completed} 篇，复用 {cached} 篇，待处理 {result['remaining']} 篇。刷新论文列表即可查看。")
+              "remaining": max(0, len(pending) - completed - cached), "api_calls": client.calls, "tokens": client.tokens,
+              "errors": errors, "stopped_early": stop_processing}
+    progress(f"本轮结束：完成 {completed} 篇，复用 {cached} 篇，失败 {failed} 篇，待处理 {result['remaining']} 篇。"
+             + (f"最近错误：{errors[-1]['message']}" if errors else "刷新论文列表即可查看。"))
     return result
