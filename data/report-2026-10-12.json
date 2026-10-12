@@ -1,6 +1,193 @@
 {
   "generated_at": "2026-10-12T12:29:32.614847+00:00",
-  "count": 0,
-  "subjects": [],
-  "articles": []
+  "count": 4,
+  "subjects": [
+    "paper"
+  ],
+  "articles": [
+    {
+      "title": "InstantFusion: A Shared Latent Interface for Heterogeneous Image Generators",
+      "content": "Diffusion/flow models have emerged as the de facto paradigms for image generation, giving rise to a diverse family of modern generators with increasingly heterogeneous architectures and representations. Despite their remarkable generation capabilities, the cross-model alignment of latent representations and the consistency of their underlying denoising dynamics remain underexplored. In this work, we uncover an intriguing cross-model compatibility: independently trained generators exhibit similar latent spatial organization, while directly handing off intermediate states between unaligned models can still preserve coarse visual content. Motivated by these observations, we propose InstantFusion, a lightweight shared latent interface that connects the denoising trajectories of heterogeneous image generators. Specifically, to enable flexible cross-model state translation, model-specific Latent AutoEncoders (LAEs) are introduced to project intermediate states from different generators into a shared latent space and decode them into the latent space of a target generator. This shared space is constrained by two complementary objectives: aligning intermediate states derived from the same image at matched noise levels and synchronizing their corresponding local denoising velocities. Once trained, InstantFusion allows denoising to seamlessly transition across frozen generators without requiring a dedicated mapping for every model pair. The versatility of InstantFusion is demonstrated across acceleration, multi-preference composition, cross-architecture on-policy distillation, and cross-model composition, achieving competitive performance across these diverse settings.",
+      "published_at": "2026-10-09T17:59:04+00:00",
+      "links": [
+        {
+          "label": "arxiv",
+          "url": "https://arxiv.org/abs/2610.13944v1"
+        },
+        {
+          "label": "html",
+          "url": "https://arxiv.org/html/2610.13944v1"
+        },
+        {
+          "label": "pdf",
+          "url": "https://arxiv.org/pdf/2610.13944v1"
+        },
+        {
+          "label": "papers.cool",
+          "url": "https://papers.cool/arxiv/2610.13944v1"
+        }
+      ],
+      "tags": [
+        "cs.CV"
+      ],
+      "subject": "paper",
+      "source": "arxiv",
+      "score": 0.0,
+      "title_zh": "InstantFusion：面向异构图像生成器的共享潜空间接口",
+      "content_zh": "扩散/流模型已成为图像生成事实上的范式，催生了具有日益异构架构与表示的多样化现代生成器家族。尽管其生成能力卓越，但潜在表示之间的跨模型对齐以及其底层去噪动力学的一致性仍未得到充分探索。在这项工作中，我们揭示了一种有趣的跨模型兼容性：独立训练的生成器表现出相似的潜在空间组织，而即便在未对齐的模型之间直接交接中间状态，也仍能保留粗粒度的视觉内容。受这些观察启发，我们提出 InstantFusion，一种轻量级共享潜空间接口，用于连接异构图像生成器的去噪轨迹。具体而言，为实现灵活的跨模型状态转换，我们引入模型特定的潜在自编码器（Latent AutoEncoders, LAEs），将来自不同生成器的中间状态投影到一个共享潜空间，并将其解码到目标生成器的潜空间。该共享空间由两个互补目标约束：对齐在匹配噪声水平下由同一图像导出的中间状态，并同步其相应的局部去噪速度。一旦训练完成，InstantFusion 允许去噪在冻结生成器之间无缝转换，而无需为每一对模型专门构建映射。InstantFusion 的多功能性在加速、多偏好组合、跨架构同策略蒸馏和跨模型组合中得到展示，并在这些多样设置中实现了有竞争力的性能。",
+      "study": {
+        "overview": "InstantFusion 提出轻量共享潜空间接口：为每个冻结异构图像生成器训练模型专属 Latent AutoEncoder (LAE)，实现跨模型中间状态翻译、去噪轨迹交接，并支持加速、on-policy 蒸馏与多偏好组合。",
+        "problem": "扩散/流生成器架构、潜表示与训练配方异构，常被当作孤立系统。已有跨模型对齐多依赖逐对专属映射，轨迹拼接又假设同一潜空间，异构潜空间间的去噪轨迹转移仍未充分探索。目标是在不修改冻结生成器的前提下，构建统一的跨架构状态与动力学接口。",
+        "method": "为每个冻结生成器配备时间条件 LAE：编码 E_m 将中间状态 x_t 投到共享潜空间，解码 D_m 还原到原生潜空间。仅训练 LAE，联合优化 L_rec、L_align、L_reg、L_dyn，既对齐编码表示，又同步局部去噪速度。推理按 x_t^{A→B}=D_B(E_A(x_t^A,t),t) 翻译，并由发送方干净预测稳定性 S_k^A≥γ 选首个 handoff 步，无需逐对映射。",
+        "evidence": "单次重建 PSNR>31 dB、SSIM>0.94；重复往返下降。零样本直接交接有伪影但保留主体与粗布局。Qwen-Image→SD3/FLUX.1 使 GenEval-v2 +12.92/+13.68 至 35.06/36.54，CVTG-2K +0.18–0.28。Qwen-Image+Z-Image-Turbo/FLUX.2-Klein 推理 18.84s→4.373/2.545s；加 DiCache 10.64→5.70s，GenEval-v2 32.70→32.46。OPD 使 SD3 HPSv2 26.27→26.46；偏好组合 30.97/30.68；三阶段六排列一致；去 L_dyn OPD 发散，去 L_rec 损重建。图12–19定性。部分表格与统计细节未提供。",
+        "limitations": "作者陈述：依赖共享 autoencoder 与兼容时间参数化；混合推理需同时驻留多个冻结 backbone，内存与存储开销更高；跨异构 autoencoder、动态加载/卸载为未来方向。最优切换步随模型对变化，手工调参不实用；过早切换无效；重复潜变量往返降低重建保真度。建议核查（非作者）：翻译误差与失败案例、LAE数据规模、额外开销、M>2扩展、统计显著性与表1–11配置。",
+        "learning": [
+          "Flow Matching 中路径速度 ε−x0 的含义是什么？为何在对齐中间状态之外还需同步局部去噪速度，才能保证轨迹可交接？",
+          "LAE 如何在缺少逐对配对时学习共享潜空间，并避免“对齐”与“重建”的平凡解？L_rec、L_reg、L_dyn 各起什么作用？",
+          "自适应 handoff 的稳定性指标 S_k^A 与阈值 γ 如何选择接管时机，并影响跨模型生成质量、效率与误差累积？"
+        ],
+        "basis": "full_text",
+        "model": "deepseek-v4-flash",
+        "generated_at": "2026-10-12T22:35:11.288797+00:00"
+      }
+    },
+    {
+      "title": "Can machines reason non-verbally?",
+      "content": "Modern machines can solve equations, follow logic and reason through language, yet they still struggle with problems that require visual non-verbal reasoning. This is evident even in advanced systems such as DeepSeek, ChatGPT and Gemini, which remain limited on visual tasks such as completing abstract patterns or delineating ambiguous regions-of-interest. Unlike explicit intermediate steps in verbal reasoning which can be verified through logic or automated tests, visual reasoning involves implicit intermediate steps with no clear methods for verification. Non-verbal reasoning is therefore challenging to model and, as a result, remains a fundamental limitation of current machine intelligence. Here we introduce GenVerOpt, a general framework that unifies generation, verification and optimisation into a reasoning pipeline for machines. By generating candidate solutions, verifying their correctness, and iteratively refining them, GenVerOpt enables per-sample optimisation rather than relying solely on dataset-level trends captured during model training. This process mirrors human problem-solving where multiple possibilities are imagined, evaluated, and refined until a correct solution emerges. Across diverse domains, GenVerOpt demonstrates capabilities beyond existing systems: it surpasses humans on abstract IQ puzzles, matches clinicians in prostate cancer segmentation, exceeds experts in liver vessel reconstruction and outperforms state-of-the-art approaches in tumour boundary alignment. These results show that machine reasoning can extend beyond language, establishing visual non-verbal reasoning as a foundation for more flexible and generalisable intelligence.",
+      "published_at": "2026-10-09T17:54:36+00:00",
+      "links": [
+        {
+          "label": "arxiv",
+          "url": "https://arxiv.org/abs/2610.13925v1"
+        },
+        {
+          "label": "html",
+          "url": "https://arxiv.org/html/2610.13925v1"
+        },
+        {
+          "label": "pdf",
+          "url": "https://arxiv.org/pdf/2610.13925v1"
+        },
+        {
+          "label": "papers.cool",
+          "url": "https://papers.cool/arxiv/2610.13925v1"
+        }
+      ],
+      "tags": [
+        "cs.CV"
+      ],
+      "subject": "paper",
+      "source": "arxiv",
+      "score": 0.0,
+      "title_zh": "机器能否进行非言语推理？",
+      "content_zh": "现代机器能够求解方程、遵循逻辑并通过语言进行推理，但它们仍然难以处理需要视觉非言语推理的问题。这一点甚至在 DeepSeek、ChatGPT 和 Gemini 等先进系统中也很明显，这些系统在完成抽象图案或勾勒模糊感兴趣区域等视觉任务上仍然受限。与言语推理中可通过逻辑或自动化测试验证的显式中介步骤不同，视觉推理涉及隐式中介步骤，且没有明确的验证方法。因此，非言语推理难以建模，并由此成为当前机器智能的一个根本局限。在此，我们介绍 GenVerOpt，一个将生成、验证和优化统一为机器推理流水线的通用框架。通过生成候选解、验证其正确性并迭代改进它们，GenVerOpt 能够实现逐样本优化，而非仅依赖模型训练期间捕获的数据集层面趋势。这一过程类似于人类解决问题：想象多种可能性，进行评估并改进，直到正确答案出现。在不同领域中，GenVerOpt 展现出超越现有系统的能力：在抽象智商谜题上超越人类，在前列腺癌分割中与临床医生相当，在肝血管重建中超越专家，在肿瘤边界对齐中优于最先进方法。这些结果表明，机器推理可以超越语言，将视觉非言语推理确立为更灵活、更具泛化能力的智能的基础。",
+      "study": {
+        "overview": "论文提出 GenVerOpt，将 generation、verification、optimisation 统一，联合训练 generator 与 verifier，并在推理时逐样本迭代优化，用于视觉非语言推理，在抽象 IQ 题、前列腺癌与肝血管分割、MR-US 配准等任务中评估。",
+        "problem": "语言推理的中间步骤可用逻辑或自动测试验证，而视觉非语言推理的中间步骤隐式、缺少验证方法，机器在完成抽象图案、勾画模糊感兴趣区域等任务上受限。现有深度学习在模糊、冲突线索、结构复杂或跨模态医学图像任务中易失败，且依赖大量专家标注；作者探索无需语言、仅少量监督的迭代推理能否达到专家水平。",
+        "method": "GenVerOpt 含 generation、verification、optimisation：generator g(x;θ) 生成候选，verifier v(x,y;φ)∈[0,1] 估正确性；推理时 y*=argmax_{y∼g(x;θ)} E[v(x,y;φ)]，逐样本迭代采样、细化至稳定。训练用 minθ maxφ E[L(v(x,g(x;θ);φ),c(x,y))]，verifier 用 binary cross-entropy，generator 最大化其分数；RL self-play 按 logits 采样 y1,y2，相对奖励 R=v(x,y1,θ)-v(x,y2,θ) 做策略梯度。跨任务用 Reptile：各数据集 D_i 优化一步得(θ_i,φ_i)，更新 (θ,φ)←(θ,φ)+α(1/M)Σ[(θ_i,φ_i)-(θ,φ)]，64 个任务标注微调。IQ 题候选预定义并穷举搜索；医学分割与配准中生成器、验证器联合演化。",
+        "evidence": "材料称 GenVerOpt 在四类任务超越现有系统：379 个 temporal movement puzzles 上超过人类，现有模型接近 25% 随机水平；前列腺癌分割匹配临床医生、64 例训练下超过人类影像专家，显著优于 SOTA；肝血管重建超过专家，Dice 与人类观察者相当，parent–child 赋值正确率高于所有基线并略超人类，断裂血管更少；MR-US 配准 Dice 更高、TRE 更低；肿瘤边界对齐优于 state-of-the-art。消融去掉 joint training、self-play 或 RL 后 Tab.3 显示各组件均有正向贡献；数据增至 64 samples 后性能与推理时间趋于 plateau。材料未提供完整数值、统计量和全部结论。",
+        "limitations": "材料未给出作者明确陈述的局限。仅见：视觉推理验证困难、生成可能非穷尽且错误；组件仍含人类监督（如用标注示例引导生成/验证），需 verifier 分数稳定以终止优化。建议核查（非作者陈述）：Tab.1–6 具体数值、数据集规模与偏倚、划分与统计显著性、人类对比设置、医学任务泛化与临床外部验证、Reptile 对任务相关性的假设、RL self-play 稳定性与 reward hacking、verifier 偏差与 c(x,y) 标注质量、计算成本与碳足迹。",
+        "learning": [
+          "GenVerOpt 的 generation、verification、optimisation 三部分如何相互引导？为何 verification 通常比 generation 更容易，低维解空间在视觉推理中有何含义？",
+          "joint training 的 minθ maxφ 目标与 RL self-play 的相对奖励 R=v(x,y1,θ)-v(x,y2,θ) 如何对应，各自何时使用？如何用 logits 概率采样候选并迭代更新生成器？",
+          "如何为医学分割或配准定义可验证的正确性评分 c(x,y) 与评价指标（Dice、TRE、SSIM、parent–child assignments），并避免数据集偏倚、verifier 偏差与过拟合？Reptile 中 α 与任务相似性如何影响快速适应？"
+        ],
+        "basis": "full_text",
+        "model": "deepseek-v4-flash",
+        "generated_at": "2026-10-12T09:39:21.180809+00:00"
+      }
+    },
+    {
+      "title": "Beyond the Snowflakes: Disentangling Weather Effects from Confounding Meta-Factors in LiDAR Object Detection",
+      "content": "Light Detection and Ranging (LiDAR) is critical for autonomous perception, yet its performance is known to degrade in adverse weather. While existing literature models snow as atmospheric noise that degrades performance, our granular evaluation on the WADS-3D and CADC datasets reveals a counter-intuitive phenomenon: detection accuracy consistently improves as snow intensity increases. Through ablation study and meta-information analysis, we reconcile this by confirming that while falling snow acts as noise, its negative impact is outweighed by a dominant, concurrent factor: significantly increased object point count. We hypothesize that this object point count boost acts as a geometric enhancement, driven by snow accumulation increasing vehicle surface area and a shift from specular to diffuse reflectance. Our findings demonstrate that evaluating perception systems using broad weather-severity bins without accounting for correlated object-level data can lead to misleading conclusions about detector robustness. We conclude that accurate evaluation requires decoupling atmospheric noise from surface accumulation effects and outline future research to validate these physical models. The WADS-3D dataset is available at: https://digitalcommons.mtu.edu/wads-3d/.",
+      "published_at": "2026-10-09T17:38:30+00:00",
+      "links": [
+        {
+          "label": "arxiv",
+          "url": "https://arxiv.org/abs/2610.13891v1"
+        },
+        {
+          "label": "html",
+          "url": "https://arxiv.org/html/2610.13891v1"
+        },
+        {
+          "label": "pdf",
+          "url": "https://arxiv.org/pdf/2610.13891v1"
+        },
+        {
+          "label": "papers.cool",
+          "url": "https://papers.cool/arxiv/2610.13891v1"
+        }
+      ],
+      "tags": [
+        "cs.CV"
+      ],
+      "subject": "paper",
+      "source": "arxiv",
+      "score": 0.0,
+      "title_zh": "超越雪花：在 LiDAR 目标检测中解耦天气效应与混杂元因素",
+      "content_zh": "光探测与测距（LiDAR）对自动驾驶感知至关重要，但已知其性能会在恶劣天气下退化。虽然现有文献将雪建模为会降低性能的大气噪声，但我们在 WADS-3D 和 CADC 数据集上的细粒度评估揭示了一个反直觉现象：随着雪强度增加，检测精度持续提高。通过消融研究和元信息分析，我们对此进行调和，确认虽然降雪作为噪声起作用，但其负面影响被一个同时存在的主导因素所超过：目标点数量显著增加。我们假设，这种目标点数量增加起到了几何增强作用，其驱动因素是积雪增加了车辆表面积以及从镜面反射向漫反射的转变。我们的发现表明，使用宽泛的天气严重程度分箱来评估感知系统，而不考虑相关的目标级数据，可能导致关于检测器鲁棒性的误导性结论。我们得出结论，准确评估需要将大气噪声与表面累积效应解耦，并概述未来研究以验证这些物理模型。WADS-3D 数据集可在以下网址获取：https://digitalcommons.mtu.edu/wads-3d/。",
+      "study": {
+        "overview": "论文提出WADS-3D降雪LiDAR检测数据集，并在WADS-3D与CADC上研究降雪强度对3D目标检测的影响，发现雪越强检测精度/召回反而提升，主要源于物体点数等混杂因素而非雪花噪声。",
+        "problem": "现有工作常把雪视为大气噪声，预期性能随降雪单调下降；常用粗粒度天气等级或混合多传感器数据集，可能混淆天气效应、域偏移与物体级几何变化。作者需在独立数据集上区分空中雪花噪声与表面积雪效应，量化降雪强度与检测性能关系，并定位真正驱动召回的因素。",
+        "method": "构建WADS-3D：由WADS衍生、KITTI格式，4,100标注帧（2,050个360°扫描），30,104辆汽车；另用CADC。用DSOR与LIOR两阶段混合滤波量化降雪点，按前视绝对雪点分位数分箱。采用OpenPCDet/MMDetection3D中voxel、pillar、point-based、hybrid五类检测器，按KITTI AP/PR评估；WADS-3D用KITTI预训练直接推理，CADC按50:50微调。分析含raw vs de-noised消融、误差矩阵、meta-information（Kendall's Tau、MI、RF+SHAP）。",
+        "evidence": "两数据集均见降雪越强AP越高。WADS-3D去雪滤波平均+6.72% AP但正趋势不变；CADC滤波收益可忽略。TP升、FN降，AP提升几乎全来自召回。voxel(SECOND-IoU)最优，anchor-based优于anchor-free。元分析：WADS-3D目标点数与距离主导（τ≈0.3与−0.3，SHAP≈40–50%），雪强重要性<0.03；CADC点数SHAP≈0.55、强度τ≈0.3/SHAP≈0.18。雪点比例WADS-3D 0.69%–28.34%（均值8.97%），CADC 0.66%–21.38%（均值6.71%）；点数与雪强r=0.820(WADS-3D)、0.733(CADC)，CADC强度r=0.694。",
+        "limitations": "作者承认性能增益的物理机制未完全刻画，需解耦大气噪声与表面积雪效应并验证三个假设（场景平滑、点云膨胀、表面反射变换）；仅按宽泛天气严重度分箱而不考虑物体级数据会误导鲁棒性结论；未来将评估小型非刚性目标、缓解策略与高保真模拟。建议核查：仅两个数据集、64线vs32线、CADC 50:50微调且训练集已滤波、WADS-3D依赖KITTI预训练、标注偏差、分箱阈值及因果性。",
+        "learning": [
+          "如何用DSOR与LIOR区分雪花点与普通低强度点或离群点？其阈值、滤波阶段与评估方式如何影响降雪点量化？",
+          "物体点数与距离等混杂变量为何会提升LiDAR检测召回？如何设计实验控制目标点数/距离分布，并验证镜面反射转漫反射、积雪增加表面积与点云膨胀假说？",
+          "Kendall's Tau、互信息MI与RF+SHAP在召回驱动分析中各自捕捉什么？object-level与scene-level元特征（如spatial entropy、voxel occupancy、geometric complexity）如何定义并互补？"
+        ],
+        "basis": "full_text",
+        "model": "deepseek-v4-flash",
+        "generated_at": "2026-10-12T22:46:05.893810+00:00"
+      }
+    },
+    {
+      "title": "Tracking the Invisible: Self-Supervised Wheel Track Detection with Thermal-RGB Fusion",
+      "content": "Accurate detection of drivable area is essential for autonomous driving and advanced driver assistance systems. While state-of-the-art methods focus on general traversability estimation, they prove inadequate for snow-covered roads where following existing wheel tracks offers crucial advantages: improved traction, predictable vehicle dynamics, and verified path stability. To address this, we propose a low-cost, self-supervised approach detecting safety-critical wheel tracks using synchronized RGB-I (RGB + Long-Wave Infrared) imagery. Our method automatically generates training labels by projecting future wheel trajectories from recorded GNSS data. A neural network is designed to identify wheel tracks with the 4-channel RGB-I images from challenging, white-out road surfaces. Experimental results demonstrate the effectiveness of our approach in visually monotonous and featureless adverse environment, offering a robust and cost-effective alternative for winter autonomy. The newly introduced ThermalTrack dataset is available at: https://digitalcommons.mtu.edu/thermaltrack/.",
+      "published_at": "2026-10-09T17:21:28+00:00",
+      "links": [
+        {
+          "label": "arxiv",
+          "url": "https://arxiv.org/abs/2610.13872v1"
+        },
+        {
+          "label": "html",
+          "url": "https://arxiv.org/html/2610.13872v1"
+        },
+        {
+          "label": "pdf",
+          "url": "https://arxiv.org/pdf/2610.13872v1"
+        },
+        {
+          "label": "papers.cool",
+          "url": "https://papers.cool/arxiv/2610.13872v1"
+        }
+      ],
+      "tags": [
+        "cs.CV"
+      ],
+      "subject": "paper",
+      "source": "arxiv",
+      "score": 0.0,
+      "title_zh": "追踪不可见目标：基于热成像-RGB融合的自监督车轮轨迹检测",
+      "content_zh": "准确检测可行驶区域对于自动驾驶和高级驾驶辅助系统至关重要。尽管最先进的方法聚焦于一般可通行性估计，但它们在积雪覆盖道路上被证明不够充分；在这些道路上，沿现有车轮轨迹行驶具有关键优势：更好的牵引力、可预测的车辆动力学以及经验证的路径稳定性。为解决此问题，我们提出一种低成本、自监督的方法，利用同步的 RGB-I（RGB + 长波红外）图像检测安全关键的车轮轨迹。我们的方法通过从记录的 GNSS 数据中投影未来车轮轨迹来自动生成训练标签。我们设计了一个神经网络，利用来自具有挑战性的、白茫茫道路表面的 4 通道 RGB-I 图像来识别车轮轨迹。实验结果证明了我们的方法在视觉单调且缺乏特征的不利环境中的有效性，为冬季自动驾驶提供了一种稳健且经济高效的替代方案。新引入的 ThermalTrack 数据集可在以下网址获取：https://digitalcommons.mtu.edu/thermaltrack/。",
+      "study": {
+        "overview": "论文提出自监督RGB-热红外（RGB-I）融合的雪地轮迹检测方法：用GNSS轨迹投影自动生成标签，并人工补标对向轮迹，在多种分割骨干中加入attention gate与atrous blocks，同时发布ThermalTrack数据集。",
+        "problem": "积雪覆盖道路遮蔽车道线与结构，定位、LiDAR、HD地图、里程计等易失效。现有traversability estimation只区分可通行/不可通行，未考虑沿既有轮迹行驶更安全、抓地力更强、动力学更可预测。自监督标签仅标轮地接触点，正样本极稀疏（<5%）；对向车道轮迹无GNSS轨迹标签，忽略会造成训练歧义。",
+        "method": "输入同步RGB-I（RGB+LWIR）四通道，下采样512×512，静态单应对齐并CLAHE增强。标签由GNSS轨迹投影K·[R|T]·P(t,t+h)自动生成。网络输出轮迹概率图；以ResNet-18编码器-解码器为基，加attention gates与多尺度atrous blocks；对比UNet、PSPNet、DeepLabv3+、ResNet18。损失为focal loss与boundary loss：l=w1lf+w2lb，w1=w2=1；Adam，batch size 4，学习率1e-4。",
+        "evidence": "在WADS上构建ThermalTrack：951张原始图增强至7608张；对向轮迹人工标注约8–10秒/图，共约2.5小时。热成像补足RGB缺失/不连续轮迹，使FNR较RGB-only降69.74%，FPR=0.014；attention gate+atrous blocks四模型平均提升AUROC 10.3%、AP 10.58%、MaxF 17.35%、REC 30.10%，但FPR更大。PR曲线基线0.043；端到端25.9 FPS（38.62 ms），预处理3.89 ms。材料未给出全部表格、完整epoch与全部结论。",
+        "limitations": "作者陈述：正样本极稀疏、类别不平衡，增加训练难度；对向轮迹无轨迹标签，需人工补标；静态单应对齐对垂直结构可能有轻微视差，对近平面路面可忽略；样本量相对modest；ThermalTrack仅覆盖特定冬季条件，未代表deep powder、ice crusts、melting slush；指标对下游规划充分性取决于感知误差影响。建议核查：数据划分、评价指标、消融数值、完整epoch、部署硬件与端到端规划评估。",
+        "learning": [
+          "如何用GNSS轨迹投影K·[R|T]·P(t,t+h)自动生成轮迹标签？相机内外参、时间同步、轮地接触点几何与静态单应分别引入哪些误差，如何验证标签质量？",
+          "正样本少于5%时，focal loss、boundary loss、attention gate与atrous blocks分别解决什么问题？应如何用AUROC、AP、MaxF、FPR、FNR与PR曲线做消融？",
+          "如何评估RGB-LWIR热差异在不同雪型（deep powder、ice crusts、melting slush、温度均衡）下的有效性，并把感知FNR/FPR权衡与下游轨迹规划安全性联系起来？"
+        ],
+        "basis": "full_text",
+        "model": "deepseek-v4-flash",
+        "generated_at": "2026-10-12T22:47:42.983273+00:00"
+      }
+    }
+  ]
 }
