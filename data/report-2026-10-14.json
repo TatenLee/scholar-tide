@@ -126,8 +126,23 @@
       "subject": "paper",
       "source": "arxiv",
       "score": 0.0,
-      "title_zh": "由预训到精益通 4 消费者 GPU 组合",
-      "content_zh": "我们一般认为,培训文本到图像传播模型需要沉重的计算:如果我们着眼于一个全面的前沿模型,这是事实。 这种理解阻碍了人们在开始实地工作时训练自己的模特. 我们开发了MiniDog,这个框架可以在55分钟内对扩散变压器进行预先训练,并在4个3090GPU上再作15分钟的微调. 对于数据,我们使用来自ImageNet的26k狗图像,并给它们作预训的字幕,并使用由FLUX.1-schnell生成的2k图像进行微调. 我们预先计算图像和文本功能,并缓存它们以提高效率. 对于建筑,我们使用E2E-INVAE作为其语义潜入空间,一个有22M参数的小型变压器,一个用于文本编码的小型Quen模型,以及内文本的配置. 在培训方面,我们使用iREPA和一个EUPE感知编码器来加速. 对于评价,我们的存储器支持FID,HPSv2分数,PickScore,以及各种VAE重建度量衡."
+      "title_zh": "在 4 块消费级 GPU 上从预训练到微调的犬种文本到图像流匹配",
+      "content_zh": "我们通常认为，训练文本到图像扩散模型需要大量算力：如果我们旨在打造一个全面的前沿模型，这确实是事实。这种认知阻碍了人们在该领域入门时训练自己的模型。我们开发了 MiniDog，一个框架，能够在四块 3090 GPU 上于 55 分钟内完成扩散 Transformer 的预训练，并在另外 15 分钟内完成微调。在数据方面，我们使用来自 ImageNet 的 26k 张狗图像，并为它们添加描述用于预训练；同时使用 FLUX.1-schnell 生成的 2k 张图像用于微调。我们预计算图像和文本特征并缓存它们以提高效率。在架构方面，我们使用 E2E-INVAE 以获得其语义潜空间、一个具有 22M 参数的小型 Transformer、一个用于文本编码的小型 Qwen 模型，以及上下文条件机制。在训练方面，我们使用 iREPA 和 EUPE 感知编码器进行加速。在评估方面，我们的仓库支持 FID、HPSv2 分数、PickScore 以及各种 VAE 重建指标。",
+      "study": {
+        "overview": "MiniDog：开源代码库与配方，在四块 RTX 3090 上从零预训练文本到图像 flow matching 扩散 Transformer（狗图像），预训练约 55 分钟、SFT 约 15 分钟，256×256 达 gFID 8.32。",
+        "problem": "训练文本到图像扩散模型通常被认为需要巨大算力，初学者难以跑通完整训练流程。作者提供数据、架构、训练方法与评估齐备的轻量方案，使人能在消费级 GPU 上完成预训练与微调；目标为 democratizing T2I training，不追求构建通用完整 T2I 模型。工作聚焦狗图像生成，并比较外部视觉编码器、REPA 与 iREPA 对齐方式、MSE 与 cosine 对齐损失，以及 supervised fine-tuning 的影响。",
+        "method": "数据：ImageNet 26k 狗图重标注预训练，FLUX.1-schnell 生成 2k 图 SFT。架构：E2E-INVAE tokenizer；22.06M、12 block LightningDiT（RMSNorm、query-key normalization、SwiGLU、2D RoPE）；Qwen3-0.6B 文本编码，in-context conditioning。冻结 tokenizer、文本与目标编码器，缓存 latent、文本嵌入与 patch 特征。rectified flow 直线路径（α_t=1-t, σ_t=t）flow matching loss + iREPA 对齐损失（Block 4，λ=0.5；3×3 卷积、padding 1、patch 归一化 γ=0.7、ε=1e-6），EUPE 加速；SFT 关闭 REPA。",
+        "evidence": "最佳配方 E2E-INVAE + 128 token caption + iREPA（MSE）+ EUPE，gFID=8.32；SFT 后 HPSv2=0.2427，PickScore=19.61。4×3090 预训练 200 epoch 55 分钟、SFT 100 epoch 15 分钟；单卡预训练约 3 小时、SFT 21 分钟，显存至少 10 GiB（训练中评估 FID 需 15 GiB）。E2E-INVAE 重建与可扩散性优于 E2E-VAVAE；长 caption 收敛更快；REPA/iREPA 加速收敛，MSE 优于 cosine；编码器比较原文截断。SFT 的 FID 更高但数值未列，作者归因于偏离预训练分布；Fig. 1 为精选图；Table 3/4 具体数值材料未提供。",
+        "limitations": "作者自述：MiniDog 不构建全面的 T2I 模型，只是面向狗图像生成的极简项目；SFT 以更高 FID 换取偏好分数提升。材料在“Comparing different vision encoders”处截断，未见明确 limitations 章节，也无多随机种子、失败案例或数据偏置讨论。以下为建议核查而非作者陈述：gFID 基于自有 26k 参考图与提示词，能否与外部结果直接比较；20 个狗品种与狗域结论能否外推；用 FLUX.1-schnell 合成数据做 SFT 的效果与风险；iREPA 等加速结论是否基于单次运行；SFT 的 FID 数值、Fig. 1 精选图、依赖奖励模型而非人工评测；编码器对比完整数值需回原文核对。",
+        "learning": [
+          "rectified flow 的直线路径 α_t=1-t、σ_t=t 与 DDPM 类噪声调度在训练目标和采样过程上有何区别？",
+          "REPA/iREPA 如何用外部视觉编码器（DINOv2、DINOv3、PE-Spatial、EUPE 等）的目标特征对齐中间层来加速收敛？为何 iREPA 用 3×3 卷积替换线性投影并按 patch 归一化？对齐层与 λ 如何选择？",
+          "如何用 gFID、HPSv2、PickScore 以及 VAE 重建指标 PSNR、SSIM、LPIPS、rFID 分别评估生成模型与 tokenizer？FID 与 HPSv2/PickScore 为何可能给出相反结论，应如何权衡质量、多样性与人类偏好？"
+        ],
+        "basis": "full_text",
+        "model": "deepseek-v4-flash",
+        "generated_at": "2026-10-14T22:35:40.090615+00:00"
+      }
     },
     {
       "title": "Cepheid: Decoupling Scale from Structure for Cross-Family Motion Completion",
