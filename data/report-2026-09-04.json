@@ -32,7 +32,9 @@
       ],
       "subject": "paper",
       "source": "arxiv",
-      "score": 0.0
+      "score": 0.0,
+      "title_zh": "暂时自我扭曲:在无监督的视频中学习视觉状态跟踪",
+      "content_zh": "我们介绍S$^3$T(自导自导自演),据我们所知,这是持续视频状态跟踪的第一个完全自成一体的框架。 我们的方法将时间采样密度视为特权信息,基于一个假设,即对同一片段的更密集的视图能更准确地恢复运行状态. 这种观点充当老师,而拥有相同重量的零星视野的学生则学习与其近亲分布相匹配. 模型产生自己的目标,因此训练不需要标签,单独的老师,或者奖励信号,并且不增加推论费用. 关于LLaVA-One Vision-2-8B,3新元 T改进了VSTAT的精确度,单模式为1美元+1.74美元,汤饮为2.38美元+2.38美元,另加视觉编码器改造为2.70美元+2.70美元,而之前的自我演变方法则基本没有改变状态跟踪。 从无标签的合成片段向真实视频传输中汲取的能力,在VSTAT-YouTube状态跟踪问题上提高了7.95美元,在MV Bench Action Count上提高了4.50美元。"
     },
     {
       "title": "TokenMatch: 3D Mesh Correspondence Transformer with Curvature-Guided Tokenisation",
@@ -61,7 +63,9 @@
       ],
       "subject": "paper",
       "source": "arxiv",
-      "score": 0.0
+      "score": 0.0,
+      "title_zh": "TokenMatch: 带有曲线引导的 3D 网络通信变换器",
+      "content_zh": "虽然数据驱动的三维形状对应估计最近取得了实质性进展,但部分观测下的强比和强烈的非同位素变形仍然具有挑战性。 现有的以学习为基础的方法往往依靠手工描述或模板表示,而最近对功能图的基因模型则受到高昂的推论成本、有限的可解释性和对部分形状的泛化。 针对这些局限性,本文引入了TokenMatch,这是一种基于变压器的新的统一模型,用于估计3D形状的对应. 我们的向导方法专门在BeCoS上培训,这是一种具有挑战性的非异位部分对部分形状匹配数据集,它能够普遍匹配完整的形状,而无需再培训或微调。 键 Match使用自我和交叉注意机制来高效地学习补丁级和点级的关系以及形状对之间密集的对应. 我们的核心见解是,用形状曲面指导,可以适应性地将网格拼接成补丁,从而能够有效学习特定形状的几何描述符进行函证估计。 我们评价TokenMatch的部分和完整形状匹配的标准基准,包括CP2P,PSMAL,BeCoS,FAUST,SCAPE,以及SHREC'19. 我们的方法实现了一贯的高性能,在多数情况下,在平均大地测量误差和交叉交叉测量中,在局部和完全形状匹配方面,在现行方法上比其他方法表现得更好,同时在次二推论速度上运行得更快。"
     },
     {
       "title": "Scal3R: Learning Efficient Multi-Relative Pose Query for Scalable Online 3D Reconstruction",
@@ -90,7 +94,9 @@
       ],
       "subject": "paper",
       "source": "arxiv",
-      "score": 0.0
+      "score": 0.0,
+      "title_zh": "Scal3R: 可缩放在线3D重建的学习效率多弹性Pose查询",
+      "content_zh": "在线3D重建模式在长视频上表现不佳. 之所以发生这种情况,是因为相对于固定的第一帧锚力而言,其推算远远超出了训练分布。 微小的漂移积聚并放大成重大的几何崩塌. 然而,我们看到,在整个失败过程中,每帧深度保持稳定。 骨干的地方几何学仍然完好;只有全球姿势头部断裂. 受这种脱钩的驱使,我们介绍Scal3R. 这种方法将在线重建重新设定为多参考相对的构成查询. 我们使用轻量级可学习的符号,它们占参数的约1%,并通过不对称的注意将它们注入完全冷冻的骨干. 此设置查询与多个过去键框相对 。 具有环闭功能的在线姿势图优化系统抑制远程漂移. Scal3R在8小时后在单一的GPU上达到交汇. 与在线基线相比,KITTI的平均ATE减少60%以上。 它还在Virtual KITTI,Sintel,TUM-Dynamic,ScanNet和7-Scenes等各处实现最先进的性能. 项目网页:https://linjohnss.github.io/scal3r/"
     },
     {
       "title": "Principia: Relational Physics Tests for Video Models",
@@ -119,7 +125,9 @@
       ],
       "subject": "paper",
       "source": "arxiv",
-      "score": 0.0
+      "score": 0.0,
+      "title_zh": "Principia: 视频模型的关系物理测试",
+      "content_zh": "在视频模型中评价物理推理很困难,因为绝对运动量度取决于帧率,对象尺度,以及相机校准,所有这一切都在生成的视频中往往是模棱两可的或者没有. 我们建议采取不同的做法。 当同一场景中的两个物体服从相同的物理定律时,它们的动作必须满足可预测的关系,这些关系是独立于校准的. 我们引入了Principia, 一个通过对等物体间的关系一致性来评价牛顿物理学的基准. Principia 跨越8种现象——重力,还原,摩擦,旋转惯性,抛射运动,动力,笔鼓,以及质量弹簧振荡——跨越翻译,旋转,碰撞,和振荡动态,使用受控协议记录的真实世界场景. 我们还引入了校准-独立一致性分数,将图像空间中的物理侵犯直接量化. 尽管在V Bench上得分约为0.8分, 视觉语言模型被评价其侦测关系物理违规的能力,最佳模型仅达到67%的精度,且表现最接近机会水平."
     },
     {
       "title": "Puffin-World: Scaling a Unified Multimodal Model with Native 3D World States",
@@ -148,7 +156,9 @@
       ],
       "subject": "paper",
       "source": "arxiv",
-      "score": 0.0
+      "score": 0.0,
+      "title_zh": "Puffin-World:与世界上3D原住国家建立统一的多式联运模式",
+      "content_zh": "我们提出Puffin-World,一种统一的多式联运架构,整合物理理解,空间模拟,以及三维世界的生成和重建,而不依赖于外部的离线模块. 为了可靠地构建和与3D世界互动,我们的框架共同模拟三个本土世界国家:物理学(重力场和纬度)、几何学(深度)和外观(图像),以及支持不同任务和灵活运动的统一Omni-Camera代表。 除了模拟这些状态之外,我们引入了一种战略,将物理动态传播到未来的框架。 通过在现实世界中放置绝对相机特性,普芬-世界可以使世界一代在物理上一致和视觉上稳定. 我们在一个单一的基因过程内进一步组合外观和几何,共同合成每个未来观点,重建其基础几何. 这种统一的范式可以实现互换的闭路应用,需要多个任务的协同作用,包括模仿和自我校准的世界探索. 为了把Puffin-World扩大到复杂的情景,我们构建了Puffin-16M,包括1 500万个视觉-语言-摄像头三重奏和100万个具有各种挑战性运动的轨迹。 为了促进这方面的进一步研究,我们发布了代码、模型和数据集。"
     },
     {
       "title": "One Editor, Many Edits: A Unified Training-Free Framework for Diverse Video Editing",
@@ -177,7 +187,9 @@
       ],
       "subject": "paper",
       "source": "arxiv",
-      "score": 0.0
+      "score": 0.0,
+      "title_zh": "1个编辑器,多版编辑:多样化视频编辑的统一无培训框架",
+      "content_zh": "视频编辑跨越了不同的编辑范式,但在单一的统一框架内实现高质量指导指导和主题指导的编辑仍然具有挑战性。 我们引入了EditVid,一个无培训框架,结合了稀少的局部一致性因果记忆,基于函授的后寄信符注射用于远程身份保护,以及软潜混合用于编辑地点. 同一框架支持指令制导和参考制导的编辑,包括样式传输,属性修改,对象插入,部分层次编辑,以及主题替换. 在FiVE上,EditVid实现了78.16 FiVE-Acc,而最强评价的无培训基线为58.95,同时在IVE Bench上获得了竞争结果. 一项用户研究进一步表明,EditVid比7种相互竞争的方法总体偏好51.8\\%."
     },
     {
       "title": "Seeing Before Synthesizing: VLM-Guided Transition Event Discovery for Weakly-Supervised Dense Video Captioning",
@@ -206,7 +218,9 @@
       ],
       "subject": "paper",
       "source": "arxiv",
-      "score": 0.0
+      "score": 0.0,
+      "title_zh": "在合成前看到: VLM- Guided Transition Evention 为弱超监督发现 深情视频字幕",
+      "content_zh": "弱监督 深情视频 Captioning旨在在未剪辑的视频中将多个事件本地化和描述,每个视频只给出了一组有序的事件级别字幕. 最近的工作通过LLM合成辅助过渡字幕,以提供额外的视觉语言对齐,但这些字幕缺乏视觉地面,在固定位置和持续时间上被僵硬地分配给每个活动间隙. 为了解决这些问题,我们提议在合成之前先看这个框架,这个框架只有在有正当理由时才提供有视觉基础的语言指导。 利用一个VLM,我们为事件间隙生成帧级的叙事,并检测它们之间语义变化的过渡. 对于已确定的过渡,我们然后通过将时间中点与语义变化点混合,并选择能最大限度地实现视觉语言对齐的宽度,来细化活动间的时间口罩. 关于ActiveNet Captions和YouCook2的实验展示了在字幕和本地化方面的最新性能."
     },
     {
       "title": "Zero-Shot Novel Depth Synthesis Using 3D Foundation Models Scene Representations",
@@ -235,7 +249,9 @@
       ],
       "subject": "paper",
       "source": "arxiv",
-      "score": 0.0
+      "score": 0.0,
+      "title_zh": "0-Shot 小说深度合成 使用 3D 基础模型场景代表",
+      "content_zh": "3D基础模型(3DFMs),如VGGT,最近通过预测富含向foward变压器的统一表示,推压了3D视觉的边界. 这些模型所学到的场景表现使得在多个3D视觉任务上能够有强大的性能. 在本文中,我们用他们的内部表述来调查从新观点推断现场的3D. 我们的假设是,为了解决3D重建的任务,这些模型需要学习一种包括大量关于3D场景的一般知识的表示. 在表明有可能从3DFM内表解码隐藏表面后,我们提出一种方法,即Z3D,通过对3DFM内表进行潜在扩散来估计隐形视图中的指针. 我们显示,Z3D可以预测跨多个数据集的新视图的现实深度地图."
     },
     {
       "title": "Persistent Identity Preservation in Generative Image Models: A Benchmark and Evaluation System",
@@ -264,7 +280,9 @@
       ],
       "subject": "paper",
       "source": "arxiv",
-      "score": 0.0
+      "score": 0.0,
+      "title_zh": "遗传图像模型中的持续身份保护:基准和评价系统",
+      "content_zh": "基因图像模型现在可以产生高质量的图像,遵循复杂的指示,支持精确的编辑,但它们仍然在努力保存被描绘的人或什么. 在生成或编辑特定主题的图像时,身份可能随着姿势,表达,外观,视角,或周围场景的变化而漂移. 现有的主题驱动方法对身份代表在哪里做出了根本不同的选择:通过输入上下文(GPT-Image-2,NB2)作为可训练的主题特定模型参数(LORA),或者作为一个持久的身份层(PHOTA IDENTITY)在代间重复使用和编辑. 我们系统地将这些范式作为基准,涵盖主题驱动的生成、编辑、恢复和多主题环境,任务旨在日益强调身份保护。 我们的结果显示,身份保存仍然是当前基因基础模型的一个明显限制:遵循的强烈图像质量和指令并不一定意味着强烈的认同忠诚,身份退化在迭代编辑下变得更加明显,主题尺度小,图像严重退化,以及多主体组成. 持续身份可大大减少这种在生成、编辑和恢复过程中的退化,在应用到不同基础模型时,不断改进身份保存,同时保持可比的指令坚持度和视觉图像质量。 这些结果表明,身份并不仅仅是从能力日益增强的基因模型中产生的,而是可以被表述为与基础基因模型独立构成的持久性主体知识。"
     },
     {
       "title": "Beyond Retrieval: Progressive Latent Memory Evolution for Streaming Video Understanding",
@@ -293,7 +311,9 @@
       ],
       "subject": "paper",
       "source": "arxiv",
-      "score": 0.0
+      "score": 0.0,
+      "title_zh": "检索范围以外 : 流动视频理解的进取内存进化",
+      "content_zh": "流转视频理解需要多模式大语言模型(MLLMs)在严格的因果关系和受限内存下处理连续的视觉输入并回复用户询问. 现有方法一般将历史观测压缩成一个外部内存库,并检索与查询相关的证据作为额外的视觉上下文. 这种存储和检索的范式虽然有效,但将历史证据作为外部视觉背景加以保存,防止其内部化为可不断引导流源推理的紧凑,不断演变的潜在记忆. 为了弥补这一差距,我们引入了LatentStream,这是一种渐进式的潜在工作记忆框架,将流传的记忆从存储和检索转移到回收和内部化。 具体而言,LatentStream由三个协调部分组成。 首先,通过Jenks指导的适应性整合,在固定的内存预算下,Query-anostic Higharchical Streaming Memory将视觉历史组织成短期,中期和长期的水平. 一旦查询到来,阶梯记忆进化(Sierrical Latetent Memory Evolution)使一组潜在的内存符号组逐渐扩大内存可接受域,使它们能够从相应的范围迭代检索历史证据,并将其内化为紧凑的,固定长的潜在内存. 最后,渐进信心制导的Lateant内存优化构建了从群体预测式演进的分级奖励,并联合完善了潜在的内存符号和检索到的证据,鼓励了越来越自信的流派推理. 广泛的实验表明,LatentStream在现有在线和离线视频基准上取得了最新的成果。"
     },
     {
       "title": "BooM-VVT: Boosting Mask-Free Video Virtual Try-On with Image-Level Pseudo Data",
@@ -322,7 +342,9 @@
       ],
       "subject": "paper",
       "source": "arxiv",
-      "score": 0.0
+      "score": 0.0,
+      "title_zh": "BooM-VVT: 无遮罩视频虚拟 尝试使用图像级别 Pseudo 数据",
+      "content_zh": "视频虚拟试播(VVT)旨在制作一个穿着目标服装的人的现实视频. 近代方法利用一个键框驱动的视频生成范式来提高闪闪发光的性能,然而它们仍然依靠口罩将尝试中的区域本地化,使得它们容易受到大动作和严重隔离的影响. 虽然无遮罩图像的尝试操作方法通过利用大规模伪数据显示出有希望的结果,但将这一范式推广到视频仍然是困难的,因为构建视频级别的伪数据过于昂贵. 此外,粗糙的关键框架取样和缺乏多视图试采数据限制了现有的关键框架驱动方法,无法保持服装一致性和处理各种试采任务。\n为了应对这些挑战,我们提议采用BooM-VVT,这是一种基于关键框架驱动范式的无遮罩VVT框架。 为了实现无面具VVT,我们引入了利用图像级伪数据进行无面具本地化学习的多阶段培训策略,大大减少了对昂贵的视频级伪数据的需求. 为了提高服装的一致性,我们提出服装-敏感关键框架取样,根据与服装相关的身体区域选择关键框架,以便更好地捕捉服装外观。 我们进一步引入Frame-Shared 3D-ROPE,以建立密钥帧与目标视频帧之间的瞬间通信,用于准确的服装细节传输. 最后,我们构建了OmniView,一个大规模的多视图试播数据集,在复杂的相机视角和多样的试播任务下支持可靠的试播视频生成. 广泛的实验表明,BooM-VVT比现有方法更具有时间一致性和服装忠诚性。 项目网页:https://boomvvt.github.io/boomvvt."
     },
     {
       "title": "The Shape of Time: Video-Token Contrast for Temporal Understanding in VideoLMs",
@@ -351,7 +373,9 @@
       ],
       "subject": "paper",
       "source": "arxiv",
-      "score": 0.0
+      "score": 0.0,
+      "title_zh": "时间形状: 视频- 调试对视频LM 中的时间理解",
+      "content_zh": "查看帧顺序并不意味着代表时间. 现代视频 LMs收到订购的视频流,然而他们的主要监督行为是在生成的文本上,而不是在事件动态应首先出现的地方进行视频化的表达. 这种不匹配使得模型能够从对象,场景,语言前传等快捷方式中学习时间答案,而不需要内部的视频表达来捕捉事件进展. 为了解决这个问题,我们提出VT-Contrast,即VideoLMs的一个表现级时间反事实目标. 其设计询问时间监督应在何处进行,以及应暴露哪些时间差异。 VT-Contrast监督选定的后期最后一帧视频符,在语言生成前,时间信息预计将集成其中,并与由Kendall tau距离分级的同一视频重排反事实的顺序保留视图形成对比. 它不需要任何建筑改变,与多种视频LM培训任务兼容,并改进跨时间理解基准的整体性能. 我们的代码可在https://github.com/ANDgate99/VT-Contrast上查阅。"
     },
     {
       "title": "Adaptive Vision-Language Grasping via Composable Foundation Priors and Generalizable Grasp Synthesis",
@@ -380,7 +404,9 @@
       ],
       "subject": "paper",
       "source": "arxiv",
-      "score": 0.0
+      "score": 0.0,
+      "title_zh": "通过可编译的基金会前科和通用的格拉斯普合成",
+      "content_zh": "本文提出AdaRoboVLG,这是一个任务适应的Vision-Language-Grasp(VLG)框架,支持跨不同机器人手的通用抓取合成. 与现有的将基础模型与端到端的把握政策紧密结合的VLG方法不同的是,AdaRoboVLG学习了高效的可概括的基础政策,通过明确的运动绘图和基于力量封闭的稳定性估计,生成和评价物理上可行的把握候选人,同时将依赖于任务的理解卸载到专业化的基础模型模块中. 这些模块提供了可混合的前科,这些前科被纳入了把握式综合过程,从而能够在不重新调整基本把握政策的情况下,根据具体情况进行把握式综合。 通过广泛的模拟和现实世界的实验,我们表明,(一) 基础政策显示有效的学习和强有力的跨手概括;(二) 框架有效地纳入空间、认知和时间前科,以应对三个具有代表性的把握挑战,同时又不损害与最新方法相比的把握合成性能;(三) 这些前科可以联合运作,以便能够在复杂和动态的环境中进行功能把握。 这些结果表明,将物理把握综合与任务依赖性理解脱钩,为机器人把握提供了可扩展的范式,使基础模型的未来进步能够直接转化为更好的把握能力,而无需重新设计或再培训基本的把握政策。 补充录像可在https://adarobovlg.github.io/上查阅。"
     },
     {
       "title": "Efficient Semantic Understanding from Digital Foveation",
@@ -409,7 +435,9 @@
       ],
       "subject": "paper",
       "source": "arxiv",
-      "score": 0.0
+      "score": 0.0,
+      "title_zh": "从数字化的语义理解",
+      "content_zh": "Dense语义分区将计算资源统一分配给整个图像,无论场景复杂程度或任务相关性如何. 在生物视觉的启发下,我们调查语义理解是否能够通过数字化的foved感知得到更有效的实现. 我们引入了一个轻量级的主动视线管道,它结合了显性驱动的固定性选择,高分辨率的叶子观测,低分辨率的上下文信息,语义积累,以及适应性计算. 除了传统的密集预测指标外,我们使用对象级评价来测量在稀少观测下对语义的理解. 在ADE20K-Object上,单次光圈观测达到基准Top-1精度的95.9%和基准Top-3精度的96.9%,同时只需要计算成本的4.7%。 在场景层面,语义积累在使用58.6%的计算时,恢复了基线物体召回的90.6%. 这些结果表明,在有选择地分配计算时,从稀少的观测中可以产生实质性的语义理解,强调主动视觉是统一密集处理的有效替代方法,并激励常规像素与分解度表以外的评价协议。"
     },
     {
       "title": "CORE: Improving Compositional Reasoning in MLLM Embedding via Reranker Distillation",
@@ -438,7 +466,9 @@
       ],
       "subject": "paper",
       "source": "arxiv",
-      "score": 0.0
+      "score": 0.0,
+      "title_zh": "CORE:通过Reranker Dispiration 嵌入的 MLLM 改进组成原因",
+      "content_zh": "基于MLLM的嵌入模型在组成检索方面仍然有限,往往无法区分包含相同概念但不同属性-对象绑定的场景. 然而,同样的骨干能够解决这种区别,如果作为交叉式的调整器,促使我们将其构成判断提炼成嵌入模型。 我们提出CORE,它综合了跨5个组成匹配级别的候选名单,并引入了Rank-KL目标,训练嵌入模型以复制重新排名者的精细排名. 我们还引入了分级评价协议和对比性学习,双向CoSENT,并在相同的数据和预算下列出Rank-KL。 我们的比较表明,CoSENT和Rank-KL都比对比性学习更有效地利用多层次监督,Rank-KL取得了最强的整体业绩。 在三个构成推理基准(COLA、SUGARCREPE++、NEGBENCH)中,CORE-RERANKER-8B的总平均值为82.7%,比Jina-Ranker的成绩高出10.7分,而CORE-EMBED-8B在所有被评价的嵌入模型中达到最佳的总平均值(0.666)。 在不牺牲COCO和Flickr30K的检索性能的情况下,将改进转移到MCMR基准。"
     },
     {
       "title": "TAP-Path: Task-Adaptive Structural and Token Pruning for Efficient and Trustworthy Pathology Foundation Models",
@@ -467,7 +497,9 @@
       ],
       "subject": "paper",
       "source": "arxiv",
-      "score": 0.0
+      "score": 0.0,
+      "title_zh": "TAP-Path:为高效和可信赖的病理学基金会模型进行任务调整的结构和托肯操作",
+      "content_zh": "病理学基础模型改进了组织病理学的可转移表达学习,但最近的成果往往依赖于具有数亿参数和高推论成本的编码器. 我们提出TAP-Path,一个任务适应压缩框架,直接重组一个经过预先训练的Virchow2编码器,而不是将其蒸馏成一个单独的学生. TAP-Path结合了验证驱动的变压器-块选择,对冗余块进行物理移除,输入适应补丁-托肯堆放,多深度特性回收,以及一个轻量级闸门任务头. 最终型号保留了24个32个变压器块和70%的补丁符号,将编码器参数减少24.96%(631.24M至473.70M),分析编码器计算为35.20%(340.13G至220.40G FLOPs). 在三个任务头优化种子中,TAP-Path实现了87.98美元 0.067%的测试精度,81.26美元 0.49%的平衡精度,以及82.38美元 0.48%的宏观F1的32级组织病理学基准,而全Virchow2的为86.89%,UNI2-h的为87.67%。 TAP-Path实现了0.180美元 0.0005美元的Brier分数,故障探测AUROC为0.9047美元 0.0060美元。 在二级操作分析中,验证-唯一稀有-认知目标提高了稀有级平衡精度. 对433个CPTAC样本的冷冻外部评价得出了91.22\\pm 0.83%的精度和91.10\\pm 0.81%的平衡精度. 这些结果表明,适应任务的结构和象征性的抽筋可以提高大型病理基础模型的精确效率权衡,同时在内部和外部评价中保持可靠性。"
     },
     {
       "title": "Continuous Actions from Discrete Minds: Latent-Aligned Planning for End-to-End Autonomous Driving",
@@ -2207,7 +2239,9 @@
       ],
       "subject": "paper",
       "source": "arxiv",
-      "score": 0.0
+      "score": 0.0,
+      "title_zh": "CORE:通过Reranker Dispiration 嵌入的 MLLM 改进组成原因",
+      "content_zh": "基于MLLM的嵌入模型在组成检索方面仍然有限,往往无法区分包含相同概念但不同属性-对象绑定的场景. 然而,同样的骨干能够解决这种区别,如果作为交叉式的调整器,促使我们将其构成判断提炼成嵌入模型。 我们提出CORE,它综合了跨5个组成匹配级别的候选名单,并引入了Rank-KL目标,训练嵌入模型以复制重新排名者的精细排名. 我们还引入了分级评价协议和对比性学习,双向CoSENT,并在相同的数据和预算下列出Rank-KL。 我们的比较表明,CoSENT和Rank-KL都比对比性学习更有效地利用多层次监督,Rank-KL取得了最强的整体业绩。 在三个构成推理基准(COLA、SUGARCREPE++、NEGBENCH)中,CORE-RERANKER-8B的总平均值为82.7%,比Jina-Ranker的成绩高出10.7分,而CORE-EMBED-8B在所有被评价的嵌入模型中达到最佳的总平均值(0.666)。 在不牺牲COCO和Flickr30K的检索性能的情况下,将改进转移到MCMR基准。"
     },
     {
       "title": "When Models Edit Too Much: On the Fidelity of Minimal Code Edits",
