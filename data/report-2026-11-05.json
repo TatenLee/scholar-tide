@@ -1,0 +1,2148 @@
+{
+  "generated_at": "2026-11-05T12:47:12.892925+00:00",
+  "count": 69,
+  "subjects": [
+    "paper"
+  ],
+  "articles": [
+    {
+      "title": "From Pixels to Actions - Towards Native Vision-Language-Action Policies",
+      "content": "Vision-language-action models are typically built on a simple premise: perception is first compressed by visual encoders, and action reasoning begins only afterwards. Yet manipulation often hinges on precisely the visual signals most vulnerable to this abstraction, e.g., local geometry, boundaries, depth, and subtle state changes. This raises a fundamental question: should action policies inherit a fixed visual endpoint, or directly access evolving visual computation? We introduce NEO-VLA, a structurally encoder-free vision-language-action framework. Images are tokenized by lightweight patch convolutional layers and evolve jointly with language throughout the backbone, allowing a flow-matching action expert to draw from instruction-conditioned visual representations at different depths. This simple change reveals a consistent pattern. Native architectures outperform encoder-based counterparts under controlled comparisons; full fine-tuning reduces but does not erase the gap, and additional scale alone cannot recover it. More strikingly, layer-wise probing shows that the action-critical signals often peak well before the final visual representation. Across diverse manipulation settings and distribution shifts, NEO-VLA consequently achieves stronger and more robust control. Together, these results suggest that embodied control benefits from access to visual representations across the computational hierarchy, rather than a fixed encoder output.",
+      "published_at": "2026-11-04T18:59:58+00:00",
+      "links": [
+        {
+          "label": "arxiv",
+          "url": "https://arxiv.org/abs/2611.06918v1"
+        },
+        {
+          "label": "html",
+          "url": "https://arxiv.org/html/2611.06918v1"
+        },
+        {
+          "label": "pdf",
+          "url": "https://arxiv.org/pdf/2611.06918v1"
+        },
+        {
+          "label": "papers.cool",
+          "url": "https://papers.cool/arxiv/2611.06918v1"
+        }
+      ],
+      "tags": [
+        "cs.CV"
+      ],
+      "subject": "paper",
+      "source": "arxiv",
+      "score": 0.0,
+      "title_zh": "从像素到行动 -- -- 走向土著愿景 -- -- 语言 -- -- 行动政策",
+      "content_zh": "视觉语言-动作模型一般建立在简单的前提上:感知首先被视觉编码器压缩,动作推理只在之后才开始. 然而,操纵往往取决于最容易受到这种抽象影响的视觉信号,例如局部几何、边界、深度和微妙的状态变化。 这就提出了一个根本性的问题:行动政策是继承固定的视觉终点,还是直接访问不断发展的视觉计算? 我们介绍了近地天体甚低频轨道,这是一个结构上无编码的视觉语言行动框架。 图像以轻量级补丁折叠层为标志,并在整个骨干中与语言共同演化,使流配动作专家能够从不同深度的指令性有条件的视觉表现中提取. 这种简单的改变揭示了一种一贯的模式. 原生架构在受控比较下优于基于编码器的对应方;完全微调缩小但不能消除差距,单靠额外尺度无法恢复. 更引人注目的是,分层探测显示,动作临界信号往往在最终视觉表现之前就达到顶峰. 因此,在各种操纵设置和分布变化中,近地物体甚高分辨率飞行器实现了更有力和更强有力的控制。 这些结果加在一起表明,从整个计算层次的视觉表现,而不是从固定编码器输出中获取所体现控制的好处。"
+    },
+    {
+      "title": "Perceptive Humanoid Motion from Simulation",
+      "content": "Humanoid robots have the potential to automate a wide range of physical tasks. Progress toward generalist humanoid autonomy, however, remains constrained by a data bottleneck: mapping pixels and free-form language to low-level joint commands requires paired supervision, and no corpus of such data exists at sufficiently large scale. Some approaches rely on human teleoperation and wearable capture devices, which require at least an hour of human time to produce an hour of data. We present HALO, a humanoid autonomy system powered by a pipeline that synthesizes vision-language-motion data across a thousand procedurally generated homes. The corpus scales with compute rather than human labor. HALO acquires a repertoire of physical skills, including sitting on chairs, navigating to named objects, stepping sideways through half-open doors, crouching and crawling beneath tables, and pushing boxes. It orchestrates these skills to solve composite, long-horizon tasks. Without ever seeing a real home during training, HALO transfers zero-shot to the physical world, achieving a 91% success rate across 360 trials in six unmapped real-world environments. See https://apple-aiml-research.github.io/ml-halo/ for code and videos.",
+      "published_at": "2026-11-04T18:55:33+00:00",
+      "links": [
+        {
+          "label": "arxiv",
+          "url": "https://arxiv.org/abs/2611.06908v1"
+        },
+        {
+          "label": "html",
+          "url": "https://arxiv.org/html/2611.06908v1"
+        },
+        {
+          "label": "pdf",
+          "url": "https://arxiv.org/pdf/2611.06908v1"
+        },
+        {
+          "label": "papers.cool",
+          "url": "https://papers.cool/arxiv/2611.06908v1"
+        }
+      ],
+      "tags": [
+        "cs.CV"
+      ],
+      "subject": "paper",
+      "source": "arxiv",
+      "score": 0.0,
+      "title_zh": "模拟的感官人体运动",
+      "content_zh": "人造机器人具有将广泛的物理任务自动化的潜力. 然而,一般人文自主方面的进展仍然受到数据瓶颈的制约:将像素和自由形式语言映射到低级联合指令需要配对监督,而且不存在足够大规模的数据。 有些方法依赖于人类的远程操作和可穿戴的捕获装置,它们需要至少一个小时的人类时间来生成一个小时的数据. 我们介绍一个人类自主系统HALO, 由管道提供动力, 体力是计算而不是人工的 HALO获得一系列的体能技能,包括坐在椅子上,导航到被命名的物体,走过半开的门的侧面,蹲在桌子下爬行,以及推箱. 它协调这些技能,以解决复杂,长视距的任务. HALO在训练期间从未见到一个真正的家,而是将零射入物理世界,在6个未模拟现实世界环境中的360次试验取得了91%的成功率。 见 https://apple-aiml-research.github.io/ml-halo/用于代码和视频."
+    },
+    {
+      "title": "Motion-guided Contrastive Regularization For Latent World Models",
+      "content": "JEPA-style world models learn action-conditioned latent dynamics without reconstructing observations, but distributional regularization alone does not ensure that their representations preserve information needed for control. We identify static collapse, a failure mode in which the encoder preserves episode-specific static content while suppressing manipulation-relevant state changes. Because static content is temporally predictable yet diverse across episodes, this failure can persist despite regularizers such as SIGReg. A controlled study on OGBench-Cube shows that introducing randomized backgrounds substantially degrades planning performance while leaving the underlying manipulation task unchanged. To address this problem, we propose motion-guided contrastive regularization. Our approach compares predicted latent transitions with transitions to candidate observations from the same episode, reducing the usefulness of static background identity for distinguishing action outcomes. Optical-flow similarities provide soft contrastive targets, allowing candidates with similar motion to receive similar supervision. Combined with latent prediction and SIGReg, our objective encourages representations to preserve within-episode state distinctions and similarities between related transitions. Our method improves planning success over LeWorldModel (LeWM) from 52% to 78% on OGBench-Cube with randomized backgrounds and from 14% to 54% on LIBERO-Object, while maintaining comparable performance on four other visual-control benchmarks.",
+      "published_at": "2026-11-04T18:49:35+00:00",
+      "links": [
+        {
+          "label": "arxiv",
+          "url": "https://arxiv.org/abs/2611.06901v1"
+        },
+        {
+          "label": "html",
+          "url": "https://arxiv.org/html/2611.06901v1"
+        },
+        {
+          "label": "pdf",
+          "url": "https://arxiv.org/pdf/2611.06901v1"
+        },
+        {
+          "label": "papers.cool",
+          "url": "https://papers.cool/arxiv/2611.06901v1"
+        }
+      ],
+      "tags": [
+        "cs.CV"
+      ],
+      "subject": "paper",
+      "source": "arxiv",
+      "score": 0.0,
+      "title_zh": "后期世界模式的对照规范化",
+      "content_zh": "JEPA式的世界模式在不重建观测的情况下学习行动条件的潜在动态,但单是分布式规范化并不能确保其表述保存控制所需的信息。 我们识别静态崩溃,一种失败模式,编码器在抑制与操纵相关的状态变化的同时保留了插曲特定的静态内容. 由于静态内容在时间上是可以预测的,但因时而异,尽管有SIGREG等常态化器,这种失败仍可能持续存在. 对OGBench-Cube的受控研究表明,引入随机化背景会大幅降低规划性能,同时使基础的操纵任务保持不变. 为了解决这个问题,我们提议以动向为指南的对比性规范化。 我们的方法将预测的潜在过渡与从同一事件向候选人意见的过渡相比较,减少了静态背景特征对区分行动结果的用处。 光学流的相似性提供了柔性对比目标,使具有类似运动的考生得到类似的监督. 我们的目标与潜在的预测和SIGREG相结合,鼓励表述,以保持整个国家内部的区别和相关过渡之间的相似性。 我们的方法提高了LeWorldModel(LeWM)的规划成功率,从52%到78%在OGBench-Cube上随机化背景,从14%到54%在LIBERO-Object上,同时保持其他四个视觉控制基准的可比性能."
+    },
+    {
+      "title": "Occlusion for Free: Detecting Occlusion from the Disagreement Between Two Monocular Distance Cues",
+      "content": "Knowing that a pedestrian is occluded is useful to a robot even when the detector cannot recover the hidden pixels, but occlusion estimators are normally trained on occlusion annotations that deployment settings rarely have. We show that occlusion can be read off two distance estimates a camera-only pipeline already computes. Apparent height is largely unchanged by occlusion, because the detected box still spans the whole person; monocular metric depth is pulled toward the occluder, because the nearest surface inside the box is what a depth map reports. Only their ordering matters, so no focal length, stature, or depth scale is needed, provided the depth model's error is close to a pure gain, a condition that can be checked without labels. The score detects heavy occlusion on KITTI with AUC 0.909 (0.888 over all annotated pedestrians, including those the detector misses), requires no training and no occlusion labels, and is not a proxy for range: within fixed distance bands it holds AUC 0.894-0.925 while true distance alone sits near chance. On synthetic CARLA scenes with measured visibility it reaches 0.819, against 0.644 for distance alone. We arrived here after measuring three standard architectural responses to occlusion, depth fusion, occlusion-simulating augmentation, and attention, none of which improved detection outside its training distribution in the configurations we tested, and after finding that a detector trained on German roads loses half its accuracy on self-annotated street scenes in Lagos, Nigeria. Signals that need no local annotation are worth more in settings that benchmarks do not represent.",
+      "published_at": "2026-11-04T18:49:13+00:00",
+      "links": [
+        {
+          "label": "arxiv",
+          "url": "https://arxiv.org/abs/2611.06899v1"
+        },
+        {
+          "label": "html",
+          "url": "https://arxiv.org/html/2611.06899v1"
+        },
+        {
+          "label": "pdf",
+          "url": "https://arxiv.org/pdf/2611.06899v1"
+        },
+        {
+          "label": "papers.cool",
+          "url": "https://papers.cool/arxiv/2611.06899v1"
+        }
+      ],
+      "tags": [
+        "cs.CV"
+      ],
+      "subject": "paper",
+      "source": "arxiv",
+      "score": 0.0,
+      "title_zh": "隐蔽自由:探测两块单体间分歧的隐蔽",
+      "content_zh": "明知行人被吞噬,即使探测器无法恢复隐藏的像素,对机器人还是有用的,但隔离估计器通常会接受部署设置很少有的隔离说明的培训. 我们显示,闭塞可以读取两个距离 估计一个只摄像头的管道已经计算。 外观高度基本上没有被隐蔽现象所改变,因为检测到的盒子仍然横跨整个人;单光度度量深度被拉向隐蔽器,因为盒子内最近的表面是深度图报告的内容. 只有他们的订购事项,所以不需要焦距,身高,或深度尺度,只要深度模型的误差接近纯增益,这个条件可以在没有标签的情况下检查. 分数用AUC 0.909探测到KITTI上的重隐蔽(包括探测器失守者在内,所有注解行人均使用0.888),不需要训练,也不使用隐蔽标签,也不代表射程:在固定距离带内,它持有AUC 0.894-0.925 而真正的距离 独自坐近机会。 在人工合成的CARLA场景中,仅距离就达到了0.819,而距离仅为0.644。 我们来到这里之前测量了三种标准建筑反应 对隔离,深度聚变, 隔离模拟增强, 和注意, 没有一个改进的探测 在其训练分布之外 我们测试的配置, 不需要本地注释的信号在基准不代表的环境下更值得使用。"
+    },
+    {
+      "title": "Procedural Adversarial Learning",
+      "content": "For many computer vision tasks, neural networks can be trained to produce a low average error, yet they still fail on seemingly simple scenes. Reducing these failures requires first finding them, but they may not be in a fixed dataset. We study procedural adversarial learning (PAL), a framework of minimax training and adversarial evaluation which searches the input space of a procedural generator for difficult instances. The procedural generator is an interpretable program mapping a low-dimensional vector of control parameters (e.g. layout, lighting, pose) to a rendered image and its label. We introduce the Simple-PAT algorithm, which uses zeroth-order optimization in the procedural generator's parameter space to propose adversarial training samples that are generated on demand. We also create PAL-Dojo, a collection of efficient procedural generators for surface normal estimation, image segmentation, and human pose estimation. Against a cross-model black-box adversary with 50M aggregate queries, Simple-PAT reduces worst-case error by a geometric mean of 3.15x compared to standard training and 2.63x compared to the strongest robust training baseline. Code is available at https://github.com/princeton-vl/procedural-adversarial-learning.",
+      "published_at": "2026-11-04T18:42:28+00:00",
+      "links": [
+        {
+          "label": "arxiv",
+          "url": "https://arxiv.org/abs/2611.06890v1"
+        },
+        {
+          "label": "html",
+          "url": "https://arxiv.org/html/2611.06890v1"
+        },
+        {
+          "label": "pdf",
+          "url": "https://arxiv.org/pdf/2611.06890v1"
+        },
+        {
+          "label": "papers.cool",
+          "url": "https://papers.cool/arxiv/2611.06890v1"
+        }
+      ],
+      "tags": [
+        "cs.CV"
+      ],
+      "subject": "paper",
+      "source": "arxiv",
+      "score": 0.0,
+      "title_zh": "程序性长期学习",
+      "content_zh": "对于许多计算机视觉任务来说,神经网络可以被训练来产生较低的平均误差,然而它们仍然在看似简单的场景上失败. 减少这些故障需要首先找到它们,但可能不是在固定数据集中。 我们研究程序性对抗学习(PAL),这是一种小型培训和对抗性评价的框架,用于搜索程序生成器的输入空间,以应对困难的情况。 程序生成器是一个可解释的程序,将低维矢量的控制参数(如布局,照明,姿势)映射到渲染的图像及其标签上. 我们引入了Simple-PAT算法,该算法在程序生成器的参数空间中采用零序优化,提出根据需求生成的对抗性训练样本. 我们还创建了PAL-Dojo,这是一个高效的程序生成器集合,用于表面正常估计,图像分解,以及人类姿势估计. 面对一个拥有50M汇总查询的跨型黑箱对手,Simple-PAT将最坏情况误差减少,比标准训练的几何平均值为3.15x,比最强强强的训练基线的2.63x. 守则见https://github.com/princeton-vl/程序-对抗-学习。"
+    },
+    {
+      "title": "PixelSpline: Continuous Space-Time Video Super-Resolution via Endpoint-Anchored Shared Pixel Trajectories",
+      "content": "Existing continuous space-time video super-resolution methods often infer motion from only two endpoint frames and model the two motion directions independently, making them vulnerable to ambiguous correspondence and inconsistent trajectories. We introduce a continuous STVSR framework that combines long-context encoding, continuous HR feature lifting, and an endpoint-anchored PixelSpline. Long-range observations provide more reliable endpoint representations, while continuous upsampling constructs detailed appearance features directly on the requested HR grid. PixelSpline explicitly models each pixel's motion as a single continuous trajectory shared by both endpoints. Using this trajectory, our method warps endpoint colors into a coarse intermediate frame and aligns the HR features for residual reconstruction. Experiments across spatial and temporal upsampling settings demonstrate that the proposed framework offers a favorable quality--efficiency trade-off.",
+      "published_at": "2026-11-04T18:25:55+00:00",
+      "links": [
+        {
+          "label": "arxiv",
+          "url": "https://arxiv.org/abs/2611.06870v1"
+        },
+        {
+          "label": "html",
+          "url": "https://arxiv.org/html/2611.06870v1"
+        },
+        {
+          "label": "pdf",
+          "url": "https://arxiv.org/pdf/2611.06870v1"
+        },
+        {
+          "label": "papers.cool",
+          "url": "https://papers.cool/arxiv/2611.06870v1"
+        }
+      ],
+      "tags": [
+        "cs.CV"
+      ],
+      "subject": "paper",
+      "source": "arxiv",
+      "score": 0.0,
+      "title_zh": "像素Spline:通过 Endpoint-Ancholed 共享像素轨迹实现连续空间-时段视频超解析",
+      "content_zh": "现有的连续时空视频超解析方法经常从两个端点框推断运动,独立地模拟两个运动方向,使其易受模糊的函式和不一致的轨迹的影响. 我们引入一个连续的STVSR框架,将长文本编码,连续的HR特征提升,以及端点-受干扰的像素Spline结合起来. 长距离观测提供了更可靠的端点表示,而连续的上取样则直接在请求的HR网格上构建详细的外观特征. 像素Spline明确模拟每个像素的运动,作为两个端点共享的单个连续轨迹. 利用这个轨迹,我们的方法 曲轴端点颜色 成粗糙的中间框 并协调 HR 的特性 用于剩余重建。 跨空间和时间更新抽样环境的实验表明,拟议框架提供了有利于质量效率的权衡。"
+    },
+    {
+      "title": "CounterFactual Retrieval for Evidence-Aware Individual Animal Identification",
+      "content": "Automated identification of individual animals is moving from small curated studies toward shared benchmarks and reusable foundation models. This progress is useful, but current evaluation leaves the evidence behind a match unresolved, i.e., high retrieval accuracy does not show whether a model used animal features or identity-correlated shortcuts. We address this with Counterfactual Foreground Retrieval (CFR), an evidence-aware evaluation protocol. CFR evaluates the same query-gallery task under different views: full image, foreground-only, and shortcut-only. The full-image measures standard retrieval performance; the foreground-only measures foreground-supported retrieval; and shortcut-only view measure how much identity signal is recoverable from background, or silhouette. This turns a retrieval score into an evidence profile: how well the model performs on the original images, how much of that performance remains when only the animal is visible, and how much identity signal remains recoverable when the animal is removed. We release around 0.5M masks for 34 datasets and code for mask generation and CFR evaluation.",
+      "published_at": "2026-11-04T18:19:26+00:00",
+      "links": [
+        {
+          "label": "arxiv",
+          "url": "https://arxiv.org/abs/2611.06864v1"
+        },
+        {
+          "label": "html",
+          "url": "https://arxiv.org/html/2611.06864v1"
+        },
+        {
+          "label": "pdf",
+          "url": "https://arxiv.org/pdf/2611.06864v1"
+        },
+        {
+          "label": "papers.cool",
+          "url": "https://papers.cool/arxiv/2611.06864v1"
+        }
+      ],
+      "tags": [
+        "cs.CV"
+      ],
+      "subject": "paper",
+      "source": "arxiv",
+      "score": 0.0,
+      "title_zh": "获取证据的反事实检索",
+      "content_zh": "个体动物的自动识别正在从小的经整理的研究转向共同的基准和可重复使用的基础模型。 这一进展是有用的,但目前的评价留下了未解决的匹配后的证据,即高检索精度并不能显示一个模型是使用了动物特征还是身份相关快捷键. 我们用反事实前景检索(CFR)作为证据认知评价协议来解决这个问题。 CFR在不同的视图下评价相同的查询-采集任务:完整图像,仅展望,以及仅快捷键. 全图像测量标准检索性能;仅前地测量前地支持的检索;以及仅快捷视图测量从背景中可回收多少身份信号,或 silhouette. 这使得一个检索分数变成了一个证据简介:模型在原始图像上的表现如何,当只有动物可见时,该性能还剩下多少,当动物被移除时,还有多少身份信号可以恢复. 我们发布大约0.5M口罩,用于34个数据集和代码,用于制造口罩和CFR评价."
+    },
+    {
+      "title": "LongBanana: An Expert-Verified Benchmark for Long-Context Multi-Reference Image Synthesis",
+      "content": "We introduce LongBanana, to our knowledge the first expert-designed and expert-verified benchmark for long-context multi-reference image synthesis in the age of agent-driven image generation. The task requires retrieving dispersed visual evidence, rejecting distractors, binding entities and relations, and composing one coherent final image from multiple references. LongBanana contains 90 carefully designed tasks organized by a 3-by-3 taxonomy; each task includes about 32 reference images, 20 constraints, and 50 evaluation items, yielding 4,670 expert-specified atomic evaluation items in total. Its graph-grounded evaluation design instantiates each task with reference images and an entity-relation graph, then converts node, edge, and whole-graph obligations into checklist items for Content Fidelity, Relational Binding, and Global Constraint Satisfaction. Reviewed expert labels include a 15% double-labeled subset with 89.4% exact agreement and 0.83 quadratic weighted kappa. We further introduce LongBanana-Gen, an agent-harness framework for long-horizon image generation; experiments show that minimal agent harnesses improve over direct generation, while a ReAct-Plan-Exec-Reflect (RPR) workflow yields harness-dependent gains by strengthening evidence grounding and repair. Together, LongBanana provides an auditable testbed for measuring dense visual evidence use and a shared target for developing stronger agent-driven image-generation systems. Code and data are available at the project page: https://long-banana.com/.",
+      "published_at": "2026-11-04T18:11:56+00:00",
+      "links": [
+        {
+          "label": "arxiv",
+          "url": "https://arxiv.org/abs/2611.06856v1"
+        },
+        {
+          "label": "html",
+          "url": "https://arxiv.org/html/2611.06856v1"
+        },
+        {
+          "label": "pdf",
+          "url": "https://arxiv.org/pdf/2611.06856v1"
+        },
+        {
+          "label": "papers.cool",
+          "url": "https://papers.cool/arxiv/2611.06856v1"
+        }
+      ],
+      "tags": [
+        "cs.CV"
+      ],
+      "subject": "paper",
+      "source": "arxiv",
+      "score": 0.0,
+      "title_zh": "LongBanana:长文多参考图像综合专家验证基准",
+      "content_zh": "我们介绍了Long Banana, 据我们所知,这是在代理驱动图像生成时代,第一个由专家设计并经过专家验证的长文多参考图像合成基准。 这项任务需要检索分散的视觉证据,拒绝分散注意力者,约束实体和关系,并从多个参考物中编织一个连贯的最终图像. Long Banana包含由3乘3分类法精心设计的90项任务;每项任务包括大约32个参考图像,20个限制,以及50个评价项目,总共产生4,670个专家指定的原子评价项目. 其以图表为基础的评价设计将每个任务与参考图像和实体关系图一起进行即时分析,然后将节点、边缘和全图义务转换成内容Fidelity、关系约束和全球约束满意度清单项目。 经审查的专家标签包括一个15%的双标签子集,准确协议为89.4%和0.83四方加权卡帕. 我们进一步引入了长视图像生成的代理harness框架LongBanana-Gen;实验显示,最小的代理电源比直接电源改进,而ReAct-Plan-Exec-Reflect(RPR)工作流程通过加强证据地面和修复而产生依赖电源的收益。 LongBanana公司共同提供了一个可审计的测试台,用于测量密集的视觉证据使用情况,以及开发更强大的代理驱动图像生成系统的共同目标。 项目网页上有代码和数据:https://long-banana.com/。"
+    },
+    {
+      "title": "Visual Token Routing: Learning to keep tokens that matter",
+      "content": "Computer-use agents (CUAs) have recently achieved superhuman performance on several long-horizon benchmarks. However, their computational cost limits their use in long-horizon tasks and real-time domains such as video games. A key bottleneck is representing each screenshot as thousands of visual tokens, which accumulate into long contexts as agents reason over extended interaction histories. We observe that most of these visual tokens are either semantically irrelevant to the agent's next action or temporally redundant across screenshots. Building on this observation, we introduce Visual Token Routing (VTR), a joint training framework for learning sparse visual representations that preserve the information needed for action prediction. In VTR, we train the vision-language model together with a lightweight spatio-temporal router that examines each image region in the current and previous screenshots and decides whether its visual token enters the language model. We optimize the router using an adaptive loss to keep the number of visual tokens as small as possible while minimizing performance degradation. With just 2,000 training steps, VTR matches the performance of the full-resolution model on OSWorld, CUA-World, and video game action prediction, while using 2.5-5.8x fewer visual tokens. These savings reduce inference cost by up to 3.3x and speed up prefill by up to 2.9x. VTR also outperforms lowering the image resolution and other baselines for dropping tokens, by up to 12.8 points on OSWorld. Overall, VTR enables computer-use agents to process only the visual tokens they need, allowing them to be used in long-horizon tasks and real-time domains at a fraction of the computational cost. Code and models are available at https://pranjal2041.github.io/vtr",
+      "published_at": "2026-11-04T18:10:33+00:00",
+      "links": [
+        {
+          "label": "arxiv",
+          "url": "https://arxiv.org/abs/2611.06854v1"
+        },
+        {
+          "label": "html",
+          "url": "https://arxiv.org/html/2611.06854v1"
+        },
+        {
+          "label": "pdf",
+          "url": "https://arxiv.org/pdf/2611.06854v1"
+        },
+        {
+          "label": "papers.cool",
+          "url": "https://papers.cool/arxiv/2611.06854v1"
+        }
+      ],
+      "tags": [
+        "cs.CV"
+      ],
+      "subject": "paper",
+      "source": "arxiv",
+      "score": 0.0,
+      "title_zh": "视觉托肯 例行公事:学会保存重要标志",
+      "content_zh": "计算机使用剂(CUAs)最近在若干长视基准上取得了超人性能. 然而,他们的计算成本限制了其在长视任务和电子游戏等实时领域的使用. 一个关键的瓶颈是将每个截图作为数千个视觉标志物来代表,这些标志物在长时间的语境中积累起来,作为代理商在扩展的互动历史中的理性. 我们观察到,大多数这些视觉符号要么与特工的下一个动作毫不相干,要么在截图上暂时多余. 基于这一观察,我们引入了Visual Token Routing(VTR),这是一个学习稀疏视觉表现的联合培训框架,保存行动预测所需的信息. 在VTR中,我们用轻量级的Spatio-时空路由器来训练视觉语言模型,该路由器检查当前和以往截图中的每个图像区域,并决定其视觉符号是否进入语言模型. 我们利用适应性损失来优化路由器,尽量保持视觉符号的数量,同时尽量减少性能退化. 只要2000个训练步骤,VTR就可以匹配OSWorld,CUA-World上全分辨率模型的性能以及电子游戏动作预测,同时使用2.5-5.8x更少的视觉符号. 这些节省使推论成本减少多达3.3x,加速预填达到2.9x. VTR在OSWorld上还比降低图像分辨率和其他投币基准的成绩高出12.8分. 总体而言,VTR使计算机使用代理能够只处理它们所需要的视觉信号,允许它们以一小部分的计算成本用于长视距任务和实时域. 守则和模型见https://pranjal2041.github.io/vtr。"
+    },
+    {
+      "title": "Trainspotting: Learning Object-Centric 3D Reconstruction from Found Photos",
+      "content": "State-of-the-art feedforward reconstruction models perform poorly on in-the-wild object-centric photo collections. They are trained largely on single-session object captures whose images vary in viewpoint while the object and its environment remain nearly fixed. Public photo archives contain a different form of multi-view data. They hold found photos of the same object or design: photos taken independently by many people across years, environments, cameras, and sometimes physical units. In this work, we introduce Trainspotting, a dataset of 12,068 objects and 311,886 photos from Wikimedia Commons. We reconstruct each object to recover camera poses, multi-view stereo depth, and object masks. We categorize the objects into three regimes: objects fixed at one site, objects that move between sites, and designs shared by many physical units. Evaluating recent feedforward reconstruction models on Trainspotting shows that they fail most severely in the last two regimes. Fine-tuning VGGT-$Ω$ on Trainspotting significantly improves camera pose, depth, and 3D geometry on held-out objects. We observe similar improvements on the independent NAVI in-the-wild benchmark, which contains photos of each object in different environments. Performance on conventional benchmarks remains largely unchanged.",
+      "published_at": "2026-11-04T18:05:22+00:00",
+      "links": [
+        {
+          "label": "arxiv",
+          "url": "https://arxiv.org/abs/2611.06849v1"
+        },
+        {
+          "label": "html",
+          "url": "https://arxiv.org/html/2611.06849v1"
+        },
+        {
+          "label": "pdf",
+          "url": "https://arxiv.org/pdf/2611.06849v1"
+        },
+        {
+          "label": "papers.cool",
+          "url": "https://papers.cool/arxiv/2611.06849v1"
+        }
+      ],
+      "tags": [
+        "cs.CV"
+      ],
+      "subject": "paper",
+      "source": "arxiv",
+      "score": 0.0,
+      "title_zh": "列车位点: 学习对象- Centric 3D 从找到的照片重建",
+      "content_zh": "最先进的向导重建模型在以圆形物体为中心的照片收藏上表现不佳。 他们主要接受关于单会场物体捕捉的培训,这些物体的图像在视野上有所不同,而物体及其环境则几乎保持不变。 公共照片档案包含不同形式的多视图数据. 他们持有发现的同一物体或设计的照片: 多年来许多人独立拍摄的照片,环境,摄像头,有时还有物理单位. 在这部作品中,我们引入了Trainspotting,一个由12,068个物体和311,886张照片组成的数据集,来自Wikimedia Communitys. 我们重建每个物体 以恢复相机姿势, 多视立体声深度, 和物体面具。 我们把这些物体分为三种制度:固定在一个地点的物体,在地点之间移动的物体,以及许多物理单位共享的设计。 评估最近的火车定点重建模式显示,在最近两个政权中,这些模式失败最为严重。 对列车位点进行精细校正的VGGT - 费用加费大大改进了相机的姿势、深度和被搁置物体的3D几何。 我们观测到独立的NAVI全天候基准的类似改进,该基准包含不同环境中每个物体的照片. 常规基准的业绩基本上没有变化。"
+    },
+    {
+      "title": "Where to Connect? Boosting MLLMs via Dynamic Gated Pathways across ALL ViT and LLM Layers",
+      "content": "A central yet under-explored question in Multimodal Large Language Models (MLLMs) is where to connect---how visual information from a hierarchical vision encoder should be wired into the layer-wise semantics of a large language model. Mainstream MLLMs inject a fixed single-layer visual representation into the LLM and treat all LLM layers as a single consumer, ignoring that different layers demand different visual granularities. Recent multi-layer fusion methods either compress hierarchical features on the encoder side or rely on predefined sparse or hierarchical layer-to-layer connections, and therefore stop short of modeling adaptive cross-layer interactions between the ViT and LLM hierarchies. We address this gap with DGP (Dynamic Gated Pathways), a routing mechanism that establishes all-to-all connections between every ViT layer and every LLM layer, with each LLM layer dynamically gating its preference over visual layers conditioned on its own semantic state. Built on top of LLaVA-1.5-7B and 13B, DGP delivers consistent gains over the LLaVA-1.5-7B baseline (e.g., +4.2 on SQA$^{I}$, +3.3 on MM-Vet, +3.1 on VizWiz and LLaVA$^{W}$) and surpasses prior multi-layer visual fusion methods on most benchmarks. Layer-wise routing analyses further show that different LLM layers do select different visual granularities on demand, supporting both the effectiveness and interpretability of the proposed dynamic gated pathways. The code is available: https://github.com/YingyingYan1/DGP.",
+      "published_at": "2026-11-04T18:01:24+00:00",
+      "links": [
+        {
+          "label": "arxiv",
+          "url": "https://arxiv.org/abs/2611.06844v1"
+        },
+        {
+          "label": "html",
+          "url": "https://arxiv.org/html/2611.06844v1"
+        },
+        {
+          "label": "pdf",
+          "url": "https://arxiv.org/pdf/2611.06844v1"
+        },
+        {
+          "label": "papers.cool",
+          "url": "https://papers.cool/arxiv/2611.06844v1"
+        }
+      ],
+      "tags": [
+        "cs.CV"
+      ],
+      "subject": "paper",
+      "source": "arxiv",
+      "score": 0.0,
+      "title_zh": "在哪里连接? 通过动态 Gated 路径在全部 VIT 和 LLM 层上推动 MLLMs",
+      "content_zh": "在多式联运大语言模型(MLLMs)中,一个尚未得到充分探讨的中心问题是,从分级视觉编码器中连接-如何的视觉信息应当被连接到一个大语言模型的分层语义中。 主流MLLMs在LLM中注入固定的单层视觉表现,并将所有LLM层作为一个单一的消费者对待,忽略了不同的层要求不同的视觉颗粒. 最近的多层聚变方法要么压缩编码器侧面的分级特征,要么依赖预先定义的稀疏或分级的层对层连接,从而停止模拟VIT和LLM阶梯之间的适应性跨层相互作用. 我们通过DGP(Dynamic Gated Pathways)来解决这一缺口,这个路由机制在每一个VIT层和每一个LLM层之间建立了全方位的连接,每个LLM层动态地标注着它相对于视像层的偏好,以自身的语义状态为条件. DGP建在LLaVA-1.5-7B和13B之上,提供与LLaVA-1.5-7B基线一致的增益(例如,在SQA$^{I}$上+4.2,在MM-Vet上+3.3,在VizWiz和LLaVA$^{W}$上+3.1),并在大多数基准上超过了以前的多层视觉聚变方法. 逐层的路由分析进一步表明,不同的LLM层确实根据需求选择了不同的视觉颗粒,支持了拟议的动态门径的有效性和可解释性. 该代码可查询:https://github.com/Yingying Yan1/DGP."
+    },
+    {
+      "title": "Same Layout, Different Count: What Number Words Do Past Ten in Text-to-Image Models",
+      "content": "Ask SD3.5-Medium for twelve of an object and then, from the same starting noise, for twenty-five. The picture keeps its layout, but the count changes about as much as it would under a new random seed, and in no consistent direction. We study what number words do once a request passes about ten objects, in five open text-to-image models. Holding the object and the starting noise fixed, we change one thing at a time, and people who never see the request count 3,088 of the images. Every model follows the number for small crowds, but only up to a point, its reach: SD3.5-M and FLUX.1-dev stop following it soon after ten, while FLUX.2 [klein] and Qwen-Image follow it loosely up to twenty-five. Beyond SD3.5-M's reach, the coarse part of the starting noise fixes the composition of the picture but not how many objects it holds: redrawing only the noise finer than an eighth of the image keeps the layout as well as a new number does, and already moves the count two-thirds as far. The number word still reaches the denoiser and acts in its first steps, but nothing we tried gives it a clear direction. Shown instead as a noised grid in the starting latent, the count is drawn: people find it in 59% of images, against 4% when it is only told. Past ten, an exact-match score barely separates a model that follows the number loosely from one that ignores it, and a relative-error score can even prefer a constant guess of sixteen. A same-noise test with a few requests per object tells them apart.",
+      "published_at": "2026-11-04T17:57:53+00:00",
+      "links": [
+        {
+          "label": "arxiv",
+          "url": "https://arxiv.org/abs/2611.06840v1"
+        },
+        {
+          "label": "html",
+          "url": "https://arxiv.org/html/2611.06840v1"
+        },
+        {
+          "label": "pdf",
+          "url": "https://arxiv.org/pdf/2611.06840v1"
+        },
+        {
+          "label": "papers.cool",
+          "url": "https://papers.cool/arxiv/2611.06840v1"
+        }
+      ],
+      "tags": [
+        "cs.CV"
+      ],
+      "subject": "paper",
+      "source": "arxiv",
+      "score": 0.0,
+      "title_zh": "相同的布局, 不同的计数: 在文本到图像模型中, 哪些字字字会超过 10 个",
+      "content_zh": "问SD3.5-中度一个物体的十二个,然后从同一个起始噪声,为二十五个. 图片保持其布局,但计数变化在新随机种子下会达到多少,没有一致的方向. 我们研究当一个请求通过大约十个对象时,在五个开放的文本到图像模型中,字词会做什么. 持有物体和开始的噪音固定,我们一次改变一件事,从未看到请求的人数到3,088. 每个模型都跟随小群数,但只达到一个点,其影响范围:SD3.5-M和FLUX.1-dev在10之后不久就停止跟随它,而FLUX.2[klein]和Quen-Image则松散跟随它高达25. 在SD3.5-M的伸手范围之外,开始噪声的粗糙部分会固定画面的构成,但不会固定它持有的物体数量:只重绘噪声细于图像的八分之一保持布局以及新数字,并且已经移动了三分之二的计数到远处. 数字单词仍然传到denoiser,并在它的最初步骤中行动,但是我们没有尝试给它一个明确的方向. 相反,在开始的潜伏中显示为一个噪声网格,它被绘制出来:人们在59%的图像中找到它,而只有4%的图像才被告知。 过去10年,一个精确的比分几乎将一个跟随数字松散的模型与一个忽略它的模式分开,一个相对的比分甚至可以选择一个恒定的猜测16. 同样的噪音测试,每个对象都有几个请求,将它们分开。"
+    },
+    {
+      "title": "Context-Aware Autoregressive Image Generation for Emerging Reasoning Properties",
+      "content": "Autoregressive image generation has recently emerged as a competitive visual generation paradigm, yet its generation order is often predefined or heuristic, such as next-patch prediction, random-order prediction, or one-step generation for specific scales. We observe that these strategies can cause models to overlook important structural dependencies in images, thereby limiting both structural robustness and reasoning capability. In this work, we propose a context-aware autoregressive generation framework, where the model dynamically determines the next token location based on global context and current local information. Rather than following a fixed or random order, our method allows the generation process to adapt to image structure and semantic dependencies. Extensive experiments show that context-aware generation significantly improves structural robustness across different image AR paradigms, including masked autoregressive and scale-wise autoregressive models. Beyond quantitative improvements, we further observe emerging reasoning properties: the model can better understand complex semantic instructions and generate images that more faithfully follow the given guidance. These findings suggest that generation order is a critical yet underexplored factor in image autoregressive modeling, and that context-aware decoding can unlock stronger reasoning-aware visual generation capabilities. Code is available at https://github.com/Hpesojyjx/Saccades-AR.",
+      "published_at": "2026-11-04T17:54:14+00:00",
+      "links": [
+        {
+          "label": "arxiv",
+          "url": "https://arxiv.org/abs/2611.06838v1"
+        },
+        {
+          "label": "html",
+          "url": "https://arxiv.org/html/2611.06838v1"
+        },
+        {
+          "label": "pdf",
+          "url": "https://arxiv.org/pdf/2611.06838v1"
+        },
+        {
+          "label": "papers.cool",
+          "url": "https://papers.cool/arxiv/2611.06838v1"
+        }
+      ],
+      "tags": [
+        "cs.CV"
+      ],
+      "subject": "paper",
+      "source": "arxiv",
+      "score": 0.0,
+      "title_zh": "新建原因属性的上下文自动递归图像生成",
+      "content_zh": "自动回转的图像生成最近作为一个竞争性的视觉生成范式出现,然而其生成顺序常常是预先定义的或有弹性的,如下一幅预测,随机顺序预测,或针对特定尺度的单步生成. 我们认为,这些战略可能导致模型忽略图像中重要的结构依赖性,从而限制结构稳健性和推理能力。 在这项工作中,我们提出一个了解上下文的自动生成框架,其中模型根据全球背景和当前本地信息,动态地确定下一个符号位置. 我们的方法不是遵循固定或随机的顺序,而是允许生成过程适应图像结构和语义依赖性. 广泛的实验表明,对上下文的认识生成大大改进了不同图像AR范式的结构稳健性,包括蒙面自递性和尺度自递性模型. 除了定量改进外,我们进一步观察到新出现的推理属性:模型可以更好地理解复杂的语义指示,生成更忠实地遵循给定指导的图像. 这些研究结果表明,生成顺序是图像自动递归模型中一个关键但探索不足的因素,而上下文感知解码可以解锁更强的推理感知视觉生成能力. 代码见https://github.com/Hpesojyjx/Saccades-AR。"
+    },
+    {
+      "title": "Open-HumanScale: An Open Recipe for Scaling Human and Robot Experience for Embodied Foundation Models",
+      "content": "Egocentric human video offers a scalable source of manipulation priors for robot learning, yet translating raw data scale into generalizable robot policies demands rigorous data curation and training recipes. We introduce Open-HumanScale, the first fully open recipe for scaling egocentric pretraining to 50,000 hours, anchored by Open-HumanScale-50K---a curated egocentric video corpus densely annotated with hand motion and natural language. Leveraging this corpus, we systematically investigate pure human pretraining via closed-loop simulation evaluations and uncover an empirical log-linear scaling law linking pretraining data hours to downstream robot success rates. Grounded in these findings, we develop HumanWAM-Vanilla, a world--action model pretrained exclusively on 50k hours of egocentric human video. Upon robot post-training, HumanWAM-Vanilla reaches 92.08% success on RoboTwin 2.0 Clean2Clean and 68.88% on Clean2Random, alongside a 14.17% mean success rate and a 19.00 mean progress score on RoboDojo. To push the capability frontier further, we explore joint human--robot pretraining with HumanWAM-Goal, a visual-goal-conditioned world--action model. Hybrid data scaling unlocks broad zero-shot generalization across both simulation and physical benchmarks, propelling post-trained RoboTwin 2.0 performance to new state-of-the-art levels: 92.70% on Clean2Clean and a substantial leap to 84.60% on Clean2Random. On physical robots, HumanWAM-Goal further exhibits emergent embodied in-context learning, dynamically adapting its manipulation behavior to unseen visual goals without parameter updates. To support reproducible scaling research in embodied AI, we open-source the Open-HumanScale-50K corpus, data curation and pretraining pipelines, alongside the pretrained and post-trained HumanWAM checkpoints, inference code, and simulation evaluation suites.",
+      "published_at": "2026-11-04T17:31:35+00:00",
+      "links": [
+        {
+          "label": "arxiv",
+          "url": "https://arxiv.org/abs/2611.06817v1"
+        },
+        {
+          "label": "html",
+          "url": "https://arxiv.org/html/2611.06817v1"
+        },
+        {
+          "label": "pdf",
+          "url": "https://arxiv.org/pdf/2611.06817v1"
+        },
+        {
+          "label": "papers.cool",
+          "url": "https://papers.cool/arxiv/2611.06817v1"
+        }
+      ],
+      "tags": [
+        "cs.CV"
+      ],
+      "subject": "paper",
+      "source": "arxiv",
+      "score": 0.0,
+      "title_zh": "开放的人类规模:增强人和机器人经验的公开食谱,用于健全基金会模型",
+      "content_zh": "爱果中心人类视频为机器人学习提供了可扩展的操纵前科来源,然而将原始数据尺度转化为通用的机器人政策则需要严格的数据校验和培训配方. 我们引入了开放人类尺度(Open-Human Scale),这是第一个将自我中心预训提升到5万小时的完全开放的秘方,它由开放人类尺度(Open-Human Scale-50K-)——一个用手动和自然语言加注的精致的自我中心视频集支撑. 利用这个工具 我们通过闭路模拟评估 系统调查纯人类的预训 并发现一个经验性的对数线缩放定律 将预训数据小时与下游机器人的成功率联系起来 基于这些发现,我们开发了HumanWAM-Vanilla,一种世界行动模型,它完全在50小时以自我为中心的人类视频上训练。 在机器人训练后,HumanWAM-Vanilla在RoboTwin 2.0 Clean2Clean上取得了92.08%的成功,在Clean2Random上取得了68.88%的成功,同时在RoboDojo上取得了14.17%的平均成功率和19.00的平均进步分. 为了进一步推动能力前沿,我们探索与HumanWAM-Goal进行人-机器人联合预训,这是一种具有视觉目标的世界行动模式。 混合数据缩放解开了广泛的零射一般化,包括模拟和物理基准,将经过训练的RoboTwin 2.0性能推进到新的最新水平:Clean2Clean上为92.70%,Clean2Random上为84.60%。 在物理机器人上,HumanWAM-Goal进一步展出包含在文字中的学习,动态地调整其操控行为以达到没有参数更新的看不见的视觉目标. 为了支持以人工智能形式进行可复制的推广研究,我们开放了开放的人类规模-50K程序、数据整理和预训管道,以及经过事先培训和后训练的人类WAM检查站、推论码和模拟评估套件。"
+    },
+    {
+      "title": "VA-TDM: A Unified View for Improving Few-Step Diffusion Models by Velocity Adversarial Distillation",
+      "content": "Few-step distillation offers efficient generation with diffusion and flow models, but preserving quality with only a few sampling steps remains challenging. Distribution-matching methods via score distillation provide a strong foundation, yet they rely on accurately tracking the student's changing distribution. At intermediate generation steps in few-step sampling, student-score estimation can be difficult, and commonly used estimators may describe a different distribution from the one used to update the student. Flow matching allows a more flexible approach to supervision through velocity fields constructed from the student's sampling process. Building on this perspective, we introduce Velocity Adversarial Distillation (VAD), which uses a learned critic to compare student and teacher fields and turn their disagreement into feedback for learning. VAD unifies score distillation, Fisher-based matching, and moment matching, also explaining existing heuristic MMD updates and delivering new training objectives. We further develop VA-TDM, which follows trajectory distribution matching: providing supervision for partial denoising along the student trajectory. Beyond this, VA-TDM combines transition-aware online velocity learning and dual-form VAD supervision across intermediate student transitions. Extensive results show that VA-TDM is powerful for learning few-step generators, achieving state-of-the-art four-step performance in both text-to-image and text-to-video generation across various backbones and scaling effectively to 33B MiniMax-H3. In particular, our VA-TDM-H3 notably outperforms the few-step Fast-H3 and is closer to the original many-step H3 according to human preference.",
+      "published_at": "2026-11-04T17:14:20+00:00",
+      "links": [
+        {
+          "label": "arxiv",
+          "url": "https://arxiv.org/abs/2611.06796v1"
+        },
+        {
+          "label": "html",
+          "url": "https://arxiv.org/html/2611.06796v1"
+        },
+        {
+          "label": "pdf",
+          "url": "https://arxiv.org/pdf/2611.06796v1"
+        },
+        {
+          "label": "papers.cool",
+          "url": "https://papers.cool/arxiv/2611.06796v1"
+        }
+      ],
+      "tags": [
+        "cs.CV"
+      ],
+      "subject": "paper",
+      "source": "arxiv",
+      "score": 0.0,
+      "title_zh": "VA-TDM:通过高速散射改进稀有散射模式的统一视图",
+      "content_zh": "很少分步骤的蒸馏能够有效生成扩散和流动模型,但只有几个取样步骤才能保持质量仍然是挑战。 通过分数蒸馏进行分配比对的方法提供了一个坚实的基础,但它们依赖于准确跟踪学生不断变化的分布. 在几步抽样的中间生成步骤中,学生分数估计可能比较困难,常用的估测器可能描述出不同于用来更新学生的分布. 流量匹配使得通过学生的采样过程构建的速度场,可以更灵活地进行监督. 基于这个观点,我们引入了\"极速加速\"(Velocity Adversarial Distillation,VAD),它利用一位有学问的批评家来比较学生和教师的领域,把他们的分歧转化为学习的反馈. VAD统一分数衍射,基于费舍尔的比对,以及瞬间比对,也解释现有的Heuristic MMD更新,并交付新的培训目标. 我们进一步发展了VA-TDM,它遵循了轨迹分布的匹配:对沿学生轨迹的部分去名进行监督. 除此之外,VA-TDM将过渡感在线速度学习和跨中学生过渡的双形式VAD监督结合起来. 广泛结果显示,VA-TDM对学习几步生成器,在文本到图像和文本到视频的生成中实现最新四步的性能,并有效放大到33B MiniMax-H3,具有强大的影响力. 特别是,我们的VA-TDM-H3明显优于几步快速H3,并且根据人类的偏好更接近最初的多步H3."
+    },
+    {
+      "title": "Semantic Residual Vector Quantization for Sign Language Generation",
+      "content": "Sign language generation (SLG) maps written sentences into signing motion while preserving both lexical content and fine-grained articulation. This requires a model to decide what signs should be expressed and to realize them through precise handshape, trajectory, facial expression and body coordination. Existing pose-based systems and reconstruction-only motion tokenizers often entangle these two decisions, leaving the generator without an explicit text-aligned intermediate target for what to sign before refining how to sign it. To address this issue, we introduce Semantic Residual Vector Quantization (SRVQ), a framework for SLG that frames generation as a two-level process moving from semantics to kinematics. The newly introduced SRV Quantizer learns a hierarchy in which the first residual level encodes sign content and subsequent levels refine pose, handshape, trajectory, and body coordination, all within a single quantizer and without separate semantic representations or external planning stages. Through word-aware conditioning for hierarchical code generation, a masked semantic generator predicts semantic codes and a kinematic generator completes the residual codes for full SMPL-X motion synthesis. We evaluate using retrieval and FID in a shared text-motion embedding space, alongside standard geometric metrics. On CSL-Daily and Phoenix-2014T, SRVQ achieves R@1 of 82.3 and 70.3, outperforming the previous SOTA by 30 and 46 points, respectively.",
+      "published_at": "2026-11-04T16:55:08+00:00",
+      "links": [
+        {
+          "label": "arxiv",
+          "url": "https://arxiv.org/abs/2611.06781v1"
+        },
+        {
+          "label": "html",
+          "url": "https://arxiv.org/html/2611.06781v1"
+        },
+        {
+          "label": "pdf",
+          "url": "https://arxiv.org/pdf/2611.06781v1"
+        },
+        {
+          "label": "papers.cool",
+          "url": "https://papers.cool/arxiv/2611.06781v1"
+        }
+      ],
+      "tags": [
+        "cs.CV"
+      ],
+      "subject": "paper",
+      "source": "arxiv",
+      "score": 0.0,
+      "title_zh": "手语生成的语义残留矢量量化",
+      "content_zh": "手语生成(SLG)将句子写成签名动作,同时保留词汇内容和精细的表达. 这需要一种模型来决定应该表达什么迹象,并通过精确的手巾、轨迹、面部表情和身体协调来实现这些迹象。 现有的基于假构的系统和只重建的运动指示器经常缠绕这两个决定,使生成器在完善如何签字之前没有明确的文本对齐的中间目标来表示要签什么. 为了解决这一问题,我们引入了语义残余矢量量化(SRVQ),这是SLG的框架,它将生成设定为从语义向动因学转变的两级过程. 新引入的SRV量子学习了一种等级,其中第一个残余级编码是签名内容,随后的等级细化了姿势,手帕,轨迹,和机体协调,都在一个单一的量子内,没有单独的语义表述或外部规划阶段. 通过分级代码生成的文字感知调节,一个遮盖语义生成器预测语义编码,一个动能生成器完成SMPL-X运动全合成的剩余代码. 我们用一个共享的文本运动嵌入空间进行检索和FID评估,同时进行标准几何测量。 在CSL-Daily和Phoenix-2014T上,SRVQ实现82.3和70.3的R@1,分别比之前的SOTA成绩高30和46分."
+    },
+    {
+      "title": "Benchmarking Fine-Grained Visual Reasoning for Remote Sensing in Urban Management",
+      "content": "Fine-grained visual reasoning is essential for remote sensing in urban management, yet remains underexplored in the evaluation of multimodal large language models (MLLMs). We introduce UMBench, a fine-grained urban remote sensing benchmark built from unmanned aerial vehicle (UAV) images for multiple urban management tasks such as traffic monitoring, urban construction, environmental quality, and disaster warning. Evaluations on UMBench reveal that current MLLMs often rely on scene-level priors and overlook fine-grained visual evidence. To address this issue, we further propose a novel evidence-first chain-of-thought method that directs models to inspect fine-grained visual evidence in a training-free manner. Experiments show that our method can improve the performance of both open-source and commercial MLLMs on UMBench.",
+      "published_at": "2026-11-04T16:50:17+00:00",
+      "links": [
+        {
+          "label": "arxiv",
+          "url": "https://arxiv.org/abs/2611.06770v1"
+        },
+        {
+          "label": "html",
+          "url": "https://arxiv.org/html/2611.06770v1"
+        },
+        {
+          "label": "pdf",
+          "url": "https://arxiv.org/pdf/2611.06770v1"
+        },
+        {
+          "label": "papers.cool",
+          "url": "https://papers.cool/arxiv/2611.06770v1"
+        }
+      ],
+      "tags": [
+        "cs.CV"
+      ],
+      "subject": "paper",
+      "source": "arxiv",
+      "score": 0.0,
+      "title_zh": "城市管理遥感的精细视觉理由基准",
+      "content_zh": "精细的视觉推理对于遥感在城市管理中至关重要,但在评价多式联运大语言模型时仍然没有得到充分利用。 我们提出UM Bench,这是利用无人驾驶航空飞行器(UAV)图像构建的精细的城市遥感基准,用于交通监测、城市建设、环境质量和灾害警报等多重城市管理任务。 对UM Bench的评价显示,目前的MLLMs经常依赖场景级别前身,忽略了精细的视觉证据. 为了解决这一问题,我们进一步提出一种新的证据第一链式思维方法,指导模型以无培训方式检查精细的视觉证据。 实验显示,我们的方法可以提高UMBench上的开源和商用MLLMs的性能."
+    },
+    {
+      "title": "Route First, See Later: Enabling Vision Agents to Reason Scientifically by Separating Routing Policy from Action Spaces",
+      "content": "Scientific image-analysis workflows require agents to select among diverse capabilities like description, detection, counting, and segmentation. Current multi-tool architectures conflate intent interpretation with visual execution, masking whether a failure arises from flawed reasoning (misrouting) or failed perception (invalid tool execution). This lack of auditability renders agents unreliable for high-stakes scientific automation. We introduce ZETA, an extensible architecture that operationalizes the decoupling of routing policy from action execution. ZETA resolves scientific intent before invoking specialized visual tools, treating measurement as a deterministic operation grounded in explicit geometry rather than generative output. This architecture exposes the \"black box\" of agent decision-making, allowing routing correctness and downstream execution to be evaluated as independent failure modes.\n  To our knowledge, we provide the first controlled study in scientific vision-agent routing that isolates explicit routing-policy specification while holding the legal action interface fixed. Evaluation on a zero-shot benchmark of 51 scientific-intent queries shows that explicit routing semantics can substantially improve routing accuracy, particularly at semantically adjacent action boundaries, although improvements vary across models. For Qwen 3.8, explicit routing-policy specification improves segmentation routing accuracy from 6.2% to 75.0% and detection routing accuracy from 60.0% to 100%. ZETA's execution traces make routing decisions and downstream artifacts separately observable, providing a basis for distinguishing intent-selection errors from visual execution failures. ZETA establishes the necessary infrastructure to isolate execution errors from interpretive ones, a critical requirement for deploying reliable scientific vision agents.",
+      "published_at": "2026-11-04T16:39:17+00:00",
+      "links": [
+        {
+          "label": "arxiv",
+          "url": "https://arxiv.org/abs/2611.06760v1"
+        },
+        {
+          "label": "html",
+          "url": "https://arxiv.org/html/2611.06760v1"
+        },
+        {
+          "label": "pdf",
+          "url": "https://arxiv.org/pdf/2611.06760v1"
+        },
+        {
+          "label": "papers.cool",
+          "url": "https://papers.cool/arxiv/2611.06760v1"
+        }
+      ],
+      "tags": [
+        "cs.CV"
+      ],
+      "subject": "paper",
+      "source": "arxiv",
+      "score": 0.0,
+      "title_zh": "路线第一,见后文:通过将路线政策与行动空间分隔开来,使视觉代理能够科学理性",
+      "content_zh": "科学的图像分析工作流程要求代理人在描述,检测,计数,分化等多种能力中进行选择. 目前的多工具架构将意图解释与视觉执行混为一谈,掩盖失败是因有缺陷的推理(错位)还是因感知失败(无效的工具执行)而产生. 这种缺乏可审计性的情况使高耗能的科学自动化剂不可靠。 我们引入了ZETA,这是一个可扩展的架构,可以将路线政策与行动执行脱钩。 ZETA首先解决科学意图,然后使用专门的视觉工具,将测量作为一种基于显性几何而不是基因输出的决定性操作. 这种架构暴露了代理决策的\"黑匣子\",使得路线正确性和下游执行被评价为独立的失败模式.\n据我们所知,我们在科学视觉-代理路线中提供了第一个控制研究,在固定法律行动接口的同时,将明确的路线-政策规格隔离开来。 对51个科学意向查询的零射线基准的评价表明,明确的路由语义可以大幅度提高路由精度,特别是在相邻的动作边界上,尽管各模型的改进不尽相同. 对Quen 3.8而言,明确的路由政策规格提高了分区路线精度,从6.2%提高到75.0%,检测路线精度从60.0%提高到100%。 ZETA的行刑痕迹会作出路由决定,下游文物会单独观察,为区分意向选择错误和视觉行刑失败提供了依据. ZETA建立必要的基础设施,将执行错误与解释错误区分开来,这是部署可靠的科学视觉剂的关键要求."
+    },
+    {
+      "title": "EvoWorld: Towards Out-of-Sight World Evolution in Generative Video Models",
+      "content": "Generative video models are increasingly used as visual world simulators, yet their primary strength lies in rendering plausible pixels rather than reasoning about how a world should evolve. Coherent world evolution requires more than visual fidelity: when an event occurs, a model must infer its consequences for the entities in the world and then render the resulting state. For example, after a wild beast appears, the model should not only depict the wild beast, but also infer whether a nearby person should flee, take cover, or fight back based on the realized scene. Existing diffusion-based video models lack an explicit mechanism for maintaining world state and reasoning over such event-conditioned consequences, often producing visually plausible but behaviorally static or causally inconsistent outputs. To make this reasoning gap concrete and measurable, we propose a new problem, Out-of-Sight Causal Evolution, which requires a model to render an event, reason about its consequences for the evolving world state, and reveal a causally plausible outcome as the world continues to evolve, even out of sight. As a baseline reference solution, we introduce EvoWorld, a brain-renderer collaboration framework in which a vision-language model serves as the world brain: it observes generated segments, maintains an evolving account of the world, and reasons about plausible state transitions, while a segment-autoregressive video renderer realizes them visually. We further introduce EvoWorld-Data and EvoWorld-Bench for training and evaluating event realization, causal reactions, and revisit consistency. Experiments show that EvoWorld substantially improves event-conditioned causal evolution over recent models while preserving visual quality and consistency, establishing a reference point for reasoning-guided, autonomous world evolution beyond the current field of view.",
+      "published_at": "2026-11-04T16:26:45+00:00",
+      "links": [
+        {
+          "label": "arxiv",
+          "url": "https://arxiv.org/abs/2611.06748v1"
+        },
+        {
+          "label": "html",
+          "url": "https://arxiv.org/html/2611.06748v1"
+        },
+        {
+          "label": "pdf",
+          "url": "https://arxiv.org/pdf/2611.06748v1"
+        },
+        {
+          "label": "papers.cool",
+          "url": "https://papers.cool/arxiv/2611.06748v1"
+        }
+      ],
+      "tags": [
+        "cs.CV"
+      ],
+      "subject": "paper",
+      "source": "arxiv",
+      "score": 0.0,
+      "title_zh": "EvoWorld:向外看世界进化 基因视频模型",
+      "content_zh": "基因视频模型被越来越多地用作视觉世界模拟器,然而它们的主要优点在于使像素具有合理性,而不是对世界应如何演变进行推理. 连贯的世界进化需要的不仅仅是视觉上的忠诚:当一个事件发生时,一个模型必须推断它给世界上的实体带来的后果,然后形成由此产生的状态. 例如,在野兽出现后,模型不仅应该描绘野兽,而且还应该推断附近人是否应该逃离,隐蔽,或者根据已实现的场景反击. 现有的基于传播的视频模型缺乏一种明确的机制,无法维持世界状态和对这种事件附带条件的后果进行推理,往往产生表面上看似可行的但行为静止或因果不一致的产出。 为了使这一推理差距具体和可以衡量,我们提出了一个新的问题,即“视外因子演化”,它要求有一个模型来使一个事件发生,说明它对不断演变的世界状态的后果,并揭示出一个因果上可能的结果,因为世界在继续演化,甚至无法想象。 作为基线参考解决方案,我们引入了“EvoWorld”, 一个大脑增强者协作框架,其中视觉语言模型作为世界大脑: 它观测生成的片段, 维持一个不断演变的世界的叙述, 以及合理的状态过渡的原因, 而一个片段自动反转的视频渲染器可以视觉地意识到它们。 我们进一步介绍EvoWorld-Data和EvoWorld-Bench,用于培训和评估事件实现情况,因果反应,重新审视一致性. 实验表明,EvoWorld在保持视觉质量和一致性的同时,大大改进了与近期模型相比的以事件为条件的因果演化,为推理指导,自主的世界演化建立了超越当前视野的参考点."
+    },
+    {
+      "title": "TailSteer: Trajectory-Tail Steering for Drift-Resistant Multi-turn Image Editing",
+      "content": "Strong single-turn editing performance does not guarantee reliable multi-turn interaction: as edited outputs are repeatedly reused, small unintended changes can accumulate into severe visual drift. This long-term drift is often mitigated through training on multi-turn data or cross-turn rollouts, potentially altering pretrained priors, or through specialized inference-time mechanisms that are difficult to scale to foundation models. We introduce TailSteer, a final-stage training framework that improves multi-turn robustness while retaining the generative and editing capabilities acquired through earlier training. TailSteer follows a simple principle: keep early denoising dynamics close to those of the base model and concentrate preservation corrections near the trajectory tail, where fine-grained deviations can be suppressed. These corrections are learned from the editor's own on-policy denoising rollouts, using unchanged source content as a preservation reference without requiring curated ground-truth editing pairs. Experiments across the FLUX, SenseNova, and Qwen families show that TailSteer substantially reduces cumulative drift over 15-20 editing turns while largely preserving base-model performance on extensive text-to-image and single-image editing benchmarks. These results demonstrate that long-horizon editing robustness can be unlocked in foundation models after TailSteer, rather than by relearning their existing capabilities.",
+      "published_at": "2026-11-04T16:23:24+00:00",
+      "links": [
+        {
+          "label": "arxiv",
+          "url": "https://arxiv.org/abs/2611.06741v1"
+        },
+        {
+          "label": "html",
+          "url": "https://arxiv.org/html/2611.06741v1"
+        },
+        {
+          "label": "pdf",
+          "url": "https://arxiv.org/pdf/2611.06741v1"
+        },
+        {
+          "label": "papers.cool",
+          "url": "https://papers.cool/arxiv/2611.06741v1"
+        }
+      ],
+      "tags": [
+        "cs.CV"
+      ],
+      "subject": "paper",
+      "source": "arxiv",
+      "score": 0.0,
+      "title_zh": "尾声: 漂流-resistant 多回合图像编辑的轨迹-导线",
+      "content_zh": "强的单回合编辑性能并不能保证可靠的多回合交互:由于编辑输出被反复重复使用,小的意外变化可以累积成严重的视觉漂移. 这种长期漂移往往通过对多回合数据的培训或交叉回合的推出来缓解,可能改变事先受过训练的前科,或者通过难以扩大模型基础的专门推断时间机制来缓解。 我们介绍了TailSteer,这是一个最后阶段的训练框架,可提高多回合的稳健性,同时保留通过早期训练获得的基因和编辑能力。 TailSteer遵循一个简单的原则: 保持早期去诺动力学接近基准模型的动力学,并集中在轨迹尾部附近进行保存修正,在轨迹尾端可以压制细纹偏差. 这些更正是从编辑本身的政策性解码推出中汲取的,使用不变的源内容作为保护参考,而不需要经过整理的地面真象编辑配对。 跨越FLUX,SenseNova,以及Quen家族的实验显示,TailSteer大幅降低了15-20编辑转弯后的累计漂移量,同时在广泛的文本到图像和单图像编辑基准上基本保持了基模性能. 这些结果表明,长视距编辑稳健性可以在TailSteer之后的基础模型中解锁,而不是通过重新学习其现有能力."
+    },
+    {
+      "title": "Coupled Scene Graph Anticipation: When With-Constraint Recall Hides Structural Inconsistency",
+      "content": "Scene Graph Anticipation (SGA) predicts object relationships in future video frames. Continuous-time SGA models evolve each subject-object pair with an independent Neural ODE, so relationships sharing an entity cannot influence one another during integration, and nothing prevents mutually exclusive predictions, such as \"sitting on\" and \"standing on\", for the same pair. We introduce CoupledSGA, which links such relationships through a Relationship Interaction Graph with graph attention inside the ODE vector field, and adds a Structural Consistency Loss ($\\mathcal{L}_{SC}$) based on a matrix of mutually exclusive predicates.\n  Developing CoupledSGA revealed a limitation of the evaluation protocol. With-Constraint evaluation keeps one predicate per group for each subject-object pair, so its R@K and mR@K cannot capture the within-group violations targeted by $\\mathcal{L}_{SC}$: we prove they are unchanged whenever each group's winning predicate and its score are held fixed. We further show that the gradient of $\\mathcal{L}_{SC}$ depends on predicate scores rather than ground-truth labels: for two-predicate rules it amplifies the ordering the model already holds, and when all scores in a group are equal it suppresses predicates in more exclusion rules more strongly, explaining why the penalty can lower recall while improving consistency.\n  On Action Genome, activating $\\mathcal{L}_{SC}$ after two warm-up epochs reduces R@20 from 42.21% to 35.18% while lowering the No-Constraint contradiction rate from 45.92% to 4.07% (matched-budget R@20: 40.48% CoupledSGA vs. 44.78% SceneSayerODE). CoupledSGA is a testbed, not a state-of-the-art claim: With-Constraint recall captures the cost of enforcing structural consistency but not the improvement. We recommend reporting No-Constraint results alongside a contradiction rate for methods that constrain predicate co-activation.",
+      "published_at": "2026-11-04T16:20:37+00:00",
+      "links": [
+        {
+          "label": "arxiv",
+          "url": "https://arxiv.org/abs/2611.06738v1"
+        },
+        {
+          "label": "html",
+          "url": "https://arxiv.org/html/2611.06738v1"
+        },
+        {
+          "label": "pdf",
+          "url": "https://arxiv.org/pdf/2611.06738v1"
+        },
+        {
+          "label": "papers.cool",
+          "url": "https://papers.cool/arxiv/2611.06738v1"
+        }
+      ],
+      "tags": [
+        "cs.CV"
+      ],
+      "subject": "paper",
+      "source": "arxiv",
+      "score": 0.0,
+      "title_zh": "组合场景图预测 : 当有约束 回顾隐藏结构不一致",
+      "content_zh": "场景图形预测(SGA)预测未来视频帧中的对象关系. 连续时间的SGA模型会用一个独立的神经ODE来演化每个主体-对象对,因此共享一个实体的关系在整合过程中无法相互影响,没有任何东西可以阻止相互排斥的预测,如\"坐着\"和\"站着\",为同一对子. 我们引入了 MorendSGA,它通过关系相互作用图将这种关系与ODE矢量域内的图注联系起来,并增加了基于相互排斥的上游矩阵的结构一致性损失(\\mathcal{L}_{SC}$).\n制定评价协议后发现评价协议有局限性。 通过约束性评价,每个对象对每组保持一个上游,因此其R@K和mR@K无法捕捉到$\\mathcal{L}_{SC}$所瞄准的组内违规行为:我们证明,每当每个组的胜负的上游及其得分被固定时,它们都是不变的. 我们进一步表明,$\\mathcal{L}_{SC}$的梯度取决于上游分数,而不是地面真实分数:对于两极分数规则,它放大了已经持有的顺序,当一组中的所有分数相等时,它更强烈地压制了更多排除规则中的上游分数,解释了为什么惩罚可以在提高一致性的同时降低回扣。\n在动作基因组上,激活 $\\ mathcal{L}_{SC} $ 在两个温暖的时代之后, R@20从42.21%降至35.18%,同时将无约束矛盾率从45.92%降至4.07%(匹配的预算 R@20: 40.48% 组合SGA vs 44.78% SceneSayerode)。 304. PointdSGA是一项检验性索赔,而不是最先进的索赔: 在有约束的情况下,回顾可以反映执行结构一致性的成本,但不能反映改进的成本。 我们建议报告无约束结果,同时报告限制上游协同活动的方法的矛盾率。"
+    },
+    {
+      "title": "Turns Matter: Advancing Streaming Video RL via Turn-Level Credit",
+      "content": "Streaming video understanding requires models to repeatedly decide whether to respond or continue observing. Recently, Group Relative Policy Optimization (GRPO) has been applied to this setting, with existing approaches emphasizing reward design while retaining a single trajectory-level advantage across turns. Such shared credit can reinforce redundant replies after earlier successes and discourage useful follow-ups after earlier failures. We propose TurnWise, a turn-level GRPO framework that aligns learning with individual streaming decisions. TurnWise addresses the mismatch between trajectory-level feedback and turn-level interaction, promoting informative responses and reducing redundancy. Specifically, turn-level credit assignment uses silence-completed prefix scoring to construct group-relative advantages from each decision's remaining return, separating its learning signal from earlier rewards. Turn-mean policy optimization averages token losses within each turn and then across turns, giving response and waiting decisions equal weight regardless of output length. These complementary designs improve streaming policy learning without a learned critic or additional rollouts. Extensive experiments show our method outperforms prior RL approaches for streaming video understanding.",
+      "published_at": "2026-11-04T16:16:27+00:00",
+      "links": [
+        {
+          "label": "arxiv",
+          "url": "https://arxiv.org/abs/2611.06728v1"
+        },
+        {
+          "label": "html",
+          "url": "https://arxiv.org/html/2611.06728v1"
+        },
+        {
+          "label": "pdf",
+          "url": "https://arxiv.org/pdf/2611.06728v1"
+        },
+        {
+          "label": "papers.cool",
+          "url": "https://papers.cool/arxiv/2611.06728v1"
+        }
+      ],
+      "tags": [
+        "cs.CV"
+      ],
+      "subject": "paper",
+      "source": "arxiv",
+      "score": 0.0,
+      "title_zh": "Turns matter: 通过 Turn- Level 信用来推进视频 RL",
+      "content_zh": "流畅的视频理解需要模型反复决定是回应还是继续观测. 最近,集团相对政策优化(GRPO)被应用于这一环境,现有做法强调奖励设计,同时保留单一的轨迹水平优势。 这种共享的信用可以强化先前成功之后的多余答复,并阻碍先前失败之后的有益后续行动。 我们提议TurnWise,这是一个使学习与个别流化决定相一致的回合级GPRO框架。 TurnWise处理轨迹级反馈和回合级互动之间的不匹配,促进信息化响应,减少冗余. 具体地说,回合级的信用分配使用静态完成的前缀评分来构建与每个决定的剩余回报有关的优势,将其学习信号与早期的奖励区分开来. 转动政策优化平均在每个转动周期内和转动周期内出现象征性损失,无论产出长度如何,给予响应和等待决定同等权重. 这些互补设计改进了无学问批评者或额外推出的流派政策学习。 广泛的实验显示,我们的方法在流传视频理解方面超过了以往的RL方法。"
+    },
+    {
+      "title": "Dexterous Robotic Hands in the Foundation-Model Era: A Full-Stack Survey of Hardware, Data, Cross-Embodiment Transfer, Learning, and Evaluation",
+      "content": "Dexterous robotic hands are increasingly coupled to large-scale human data and foundation models, yet progress in hardware, representation learning and evaluation is often assessed separately. This survey reviews work from January 2024 to early November 2026, with earlier studies included to establish technical lineages. We organize the literature into five interdependent layers: hardware; data collection and curation; cross-embodiment transfer; learning and foundation models; and evaluation and applications. Human hand-object understanding and tactile sensing provide two cross-cutting perspectives. A system-level architecture, comparative tables and five case analyses connect design choices across these layers. We distinguish within-study experimental comparisons from heterogeneous corpus statistics, vendor specifications and company-reported results. Three conclusions emerge. First, the value of human data depends on kinematic, visual and contact alignment, not recording volume alone. Second, shared action representations and foundation policies do not remove embodiment-specific constraints on force, latency and contact. Third, task completion is insufficient to establish physical correctness or deployment readiness. Evidence remains limited for zero-shot transfer of contact-rich skills between morphologically different hands, long-duration reliability, and cross-sensor tactile generalization. We identify eleven open problems and propose reporting interfaces and controlled comparisons that can make full-stack progress more measurable. The review is a structured narrative synthesis rather than a pooled performance ranking or an exhaustive systematic review.",
+      "published_at": "2026-11-04T16:13:29+00:00",
+      "links": [
+        {
+          "label": "arxiv",
+          "url": "https://arxiv.org/abs/2611.06724v1"
+        },
+        {
+          "label": "html",
+          "url": "https://arxiv.org/html/2611.06724v1"
+        },
+        {
+          "label": "pdf",
+          "url": "https://arxiv.org/pdf/2611.06724v1"
+        },
+        {
+          "label": "papers.cool",
+          "url": "https://papers.cool/arxiv/2611.06724v1"
+        }
+      ],
+      "tags": [
+        "cs.CV"
+      ],
+      "subject": "paper",
+      "source": "arxiv",
+      "score": 0.0,
+      "title_zh": "Dexterous 机器人 \" 手放在基金会-模型时代:硬件、数据、跨环境转移、学习和评价全面调查 \"",
+      "content_zh": "Dexterous的机器人手越来越多地与大规模的人类数据和基础模型结合,然而硬件,代表学习和评价方面的进展往往单独评估. 本次调查审查2024年1月至2026年11月初的工程,早期的研究包括建立技术线条. 我们把文献分为五个相互依存的层面:硬件;数据收集和整理;交叉表现转让;学习和基础模型;以及评价和应用。 人类的手物体理解和触觉感知提供了两个交叉视角. 一个系统一级的架构、比较表和五个案例分析将各层的设计选择联系起来。 我们把研究中的实验性比较与各种实体统计、供应商规格和公司报告的结果区分开来。 出现了三个结论。 第一,人类数据的价值取决于动能,视觉和接触对齐,而不是仅记录体积. 第二,共同行动说明和基础政策并不能消除对武力、时间和接触的具体限制。 第三,任务完成不足以确定实际正确性或部署准备。 证据仍然有限,无法在形态上不同的手,长时间的可靠性和跨传感器触觉一般化之间零射转移接触丰富的技能. 我们确定了11个尚未解决的问题,并提出了报告接口和可控制的比较,使全面进展更能衡量。 审查是结构化的叙述性综合,而不是集合业绩排名或详尽无遗的系统审查。"
+    },
+    {
+      "title": "Agent-Driven Generative Priors for Pathology Image Synthesis and Segmentation",
+      "content": "Deep learning methods for pathology are constrained by the limited availability and high cost of large-scale pixel-level annotations. Synthetic data can alleviate this limitation, but existing pipelines often lack reliable quality control and remain weakly connected to downstream analysis. To address these issues, we propose a three-stage framework that integrates automated data screening, generative representation learning, and efficient adaptation to downstream tasks. First, we develop a pathology agent system to assess image quality and filter samples, resulting in TCGA-200K, a dataset containing 217,030 pathology patches selected from the public TCGA repository. Second, we train a generative model on the screened data. In addition to image synthesis, its backbone learns structural and semantic representations that can be transferred to downstream tasks. Third, we adapt the pretrained generative backbone to semantic segmentation using a lightweight task-specific head. We further introduce PathSeg-380K, a semantic segmentation dataset with expert annotations for approximately 380,000 cells across 12 cell types. Experiments on multiple pathology datasets show that the proposed framework achieves state-of-the-art segmentation performance. Our code is publicly available at https://github.com/script-Yang/Agent-GenPath.",
+      "published_at": "2026-11-04T16:02:29+00:00",
+      "links": [
+        {
+          "label": "arxiv",
+          "url": "https://arxiv.org/abs/2611.06701v1"
+        },
+        {
+          "label": "html",
+          "url": "https://arxiv.org/html/2611.06701v1"
+        },
+        {
+          "label": "pdf",
+          "url": "https://arxiv.org/pdf/2611.06701v1"
+        },
+        {
+          "label": "papers.cool",
+          "url": "https://papers.cool/arxiv/2611.06701v1"
+        }
+      ],
+      "tags": [
+        "cs.CV"
+      ],
+      "subject": "paper",
+      "source": "arxiv",
+      "score": 0.0,
+      "title_zh": "病理学图像合成和分解的代理驱动遗传学前科",
+      "content_zh": "病理学的深层学习方法受到大规模像素级说明的有限可用性和高成本的限制. 合成数据可以缓解这种局限性,但现有的管道往往缺乏可靠的质量控制,并且仍然与下游分析连接薄弱. 为了解决这些问题,我们建议建立一个三阶段框架,将自动数据筛选、基因表达学习和高效适应下游任务结合起来。 首先,我们开发了一个病理学代理系统,以评估图像质量和过滤样品,结果产生了TCGA-200K,一个数据集,包含从公共TCGA寄存器中选择的217,030个病理学补丁. 第二,我们在筛选数据上培养基因模型。 除了图像合成外,它的骨干还学习了结构及语义表现,这些表现可以转移给下游任务. 第三,我们利用轻量级任务特定头部,使预先训练的基因骨干适应语义分裂. 我们进一步引入了PathSeg-380K,一个语义分类数据集,其中对12个细胞类型的约38万个细胞有专家说明. 对多种病理数据集的实验表明,拟议框架实现了最先进的分解性能. 我们的代码可在https://github.com/script-Yang/Agent-GenPath公开查阅。"
+    },
+    {
+      "title": "Sekai: Incremental Event Memory for Generalized Reasoning Video Segmentation",
+      "content": "Online reasoning video segmentation (Online RVS) requires a model to segment query-referred objects as a video streams in, using only the frames observed so far. Existing formulations largely assume a fixed target set throughout the video, overlooking a fundamental property of streaming reasoning: as new events occur, the objects that satisfy a query may change over time. To address this, we propose a new task, Generalized Reasoning Video Segmentation (GRVS), where the target set depends on query-relevant events accumulated over the observed video history. As new evidence accumulates, the target set can evolve from empty to one or multiple objects, requiring a model to continuously maintain target validity while localizing the valid objects currently in view. To evaluate GRVS, we build Isekai, a diagnostic benchmark of 60 videos and 197 queries across 11 temporal query families, with 12,569 scoring points whose target sets are causally annotated over time. We further propose Sekai, an online framework with two complementary components: an Event Memory Reasoner (EMR) that maintains query-relevant events and evolving target states in structured memory, and a Memory-Grounded Decoder (MGD) that identifies valid targets from this memory and localizes them in the current frame. Experiments show that Sekai significantly outperforms existing online RVS methods, achieving 50.33 J&F and improving over the strongest baseline by 3.2 points. Code, example annotations, and evaluation scripts are available at https://github.com/zenastangbi/Sekai.",
+      "published_at": "2026-11-04T15:52:38+00:00",
+      "links": [
+        {
+          "label": "arxiv",
+          "url": "https://arxiv.org/abs/2611.06685v1"
+        },
+        {
+          "label": "html",
+          "url": "https://arxiv.org/html/2611.06685v1"
+        },
+        {
+          "label": "pdf",
+          "url": "https://arxiv.org/pdf/2611.06685v1"
+        },
+        {
+          "label": "papers.cool",
+          "url": "https://papers.cool/arxiv/2611.06685v1"
+        }
+      ],
+      "tags": [
+        "cs.CV"
+      ],
+      "subject": "paper",
+      "source": "arxiv",
+      "score": 0.0,
+      "title_zh": "Sekai: 通用理性视频分区的递增事件内存",
+      "content_zh": "在线推理视频分区(Online RVS)需要一种模式,将查询参考对象作为视频流在其中,只使用迄今为止观察到的帧. 现有配方基本上假设在整个视频中设定了固定的目标,俯瞰流派推理的基本属性:随着新事件的发生,满足查询的物体可能会随时间而变化. 为了解决这个问题,我们提议了一项新的任务,即通用理性视频分区(GRVS),其中设定的目标取决于在所观测到的视频历史中积累的与查询相关的事件. 随着新证据的积累,目标集可以从空到一个或多个对象,需要一个模型来持续保持目标有效性,同时将当前所看到的有效对象定位. 为了评估GRVS,我们建立了Isekai,这是11个时间查询家庭的60个视频和197个查询的诊断基准,有12 569个评分点,其目标集随时间推移而作因果说明。 我们进一步提出Sekai,一个包含两个互补部分的在线框架:一个事件记忆理性器(EMR),在结构化的内存中维持与查询相关的事件和不断发展的目标状态,以及一个内存Grounded Decoder(MGD),从这个内存中识别出有效的目标,并在当前框架中将其本地化. 实验显示,Sekai大大超过了现有的在线RVS方法,实现了50.33 J&F,比最强基线提高了3.2分. 代码、实例说明和评价脚本见https://github.com/zenastangbi/Sekai。"
+    },
+    {
+      "title": "CardioDrift: Automatic Cardiac Motion Tracking on a 3D Atlas Mesh via Shape-aware Coherent Point Drift with Slice Shift Correction",
+      "content": "Automatic cardiac motion tracking from cine cardiac magnetic resonance (CMR) imaging is essential for quantifying myocardial motion abnormalities associated with cardiovascular disease. Existing methods fall into two groups: those that represent motion without anatomical correspondence across subjects and therefore limit inter-subject motion assessment; and those that represent motion with globally corresponding points, which typically require a time-consuming and error-prone semi-automatic step to fit a cardiac atlas to the subject space. To address these limitations, this study proposes CardioDrift, a fully automatic, atlas-based probabilistic framework that represents subject-specific cardiac motion on a 3D atlas mesh with globally corresponding points. The Coherent Point Drift (CPD) formulation is generalised to jointly register the atlas surfaces of multiple cardiac regions to the anatomically corresponding contours extracted from cine CMR segmentation maps throughout the cardiac cycle. Slice-shift correction is embedded in the same probabilistic model, estimating slice-wise translations that suppress the misalignment artefact limiting atlas-fitting accuracy. Evaluation on 1301 randomly selected UK Biobank subjects and the M&M dataset, CardioDrift attains Dice similarity coefficients (DSCs) of $92.23\\pm8.70\\%$, $82.11\\pm7.56\\%$, and $88.69\\pm4.13\\%$ for the left ventricle (LV), myocardium (Myo), and right ventricle (RV), exceeding the strongest baseline on every distance and overlap metric of both datasets.",
+      "published_at": "2026-11-04T15:39:07+00:00",
+      "links": [
+        {
+          "label": "arxiv",
+          "url": "https://arxiv.org/abs/2611.06664v1"
+        },
+        {
+          "label": "html",
+          "url": "https://arxiv.org/html/2611.06664v1"
+        },
+        {
+          "label": "pdf",
+          "url": "https://arxiv.org/pdf/2611.06664v1"
+        },
+        {
+          "label": "papers.cool",
+          "url": "https://papers.cool/arxiv/2611.06664v1"
+        }
+      ],
+      "tags": [
+        "cs.CV"
+      ],
+      "subject": "paper",
+      "source": "arxiv",
+      "score": 0.0,
+      "title_zh": "心电图Drift:在3D Atlas 网格上自动心电图跟踪,途径Shepe-aware 协同点漂移,并使用切片移修正",
+      "content_zh": "从焚化的心脏磁共振成像(CMR)中自动跟踪心脏运动对量化心血管疾病引起的心肌运动异常至关重要。 现有方法分为两组:一是代表运动而不进行跨主体的解剖对应,从而限制主体间运动评估的方法;二是代表运动与全球对应点的方法,通常需要耗时和容易出错的半自动步骤,将心脏图集与主体空间相匹配. 为解决这些局限性,本研究提出了心动碎片(CardioDrift),这是一个完全自动的、基于地图集的概率框架,它代表了3D图集网格上具有全球相应点的针对具体主题的心脏运动。 协同点漂流剂(CPD)的配体被概括为将多个心脏区域的图集表面联合登记到整个心脏周期从焚烧式CMR分解图中提取的解剖对应的轮廓上. 切换修正嵌入了相同的概率模型,估计了抑制错配动脉限制地图集精度的切片翻译. 对1301个随机选择的英国生物库主题和M&M数据集的评价,心肌脱落达到Dice相似系数(DSC)92.23\\pm8.70\\%美元,82.11\\pm7.56\\%美元和88.69\\pm4.13\\%美元,分别用于左排气管(LV)、心肌(Myo)和右排气管(RV),超过了两个数据集每个距离和重叠度量的最强基线。"
+    },
+    {
+      "title": "Dynamical State-Space Diffusion for Spatiotemporal Prediction",
+      "content": "Diffusion models for temporal prediction typically corrupt each future frame with independent noise, leaving temporal dependence entirely to the denoiser. We propose Dynamical State-Space Diffusion (DSSD), which learns the temporal structure of the corruption process itself. DSSD builds a temporal kernel from the damped oscillatory modes of a stable diagonal state-space model, whose learned decay rates and frequencies let the corruption capture multiple timescales and oscillatory correlations, while the denoiser architecture remains unchanged. Running this model on a finite clip, however, requires the state before the first frame, which is unobserved; starting from a zero state leaves the early frames with less noise than the diffusion schedule prescribes. We avoid this by using the Cholesky factor of the model's stationary covariance as the temporal operator. We prove that this operator is causal, exactly invertible, keeps each frame's noise variance equal to that of standard diffusion, and reduces to the identity at the clean end of the process, and that it is exactly the Kalman innovations form of the state-space model. The denoiser is trained to predict the temporally correlated noise, and sampling removes and reapplies the temporal mixing at each step. On scientific-field and robot-video datasets, DSSD outperforms diffusion baselines that share its denoiser, and the evolution of its learned modes during training shows that the temporal operator adapts to each dataset.",
+      "published_at": "2026-11-04T15:29:17+00:00",
+      "links": [
+        {
+          "label": "arxiv",
+          "url": "https://arxiv.org/abs/2611.06652v1"
+        },
+        {
+          "label": "html",
+          "url": "https://arxiv.org/html/2611.06652v1"
+        },
+        {
+          "label": "pdf",
+          "url": "https://arxiv.org/pdf/2611.06652v1"
+        },
+        {
+          "label": "papers.cool",
+          "url": "https://papers.cool/arxiv/2611.06652v1"
+        }
+      ],
+      "tags": [
+        "cs.CV"
+      ],
+      "subject": "paper",
+      "source": "arxiv",
+      "score": 0.0,
+      "title_zh": "Spatiotemporal 预测动态状态- 空间扩散",
+      "content_zh": "用于时间预测的传播模型通常会用独立的噪音来腐蚀每个未来框架,使时间依赖性完全归于阴极. 我们提议进行动态国家空间传播,了解腐败过程本身的时间结构。 DSSD从一个稳定的对角状态-空间模型的坝边振荡模式中构建出一个时间内核,其学习到的衰变率和频率让腐败捕捉到多个时间尺度和振荡相关性,而denoiser架构则保持不变. 然而,在有限的剪辑上运行这个模型需要第一个帧之前的状态,而第一个帧是无法观察的;从零状态开始,早期帧的噪声会比扩散时间表规定的要小. 我们用Cholesky作为时间操作员 来避免这种情况 我们证明这个操作员是因果性的,完全不可逆的,使每个帧的噪声差异与标准扩散的差数相等,并在过程的干净端减小身份,而这正是状态-空间模型的卡尔曼创新形式. 德诺伊泽尔接受过预测时间相关噪声的训练,采样在每个步骤上消除并重新应用时间混合. 在科学领域和机器人-视频数据集方面,DSSD超越了共享其denoiser的传播基线,在培训期间其学习模式的演变表明,时间操作员适应每个数据集."
+    },
+    {
+      "title": "Human Motion Prediction via Continual Prior Compensation",
+      "content": "Human Motion Prediction (HMP) aims to predict future human poses at different moments according to observed past motion sequences. Previous approaches mainly treated the prediction of different temporal moments as a single prediction task and learned the predictions of varied moments simultaneously, which would encounter a main limitation: the learning of short-term predictions (referring to ``near-future'' prediction) could be hindered by the predictions of long-term (referring to ``far-future'' prediction) motions. In this paper, we develop a novel temporal continual learning framework called Continual Prior Compensation (CPC) to progressively train HMP models, in which we divide the prediction task of motions corresponding to varied temporal moments into several subtasks and train the model in a multi-stage manner. To mitigate the prior information forgetting in the progressive training, we further introduce a learnable random variable Prior Compensation Factor (PCF) to explicitly measure the prior knowledge loss. We theoretically show that the PCF can be efficiently learned together with the model parameters by minimizing a reasonable upper bound of the objective function. The proposed CPC is further enhanced to estimate the prior information loss for each subtask and a new framework called Continual Prior Compensation++ (CPC++) with Fine-Grained Prior Compensation Factor (FGPCF) is finally developed. Our CPC and CPC++ frameworks are quite flexible and can be easily integrated with different HMP backbone models and adapted to various datasets and applications. Extensive experiments on three HMP benchmark datasets using multiple SOTA HMP backbones (PGBIG, siMLPe, MotionMixer, and LTD) demonstrate the effectiveness and flexibility of our frameworks.",
+      "published_at": "2026-11-04T15:19:03+00:00",
+      "links": [
+        {
+          "label": "arxiv",
+          "url": "https://arxiv.org/abs/2611.06637v1"
+        },
+        {
+          "label": "html",
+          "url": "https://arxiv.org/html/2611.06637v1"
+        },
+        {
+          "label": "pdf",
+          "url": "https://arxiv.org/pdf/2611.06637v1"
+        },
+        {
+          "label": "papers.cool",
+          "url": "https://papers.cool/arxiv/2611.06637v1"
+        }
+      ],
+      "tags": [
+        "cs.CV"
+      ],
+      "subject": "paper",
+      "source": "arxiv",
+      "score": 0.0,
+      "title_zh": "通过连续先行赔偿进行人类运动预测",
+      "content_zh": "人类运动预测(HMP)旨在根据观测到的过去运动序列预测未来人类在不同时刻的姿势. 以往的做法主要把对不同时点的预测视为一项单一的预测任务,并同时了解了对不同时点的预测,这将遇到一个主要的限制:对长期(指“未来”的预测)运动的预测可能妨碍对短期预测的学习(指“未来”的预测)。 在本文中,我们开发了一个名为 \" 连续先行补偿 \" 的新的时间持续学习框架,以逐步培训HMP模型,在该框架中,我们将不同时间时刻的运动的预测任务分为几个子任务,并以多阶段方式培训模型。 为了减少在渐进式培训中遗忘的先前信息,我们进一步引入了可学习的随机变量 \" 事先补偿因素 \" (PCF),以明确衡量先前的知识损失。 我们理论上表明,PCF可以通过最小化客观功能的合理上限,与模型参数一起有效学习. 拟议的产品总分类得到了进一步的改进,以估计每个子任务的先前信息损失,并最后开发了一个新的框架,称为 \" 连续事先赔偿++ \" (CPC++)和 \" 精细预付赔偿系数 \" 。 我们的CPC和CPC++框架相当灵活,可以很容易地与不同的HMP主干模型结合,并适应各种数据集和应用. 利用多种SOTA HMP主干线(PGBIG, siMLPe, MotionMixer, 和LTD)对三个HMP基准数据集进行了广泛的实验,显示了我们框架的有效性和灵活性."
+    },
+    {
+      "title": "Uncertainty-Driven Efficient Communication for UAV-Based Collaborative Perception",
+      "content": "Unmanned aerial vehicle (UAV)-based collaborative perception enables multiple agents to share complementary perceptual information, overcoming limitations such as occlusion and limited sensing range. Communication efficiency is a critical bottleneck, as UAVs operate under stringent bandwidth and computational constraints. However, existing spatial selection methods focus predominantly on foreground regions to reduce missed detections, neglecting perceptually ambiguous regions and leaving false detections unresolved. We propose UCP, an uncertainty-driven framework that characterizes collaborative value through observational uncertainty, identifying sensor-limited regions, and discriminative uncertainty, capturing model-level ambiguity near the decision boundary. These estimates drive spatial request and supply maps for efficient inter-agent communication, and the received messages are aggregated via U-Fusion, an uncertainty-guided cross-attention module. Experiments on three benchmarks across 3D object detection and trajectory prediction demonstrate a superior performance-bandwidth trade-off with high interpretability and strong generalizability.",
+      "published_at": "2026-11-04T15:16:57+00:00",
+      "links": [
+        {
+          "label": "arxiv",
+          "url": "https://arxiv.org/abs/2611.06635v1"
+        },
+        {
+          "label": "html",
+          "url": "https://arxiv.org/html/2611.06635v1"
+        },
+        {
+          "label": "pdf",
+          "url": "https://arxiv.org/pdf/2611.06635v1"
+        },
+        {
+          "label": "papers.cool",
+          "url": "https://papers.cool/arxiv/2611.06635v1"
+        }
+      ],
+      "tags": [
+        "cs.CV"
+      ],
+      "subject": "paper",
+      "source": "arxiv",
+      "score": 0.0,
+      "title_zh": "用于无人驾驶航空器协作感的不确定驱动有效通信",
+      "content_zh": "基于无人飞行器(UAV)的协作感知使多种物剂能够分享互补的知觉信息,克服隔离和有限感知范围等局限性. 通信效率是一个关键的瓶颈,因为无人驾驶航空器在严格的带宽和计算限制下运行. 然而,现有的空间选择方法主要侧重于前景区域,以减少错失探测,忽略了感知模糊的区域,并留下不实的探测未解决. 我们提出UCP,这是一个不确定性驱动的框架,通过观测不确定性、确定传感器有限的区域以及歧视性不确定性来描述协作价值,在决定边界附近捕捉模型层次的模糊性。 这些估计推动空间请求和供应图,以便高效地进行代理通信,收到的信息通过U-Fusion进行汇总,U-Fusion是一个以不确定性为指南的交叉注意模块. 对三维物体探测和轨迹预测的三项基准的实验表明,性能宽度的权衡具有较高的可解释性和强通性。"
+    },
+    {
+      "title": "Trick-or-Treat: Adversarial Evaluation of Multimodal Medical Reasoning with Synthetic Images",
+      "content": "We used medical image synthesis to create a challenging multimodal evaluation framework that exposes hallucination behaviors in frontier models. Evaluating multimodal reasoning has historically been difficult because existing medical datasets rarely pair different image modalities, such as radiographs and external clinical photographs. To address this gap, we introduce Trick-or-Treat, an adversarial multimodal medical benchmark that pairs real chest radiographs with synthetic clinical photographs to challenge models' cross-modal reasoning. For each of a wide range of conditions, we created two pairs of images, where the pairs share a single chest radiograph but contain different external photographs. In matched pairs, the chest radiograph and photograph both contain findings suggesting the same disease (e.g., varicella pneumonia suggested by lung opacities and crusted skin lesions seen in chickenpox). In mismatched pairs, the photograph depicts an alternative clinical finding that would not lead to the same unifying diagnosis (e.g. replacing crusted skin lesions with ordinary acne). Synthetic photograph generation allows clinical findings to be varied while the person's features and photographic setting stay consistent, reducing confounding. In an investigation of three frontier models, we found that models hallucinated clinically significant photograph findings in 45-57.5% of mismatched pairs, up from 25-37.5% for the same photographs shown alone. When faced with mismatched pairs, models tended to ignore mismatches and instead hallucinated findings that better matched the radiograph (e.g. misreading acne as crusted skin lesions to justify diagnosing chickenpox). Trick-or-Treat both demonstrates concerning error pattern in frontier models' medical reasoning and provides a proof of concept for the use of synthetic images in adversarial multimodal evaluation.",
+      "published_at": "2026-11-04T15:13:35+00:00",
+      "links": [
+        {
+          "label": "arxiv",
+          "url": "https://arxiv.org/abs/2611.06631v1"
+        },
+        {
+          "label": "html",
+          "url": "https://arxiv.org/html/2611.06631v1"
+        },
+        {
+          "label": "pdf",
+          "url": "https://arxiv.org/pdf/2611.06631v1"
+        },
+        {
+          "label": "papers.cool",
+          "url": "https://papers.cool/arxiv/2611.06631v1"
+        }
+      ],
+      "tags": [
+        "cs.CV"
+      ],
+      "subject": "paper",
+      "source": "arxiv",
+      "score": 0.0,
+      "title_zh": "Trick-or-Treat:对与合成图像相结合的多式联运医疗理由的负面评价",
+      "content_zh": "我们用医疗图像合成来创建具有挑战性的多模式评价框架,揭示前沿模型中的幻觉行为. 评估多式联运推理在历史上一直很困难,因为现有的医疗数据集很少对不同的图像模式,如放射图和外部临床照片. 为了弥补这一差距,我们引入了Trick-or-Treat,一种对抗性的多模式医学基准,将真实的胸腔放射图与合成临床照片配对,以挑战模型的跨模式推理. 对于每一个范围很广的条件,我们创造了两对图像,两对图像共用一个胸形放射图,但包含不同的外部照片. 在对应的对子中,胸腔放射图和照片都包含表明同一种疾病的发现(如肺部不透明和鸡瘟中出现皮壳损伤所暗示的阴道肺炎). 在不匹配的对子中,照片描绘了另一种临床发现,不会导致同样的统一诊断(如用普通的丙烯取代地壳皮肤损伤). 合成照片的生成可以使临床发现各异,而人物的特征和摄影设定则保持一致,减少困惑. 在对三个前沿模型的调查中,我们发现模型在45-57.5%的不匹配对子中产生了临床上重要的照片发现幻觉,而仅在这些照片中就出现了25-37.5%的幻觉。 当面对不匹配的对子时,模型往往忽略不匹配,而是幻觉地发现更符合放射图(例如误读丙烯为地壳皮肤损伤,以证明诊断鸡瘟的正当理由). Trick-or-Treat既演示了前沿模型医学推理的错误模式,也为在对抗性多式联运评价中使用合成图像提供了概念证明。"
+    },
+    {
+      "title": "Interactive World Simulation with Cosmos for Physical AI",
+      "content": "We present a shared framework that adapts Cosmos world foundation models for real-time interactive world simulation in Physical AI. By streaming visual observations in response to actions and scene controls, the framework enables users and embodied agents to interact with evolving virtual environments. It supports both predicting the visual consequences of actions and generating observations from physical state maintained by an external simulator. We demonstrate this approach across camera navigation and robot manipulation, controllable video transfer, and multi-view autonomous vehicle (AV) simulation. These examples provide a shared foundation for developing interactive virtual environments for Physical AI training and evaluation. Our code and model checkpoints are available at https://github.com/nvidia/cosmos and https://huggingface.co/collections/nvidia/cosmos3-examples. The project website is available at https://research.nvidia.com/labs/cosmos-lab/cosmos-simulation.",
+      "published_at": "2026-11-04T15:11:04+00:00",
+      "links": [
+        {
+          "label": "arxiv",
+          "url": "https://arxiv.org/abs/2611.06627v1"
+        },
+        {
+          "label": "html",
+          "url": "https://arxiv.org/html/2611.06627v1"
+        },
+        {
+          "label": "pdf",
+          "url": "https://arxiv.org/pdf/2611.06627v1"
+        },
+        {
+          "label": "papers.cool",
+          "url": "https://papers.cool/arxiv/2611.06627v1"
+        }
+      ],
+      "tags": [
+        "cs.CV"
+      ],
+      "subject": "paper",
+      "source": "arxiv",
+      "score": 0.0,
+      "title_zh": "物理AI与宇宙互动世界模拟",
+      "content_zh": "我们提出了一个共同的框架,使宇宙世界的基础模型适应物理AI中的实时互动世界模拟. 该框架通过对动作和场景控制的反应进行视觉观测,使用户和体现的代理能够与不断变化的虚拟环境互动。 它既支持预测动作的视觉后果,也支持从外部模拟器维护的物理状态产生观测结果. 我们通过摄像机导航和机器人操纵、可控视频传输和多视图自主飞行器模拟演示这一方法。 这些例子为开发用于物理AI培训和评价的交互式虚拟环境提供了共同的基础. 我们的代码和示范检查站可在https://github.com/nvidia/cosmos和https://huggingface.co/collections/nvidia/cosmos3-examples上查阅。 项目网站见https://research.nvidia.com/labs/cosmos-lab/cosmos-模拟。"
+    },
+    {
+      "title": "Learning to Track Cells from Sparse Annotations in 3D Time-Lapse Microscopy",
+      "content": "Reconstructing cell lineages from 3D time-lapse microscopy requires distinguishing cell motion from division and inferring temporally consistent connections. When only a subset of cells is annotated, however, training procedures that treat unannotated regions as background or incorrect correspondences can be problematic. We propose a cell tracking pipeline that integrates detection from sparse annotations, calibration of candidate connections using image features, and joint selection of lineage graph events. For detection, we combine the outputs of 2.5D and 3D models trained to suppress erroneous background supervision at unannotated cells. We then calibrate ordinary link and division probabilities using motion features from dense flow, correspondence features from a learned cell-matching model, and features from models that identify cells immediately before division, dividing parents, and daughters immediately after division. Ordinary links, divisions represented as daughter pairs, and node inclusion are selected jointly under a surrogate objective derived from the evaluation metric, followed by gap filling and temporal coordinate refinement. The pipeline achieves an overall score of 0.9762 in 5-fold cross-validation on 199 videos from 2 zebrafish embryos. With candidates and calibrated values held fixed, joint selection outperforms a sequential method that allows replacement of existing divisions and reoptimization of ordinary links by 0.0105. The improvement arises primarily from division recovery.",
+      "published_at": "2026-11-04T15:09:14+00:00",
+      "links": [
+        {
+          "label": "arxiv",
+          "url": "https://arxiv.org/abs/2611.06624v1"
+        },
+        {
+          "label": "html",
+          "url": "https://arxiv.org/html/2611.06624v1"
+        },
+        {
+          "label": "pdf",
+          "url": "https://arxiv.org/pdf/2611.06624v1"
+        },
+        {
+          "label": "papers.cool",
+          "url": "https://papers.cool/arxiv/2611.06624v1"
+        }
+      ],
+      "tags": [
+        "cs.CV"
+      ],
+      "subject": "paper",
+      "source": "arxiv",
+      "score": 0.0,
+      "title_zh": "在3D Time-Lapse 显微镜中从 Sparse 说明中学习跟踪单元格",
+      "content_zh": "从3D时间拉伸显微镜重构细胞线,需要区分细胞运动与分裂,并推断出时间上一致的连接. 然而,如果只附加一个单元,将未附加说明的区域当作背景或错误的函证处理的培训程序可能会有问题。 我们建议建立一个细胞跟踪管道,将从稀疏的注释中检测到,利用图像特性校准候选连接,以及联合选择线程图事件. 为了侦测,我们把2.5D和3D模型的输出结合起来,在无注释的细胞中,经过培训,以压制错误的背景监督. 然后,我们利用密集流中的运动特征, 学习细胞匹配模型中的对应特征, 以及模型中的特征来校准普通的连接和分裂概率。 这些特征在分裂之前就识别细胞, 分裂父母, 分裂之后就识别女儿。 普通的链接,代表为女对子的分割,节点的包含,都是在从评价衡量标准中衍生出来的代位目标下联合选择的,然后是补缺和时间协调的完善. 该管道在2个斑马鱼胚胎的199个视频上以5倍的交叉验证方式实现总得分0.9762分. 有了候选人和固定的校准值,联合选择的成绩就超过了一种顺序方法,从而可以于0.0105年替换现有的分部,并重新优化普通链接。 改善主要来自部门恢复。"
+    },
+    {
+      "title": "SpikePose: Lightweight Video Human Pose Estimation",
+      "content": "Efficient video human pose estimation must balance localisation accuracy, motion quality, and energy cost. We present SpikePose, a lightweight video pose estimator that pairs a frame-reset, single-step spiking encoder with motion-aligned heatmap memory (MAM). The encoder supplies per-frame spatial evidence, while MAM estimates joint displacement, aligns historical heatmaps, and adaptively fuses them with current predictions. By confining temporal reasoning to a compact, lightweight module outside the spiking backbone, SpikePose helps bridge the gap between spiking and classical Artificial Neural Networks (ANN) on large-scale, non-event-driven video tasks. We evaluate spatial accuracy, motion errors, and estimated arithmetic energy on MPII and a fixed NTU60 Cross-Subject subset. Against the architecture-matched ANN with MAM, SpikePose cuts estimated arithmetic energy by 91.4% at a cost of just 1.12 points in head-bone-normalised PCK at 0.5 threshold (PCK_HB(0.5)). Within SpikePose, adding MAM reduces velocity and acceleration errors by 28.13% and 31.46% while slightly improving localisation, at a cost of only 0.003M parameters and 0.0023 analytical GFLOPs per frame. Code will be released on GitHub upon acceptance.",
+      "published_at": "2026-11-04T14:48:33+00:00",
+      "links": [
+        {
+          "label": "arxiv",
+          "url": "https://arxiv.org/abs/2611.06594v1"
+        },
+        {
+          "label": "html",
+          "url": "https://arxiv.org/html/2611.06594v1"
+        },
+        {
+          "label": "pdf",
+          "url": "https://arxiv.org/pdf/2611.06594v1"
+        },
+        {
+          "label": "papers.cool",
+          "url": "https://papers.cool/arxiv/2611.06594v1"
+        }
+      ],
+      "tags": [
+        "cs.CV"
+      ],
+      "subject": "paper",
+      "source": "arxiv",
+      "score": 0.0,
+      "title_zh": "SpikePose:轻量级视频人类Pose估计",
+      "content_zh": "高效的视频人造姿势估计必须平衡定位准确性、运动质量和能源成本。 我们介绍SpikePose,一个轻量级的视频,呈现出一个帧重置,单步跳动的编码器与运动相匹配的热映射内存(MAM)对齐的模拟器. 编码器提供每个框架的空间证据,而MAM则估计联合转移,使历史热图一致,并适应性地将它们与目前的预测联系起来。 SpikePose通过将时间推理限制在悬浮骨干外的紧凑,轻量级模块,帮助弥合悬浮与古典人工神经网络(ANN)在大规模,非事件驱动的视频任务上的差距. 我们评估MPII和一个固定的NTU60交叉子集上的空间精确度,运动误差,以及估计的算术能量. 与建筑匹配的ANN与MAM相比,SpikePose削减了91.4%的算术能量,成本仅为0.5阈值的1.12分(PCK_HB(0.5)。 在SpikePose内部,加入MAM会降低速度和加速误差28.13%和31.46%,同时略微改善本地化,每帧成本只有0.003M参数和0.0023分析GFLOP. 密码在接受后会在GitHub上发布."
+    },
+    {
+      "title": "BudgetSplat: Budget-Controllable Generalizable Gaussian Splatting",
+      "content": "Feed-forward 3D Gaussian Splatting enables efficient generalizable novel view synthesis, but existing pixel-aligned methods often generate highly redundant Gaussian primitives, causing the final representation size and rendering cost to grow rapidly with image resolution and the number of input views. We propose BudgetSplat, a budget-controllable feed-forward framework that adapts the final Gaussian representation to a user-specified preservation ratio. Rather than treating compaction as simple importance ranking, we formulate it as a joint problem of importance estimation, spatial coverage, and cross-view redundancy. A single trained model supports varying numbers of context views and multiple test-time budgets without per-budget retraining or per-scene compression. To realize this formulation, Intra-Cross Mask Supervision provides structure-, coverage-, and redundancy-aware guidance for learning Gaussian importance, while budget-conditioned feature modulation adapts Gaussian opacity and attributes to the requested preservation ratio. Coverage-Aware Budget Selection further combines patch-wise pre-selection, view-wise opacity ranking, and 3D redundancy suppression to construct compact yet spatially distributed Gaussian representations. Experiments on indoor reconstruction and cross-dataset generalization demonstrate consistent quality--size trade-offs across different input view counts and preservation ratios, substantially reducing final representation storage and rendering cost while preserving rendering quality.",
+      "published_at": "2026-11-04T14:46:59+00:00",
+      "links": [
+        {
+          "label": "arxiv",
+          "url": "https://arxiv.org/abs/2611.06593v1"
+        },
+        {
+          "label": "html",
+          "url": "https://arxiv.org/html/2611.06593v1"
+        },
+        {
+          "label": "pdf",
+          "url": "https://arxiv.org/pdf/2611.06593v1"
+        },
+        {
+          "label": "papers.cool",
+          "url": "https://papers.cool/arxiv/2611.06593v1"
+        }
+      ],
+      "tags": [
+        "cs.CV"
+      ],
+      "subject": "paper",
+      "source": "arxiv",
+      "score": 0.0,
+      "title_zh": "预算牌子:预算控制通用高斯牌子",
+      "content_zh": "Feed-forward 3D Gaussian Splating可以实现高效的泛泛小说视图合成,但现有的像素对齐方法往往产生高度冗余的高斯原始,导致最终的表示大小和渲染成本随着图像分辨率和输入视图的数量而迅速增长. 我们提出预算PatricsSplat,一个预算可控的feed-forward框架,使最终的高斯代表制适应用户指定的保存比例. 我们不把紧凑作为简单的重要性排名,而是把它当作一个重要估计、空间覆盖和交叉视图冗余的共同问题。 单一的训练有素的模式支持不同数量的背景观点和多个测试时间预算,而无需按预算再培训或每场压缩. 为了实现这一配方,内十字面具监督公司为学习高斯文的重要性提供结构,覆盖范围,和冗余意识的指导,而预算有条件的特征调制则使高斯文不透明,属性适应所要求的保存比例. 覆盖-智能预算选择进一步结合了补丁预选,视图不透明排序,以及3D冗余压制,以构建紧凑但空间分布的高斯表示. 关于室内重建和跨数据集通用化的实验表明,不同输入视图计数和保存比率之间在质量大小上的取舍是一致的,大大减少了最后的表示储存量,在保持提供质量的同时降低了提供成本。"
+    },
+    {
+      "title": "LungMend: A Healthy-Only Latent Diffusion Shape Prior for Lung Mask Correction in Severe Tuberculosis CT",
+      "content": "Lung segmentation models such as R231 are widely used, but they fail on severe tuberculosis (TB) CT: cavities and consolidations look like non-lung tissue and are left out of the mask. We present LungMend, a post-processing model that corrects such masks using only healthy anatomy. A latent diffusion model, trained on healthy lungs with synthetically corrupted masks, learns to recover the complete lung from the faulty mask and the bone anatomy, without any pathological data or CT intensities. LungMend recovers cavities and consolidations that R231 misses and improves accuracy on expert-annotated slices. Code: https://github.com/noureddinekhiati/LungMend",
+      "published_at": "2026-11-04T14:18:43+00:00",
+      "links": [
+        {
+          "label": "arxiv",
+          "url": "https://arxiv.org/abs/2611.06556v1"
+        },
+        {
+          "label": "html",
+          "url": "https://arxiv.org/html/2611.06556v1"
+        },
+        {
+          "label": "pdf",
+          "url": "https://arxiv.org/pdf/2611.06556v1"
+        },
+        {
+          "label": "papers.cool",
+          "url": "https://papers.cool/arxiv/2611.06556v1"
+        }
+      ],
+      "tags": [
+        "cs.CV"
+      ],
+      "subject": "paper",
+      "source": "arxiv",
+      "score": 0.0,
+      "title_zh": "龙门德:重度肺结核肺罩矫正前期健康-仅次于幼体的传播形状 CT",
+      "content_zh": "R231等肺部分化模型被广泛使用,但它们在重度肺结核(TB)CT上失败:腔部和结合部看起来像非肺部组织,被从面具中漏出. 我们介绍LungMend,一种处理后模型,它只用健康的解剖学来纠正这种面具. 一个潜在的传播模型,在健康肺上用合成腐烂的口罩进行训练,学会从有缺陷的口罩和骨解剖中恢复完整的肺部,没有任何病理数据或CT强度. LungMend恢复了R231漏掉的凹槽和整合,并提高了专家说明片的准确性. 代码:https://github.com/noureddinekhiati/LungMend 互联网档案馆的存檔,存档日期2013-03-02."
+    },
+    {
+      "title": "MKD2World: A Typed Spatial MarkDown World Model For Web Agents",
+      "content": "Graphical user interface (GUI) agents can improve decision-making with world-model foresight, provided that predicted states accurately reflect post-action interfaces. Existing state representations fail to jointly capture interface layout, UI semantics, and explicit locations. We introduce Typed Spatial Markdown (TSM), a Markdown-style textual state representation for desktop web interfaces. TSM serializes block-level and atomic-level UI elements according to their spatial relationships, jointly encoding their types, visual semantics, explicit locations, optional control states, and hierarchical membership. To train a screenshot-to-TSM renderer, we construct AtomBlock-WebUI, a dataset with precise annotations at both granularities. By injecting element-type labels into HTML and directly extracting bounding boxes after rendering, we avoid annotation errors caused by post-hoc inference from webpage structures. Building on TSM, we propose MKD2World, a desktop web world model trained in two stages for current-state description and action-conditioned next-state prediction. During inference, the web agent queries MKD2World as needed and performs a ``digest'' step, in which it interprets each predicted state and extracts task-relevant evidence for selecting the best action. Experiments show that MKD2World-9B achieves an EleF1 score of 26.50 on the out-of-domain test set, outperforming GPT-5.6-Sol(14.98) by 11.52 points. Across Online-Mind2Web tasks, MKD2World-9B improves the success rate of the Qwen3.5-35B web agent from 22.94% to 37.61%, achieving competitive performance among leading open-source GUI world models. Code is available at https://github.com/OmniAI-Lab-CUHKSZ/MKD2World.",
+      "published_at": "2026-11-04T14:11:56+00:00",
+      "links": [
+        {
+          "label": "arxiv",
+          "url": "https://arxiv.org/abs/2611.06544v1"
+        },
+        {
+          "label": "html",
+          "url": "https://arxiv.org/html/2611.06544v1"
+        },
+        {
+          "label": "pdf",
+          "url": "https://arxiv.org/pdf/2611.06544v1"
+        },
+        {
+          "label": "papers.cool",
+          "url": "https://papers.cool/arxiv/2611.06544v1"
+        }
+      ],
+      "tags": [
+        "cs.CV"
+      ],
+      "subject": "paper",
+      "source": "arxiv",
+      "score": 0.0,
+      "title_zh": "MKD2 World:一个用于网络代理的打字空间标记下的世界模型",
+      "content_zh": "图形化用户界面(GUI)代理能够用世界模式展望来改进决策,前提是预测状态准确地反映行动后界面. 现有的状态表示无法联合捕获界面布局,UI语义,以及明确位置. 我们引入了 Typed Space Markdown(TSM),这是桌面网络界面的 Markdown 风格的文本状态代表. TMM根据其空间关系对块级和原子级UI元素进行序列化,共同编码其类型,视觉语义,明确位置,可选控制状态,以及等级成员. 为了训练一个截图到TSM的渲染器,我们构建了AtomBlock-WebUI,这个数据集在两个颗粒上都有精确的注释. 通过向HTML中注入元素型标签,并在渲染后直接提取边框,我们避免了从网页结构推论后产生的注释错误. 在TMM的基础上,我们提出MKD2World,一个桌面网络世界模型,经过两个阶段的培训,用于当前状态描述和动作条件的下一状态预测. 在推论中,网络代理根据需要询问MKD2World,并进行一个“digest'步骤,其中它解释每个预测状态,并提取与任务相关的证据来选择最佳行动. 实验显示,MKD2World-9B在域外测试集上取得了26.50分的EleF1分,比GPT-5.6-Sol(14.98)的成绩高出11.52分. 横跨在线视野2 Web任务,MKD2World-9B提高了Quen3.5-35B网络代理的成功率,从22.94%提高到37.61%,在领先的开源GUI世界模式中实现了竞争业绩. 代码可见于https://github.com/OmniAI-Lab-CUHKSZ/MKD2World."
+    },
+    {
+      "title": "Spatially and Compositionally Controlled Multimodal Glioblastoma MRI Synthesis with Latent Diffusion",
+      "content": "Glioblastoma exhibits substantial heterogeneity in tumour morphology and composition across MRI modalities, often making available clinical datasets highly unbalanced in terms of patient pathologies. We propose a two-stage latent diffusion model (LDM) framework for the generation of explicitly controllable 2D glioblastoma MRI scans. First, a segmentation LDM generates tumour maps conditioned on location, spatial extent, axial position, and subregion composition. Second, a modality-conditioned LDM with ControlNet generates T1, T1Gd, T2, and FLAIR images adhering to the requested segmentation. On a held-out test set, generated segmentations achieved a mean centroid error of 0.842 pixels and a subregion proportion error of 0.795 percentage points. ControlNet improved Fréchet inception distance (FID) across all four modalities, reducing pooled FID from 42.59 to 36.12. An expert reader study yielded mean quality ratings of 6.60 for real images, 6.83 for ControlNet-generated images, and 6.77 for fully synthetic images.",
+      "published_at": "2026-11-04T14:10:29+00:00",
+      "links": [
+        {
+          "label": "arxiv",
+          "url": "https://arxiv.org/abs/2611.06540v1"
+        },
+        {
+          "label": "html",
+          "url": "https://arxiv.org/html/2611.06540v1"
+        },
+        {
+          "label": "pdf",
+          "url": "https://arxiv.org/pdf/2611.06540v1"
+        },
+        {
+          "label": "papers.cool",
+          "url": "https://papers.cool/arxiv/2611.06540v1"
+        }
+      ],
+      "tags": [
+        "cs.CV"
+      ],
+      "subject": "paper",
+      "source": "arxiv",
+      "score": 0.0,
+      "title_zh": "空间和组成控制下的多式联运 与Latent扩散的MRI合成",
+      "content_zh": "细胞瘤在肿瘤形态学和各种核磁共振模式的构成中表现出显著的异质性,往往使临床数据集在患者病理方面极不平衡。 我们提出一个两阶段潜在扩散模型(LDM)框架,用于生成可明确控制的2D glioblastoma磁共振扫描. 首先,分块LDM生成以位置、空间范围、轴位置和次区域构成为条件的肿瘤图。 第二,一个带有ControlNet的有模式条件的LDM生成T1,T1Gd,T2,以及FLAIR图像,坚持要求的分区. 在被搁置的测试集中,生成的片段实现了0.842像素的平均百分数误差和0.795个百分点的次区域比例误差. ControlNet改进了Fréchet在所有四种模式中的启动距离(FID),将集合的FID从42.59减少到36.12。 专家读者研究得出的平均质量评级为:真实图像6.60,控制网生成的图像6.83,全面合成图像6.77。"
+    },
+    {
+      "title": "EmoReward: Self-Evolving Reward Calibration for Emotional Video Generation RL",
+      "content": "Group Relative Policy Optimization (GRPO) has advanced generative model post-training in verifiable domains such as code and mathematics, but evaluating video quality, especially emotional expression, often depends on subjective aesthetics and has no uniquely correct target. Existing approaches typically rely on fixed rewards for visual quality, motion quality, and text alignment that poorly capture emotional intent and can invite reward hacking, while RLHF is difficult to scale and subject to individual aesthetic differences that complicate the calibration of facial, body motion, and chromatic cues across narrative contexts. We introduce EmoReward, a new self-evolving training mechanism that distills evidence reliability from reward traces collected during an actual training run to adaptively guide multi-reward weight allocation in subsequent training by determining which emotional evidence to trust and how much to weight it. EmoReward first plans specific grounding cues from the emotional prompt to guide evaluation, then uses heterogeneous signal primitives to score the generated video during the act stage. Reflective Reward Gating calibrates their contributions through instance-level gates for phase, face confidence, conflict, and subtlety, then renormalizes weights over the active set to produce the sample's fused reward. RewardMemory then estimates each primitive's reliability from rollout scores and outcomes within each emotional regime in the finished training run, then fixes bounded multipliers that calibrate fusion weights in the next training run without updating reward models. Experiments on HunyuanVideo 1.5 show improvements across multiple RL algorithms and compare EmoReward with other agentic reward methods under SAGE-GRPO. Ablations and transfer experiments on SD 3.5 and FLUX further support adaptive reward calibration for visual generation.",
+      "published_at": "2026-11-04T13:43:09+00:00",
+      "links": [
+        {
+          "label": "arxiv",
+          "url": "https://arxiv.org/abs/2611.06518v1"
+        },
+        {
+          "label": "html",
+          "url": "https://arxiv.org/html/2611.06518v1"
+        },
+        {
+          "label": "pdf",
+          "url": "https://arxiv.org/pdf/2611.06518v1"
+        },
+        {
+          "label": "papers.cool",
+          "url": "https://papers.cool/arxiv/2611.06518v1"
+        }
+      ],
+      "tags": [
+        "cs.CV"
+      ],
+      "subject": "paper",
+      "source": "arxiv",
+      "score": 0.0,
+      "title_zh": "EmoReward:情感视频生成RL的自我演化Reward校准",
+      "content_zh": "群相对政策优化(GRPO)在代码和数学等可核查领域拥有先进的基因模型后培训,但评价视频质量,尤其是情感表达,往往依赖于主观美学,没有独特的正确目标. 现有方法通常依赖于视觉质量、运动质量和文本对齐的固定奖赏,这些奖赏捕捉不到情感意图,并可能招致奖励性黑客,而RLHF则难以衡量规模,并受到个人审美差异的影响,使面部、身体运动和不同叙事背景的色调的校准复杂化。 我们引入了EmoReward,一种新的自我演变的培训机制,它从实际培训期间收集的奖励痕迹中提取出证据的可靠性,通过确定哪些情感证据可以信任,以及有多少重量来适应性地指导后续培训中的多重奖励权重分配. EmoReward首先计划从情感的提示来引导评价,然后在动作阶段使用各种信号原始来评分生成的视频. 反射奖赏 校准他们的贡献 通过实例级的关卡 相, 面对信心,冲突,和微妙, 然后重新正常 重过活动集 产生样本的保险赏金。 然后,Reward Memory从完成的训练中每个情感制度内部的推出分数和结果来估计每个原始人的可靠性,然后在下次训练中修正校准聚变重量的极限乘数,而不更新奖励模型. HunyuanVideo 1.5上的实验显示多个RL算法都有改进,并将EmoReward与其他代理奖励方法在SAGE-GPRO下进行比较. SD 3.5和FLUX上的校准和转移实验进一步支持了视觉生成的适应性奖励校准."
+    },
+    {
+      "title": "Object-independent evaluation of small-data astronomical image classifiers: architecture, representation, and acquisition shortcuts",
+      "content": "Reported performance in small astronomical image datasets can reflect object reuse, field-of-view differences, acquisition settings, and catalogue-derived properties as well as astronomical morphology. We designed \\dataset{} to measure these effects in a four-class task comprising galaxies, globular clusters, nebulae, and open clusters. The dataset contains 370 catalogue-supported physical objects, each represented by three Digitised Sky Survey FITS bands, and uses a group-constrained split of 222 training, 75 validation, and 73 test objects. We compared a custom CNN--Transformer trained from scratch with ImageNet-pretrained ResNet-50 and ViT-B/16 under an adaptive full-field representation, a common angular field, and two central-region-masked controls, using three fixed seeds. In the one-pass object-independent test, mean balanced accuracy on the adaptive view was $0.773\\pm0.014$, $0.874\\pm0.054$, and $0.866\\pm0.023$ for the custom model, ResNet-50, and ViT-B/16, respectively. No primary architecture contrast rejected its null after Holm correction; ResNet-50 and ViT-B/16 differed by 0.007 balanced-accuracy points (95\\% cluster-bootstrap interval $[-0.048,0.062]$). Controls based on acquisition and catalogue metadata reached 0.721--0.735, and central-region-masked adaptive views reached 0.731--0.800. These results demonstrate generalisation to unseen physical objects, but also show that image context, acquisition settings, and catalogue-derived object properties carry substantial class information. In this regime, high accuracy cannot be interpreted as evidence that a classifier learned target morphology, and the comparison does not isolate architecture from pretraining.",
+      "published_at": "2026-11-04T13:25:21+00:00",
+      "links": [
+        {
+          "label": "arxiv",
+          "url": "https://arxiv.org/abs/2611.06484v1"
+        },
+        {
+          "label": "html",
+          "url": "https://arxiv.org/html/2611.06484v1"
+        },
+        {
+          "label": "pdf",
+          "url": "https://arxiv.org/pdf/2611.06484v1"
+        },
+        {
+          "label": "papers.cool",
+          "url": "https://papers.cool/arxiv/2611.06484v1"
+        }
+      ],
+      "tags": [
+        "cs.CV"
+      ],
+      "subject": "paper",
+      "source": "arxiv",
+      "score": 0.0,
+      "title_zh": "对小数据天文图像分类器的天体独立评价:架构、表示和获取快捷键",
+      "content_zh": "在小型天文图像数据集中报告的表现可以反映物体的再利用、视野差异、获取设置、目录衍生的特性以及天文形态。 我们设计了\\datasetQQ 来测量这些效应 在一个四级的任务中, 包括星系,球状星团,星云,和开放星团。 该数据集包含370个目录支持的物理物体,每个物体由3个Digitised Sky Survey FITS波段代表,并使用一组受约束的分成222个训练,75个验证,73个测试物体. 我们把自始至终训练的CNN-Transformer与ImageNet- pretrained ResNet-50和Vit-B/16在适应性的全场代表、共同角场和两个中部区域大规模控制下进行比较,使用三个固定种子。 在单通过对象独立测试中,适应视图上的平均平衡精度分别为0.773\\pm0.014美元,0.874\\pm0.054美元,定制模型ResNet-50和Vit-B/16分别为0.866\\pm0.023美元. 在Holm更正后,没有任何主结构的对比否定其无效;ResNet-50和Vit-B/16的平衡精确点差0.007(95+Q群-bootstrap间隔 $[0.048,0.062]美元)。 基于获取和目录元数据的控制达到0.721-0.735,中部地区大规模适应观点达到0.731-0.800. 这些结果显示了对看不见的物理物体的概括,但也表明图像上下文、获取设置和目录衍生物体属性载有大量类信息。 在这个制度下,高精度不能被解释为一个分类者学会的目标形态学的证据,而比较并不能将建筑与预训隔离开来."
+    },
+    {
+      "title": "A 3D foundation model unifying CT interpretation and segmentation",
+      "content": "Radiologists interpret computed tomography (CT) scans by jointly determining what a finding represents and where it lies in three-dimensional (3D) anatomy. However, CT models have treated CT interpretation and 3D segmentation as separate tasks, leaving textual findings spatially unverifiable and overlooking potential synergy between clinical understanding and spatial perception. Here we present HoloCT, a generalist 3D foundation model unifying CT interpretation and voxel-level segmentation by jointly modelling whole-volume context and fine-grained anatomical detail, providing 3D masks as evidence. We curated HoloDATA, comprising 195,921 CT scans from 73 public datasets and six clinical cohorts, with 6.2 million instruction dialogues and 2.8 million CT-mask pairs. Across 346 tasks spanning segmentation, lesion screening, visual question answering, and report generation on 61 internal and 12 external datasets, HoloCT outperformed specialist and foundation models. In multicentre validation across 11,455 clinical CT scans from five hospitals, HoloCT outperformed competing models in lesion segmentation and report generation by 18.2 and 15.3 points. It also achieved 85.1% mean accuracy in screening thyroid tumours and colon lesions, exceeding all four participating radiologists in a retrospective reader study. Further analyses revealed bidirectional semantic-spatial synergy: language-guided segmentation delineated unseen anatomical structures and lesions as well as diffuse free-text findings, outperforming the leading approach by 22.1 points, whereas prompting the model to generate corresponding 3D masks alongside its textual outputs significantly improved interpretation performance. HoloCT shows that clinical understanding and spatial perception can be learned together within a single foundation model and offers a path towards more accurate and reliable CT analysis.",
+      "published_at": "2026-11-04T13:07:27+00:00",
+      "links": [
+        {
+          "label": "arxiv",
+          "url": "https://arxiv.org/abs/2611.06471v1"
+        },
+        {
+          "label": "html",
+          "url": "https://arxiv.org/html/2611.06471v1"
+        },
+        {
+          "label": "pdf",
+          "url": "https://arxiv.org/pdf/2611.06471v1"
+        },
+        {
+          "label": "papers.cool",
+          "url": "https://papers.cool/arxiv/2611.06471v1"
+        }
+      ],
+      "tags": [
+        "cs.CV"
+      ],
+      "subject": "paper",
+      "source": "arxiv",
+      "score": 0.0,
+      "title_zh": "三维基础模型,统一CT解释和分割",
+      "content_zh": "放射学家通过共同确定一项发现在三维(3D)解剖学中代表什么和位于何处,来解释计算成的地形图扫描. 然而,CT模型将CT解释和3D分割作为单独的任务处理,使得文字结论在空间上无法验证,并忽略了临床理解和空间感知之间的潜在协同作用. 在此,我们介绍HoloCT,一个通用的3D基础模型,通过联合建模整卷上下文和精细的解剖细节,将CT解释和voxel级分解统一起来,提供3D口罩作为证据. 我们负责HoloDATA, 包括来自73个公共数据集和6个临床组群的195,921个CT扫描,有620万个指令对话,280万个CT-mask对. 在整个346项任务中,包括分解、病变筛查、视觉问题回答和61个内部数据集和12个外部数据集的报告生成,HoloCT的绩效超过了专家和基础模型。 在多中心验证5家医院的11 455个临床CT扫描中,HoloCT在损伤分解和报告生成中的表现超过竞争模型的18.2和15.3分. 它还在甲状腺肿瘤和结肠损伤筛查中实现了85.1%的精确度,超过了参加回溯性阅读器研究的四名放射学家。 进一步的分析揭示了双向语义-空间协同:语言指导分解在不见踪影的解剖结构和损伤以及散开的自由文字发现,比领先方法高22.1分,同时促使模型在文字输出的同时产生相应的3D口罩,大大改善了口译性能。 HoloCT显示,临床理解和空间感知可以在一个单一的基础模型中共同学习,并提供一个更准确可靠的CT分析路径."
+    },
+    {
+      "title": "CoDecide: Content-Adaptive Video Decoding for High-Throughput Video Analytics",
+      "content": "Analytics on video archives are bottlenecked by decoding. In a dense pipeline that runs a detector on every frame, decoding is a small fraction of the runtime, but once the detector is restricted to selected frames, decoding takes over as the main cost. We introduce CoDecide, a retrospective analytics system that only decodes the frames where new content appears, using signals from the compressed bitstream to find them. Motion tells us something is moving, but not whether it is new to the scene or has been there the whole time. To make that distinction, we supervise a lightweight compressed-domain student on a label-free novelty signal from a frozen DINOv2 teacher, which fires on semantically new regions rather than on any motion. Consequently, the student model generalizes to new camera deployments without requiring per-camera retraining. At inference, it decides which frames to decode and which regions to reconstruct. Detections from the decoded frames are propagated to the skipped frames using motion vectors. We evaluate CoDecide with a leave-one-dataset-out protocol on VIRAT, MEVA, and ShanghaiTech. Against a dense per-frame detector, CoDecide recovers more moving-object detections than prior compressed-domain selectors at an equivalent decoding budget, outperforming even a competitor trained directly on the target camera. CoDecide runs 15 to 24x faster than a pipeline that decodes and detects every frame. Code is available at https://github.com/shristy51/CoDecide.",
+      "published_at": "2026-11-04T12:55:32+00:00",
+      "links": [
+        {
+          "label": "arxiv",
+          "url": "https://arxiv.org/abs/2611.06455v1"
+        },
+        {
+          "label": "html",
+          "url": "https://arxiv.org/html/2611.06455v1"
+        },
+        {
+          "label": "pdf",
+          "url": "https://arxiv.org/pdf/2611.06455v1"
+        },
+        {
+          "label": "papers.cool",
+          "url": "https://papers.cool/arxiv/2611.06455v1"
+        }
+      ],
+      "tags": [
+        "cs.CV"
+      ],
+      "subject": "paper",
+      "source": "arxiv",
+      "score": 0.0,
+      "title_zh": "缩写 : 高压视频解码 视频分析",
+      "content_zh": "视频档案的分析因解码而瓶颈. 在一个在每个帧上运行一个探测器的密集管道中,解码是运行时间的一小部分,但一旦探测器被限制在选定的帧上,解码就承担了主要成本. 我们引入了CoDecide,一种回顾分析系统,它只解码出现新内容的帧,使用压缩位流的信号来找到它们. 动议告诉我们,有些东西在动, 但并不是它是新到现场还是一直在那里。 为了做出这种区分,我们监督一个轻量级压缩域的学生, 在一个无标签的新颖信号上,来自一个被冻结的DINov2教师, 发射的星系新区域而不是任何运动。 因此,学生模式一般采用新的摄像机布置,不需要每台摄像机再培训。 推论,它决定了哪些框架可以解码,哪些区域可以重建. 使用运动向量将解码框架的检测结果传播到跳过的框架。 我们评价CoDecide 和VIRAT、MEVA和上海Tech 的一数据设置协议。 针对密集的每帧探测器,CoDecide在等效的解码预算中比之前的压缩域选择器回收更多的移动对象探测器,甚至比直接在目标相机上训练的竞争者都表现优异. CoDecide运行的15至24x比一个能解码和检测每个帧的管道快. 代码见https://github.com/shristy51/CoDecide。"
+    },
+    {
+      "title": "Beyond Infraction Scores: Failure-Boundary Profiles for Closed-Loop Evaluation of Driving and Robot Navigation Agents",
+      "content": "Closed-loop driving benchmarks in CARLA rank agents by a driving score that multiplies route completion by an infraction penalty. This score does not distinguish an agent that stops in front of an obstacle from one that pushes past it. In a corridor closed by two parked cars, for example, one agent that drives through with contact averages 52.2 on the blocked widths, while the agents that stop average between 37.8 and 40.6. We propose failure-boundary profiles, an evaluation in which each scenario family varies one measured factor, such as corridor width or the time gap in oncoming traffic, and each variant is certified from measurement as one where the agent should proceed or one where it should stop. Along this axis we estimate two curves per agent, commitment (the probability of attempting the passage) and competence (the probability of passing without contact), and locate where each crosses one half, with intervals that account for the simulator's run-to-run variance. The certified labels also give a summary metric, decision accuracy, which credits clean passes on passable variants and stops on blocked ones. We evaluate seven driving agents on seven CARLA families. The rule-based expert reaches a decision accuracy of 0.74 and TFv6, the highest-scoring learned agent, 0.60. Agents with similar driving scores fail in different ways, and agents that reliably stop at a blocked corridor still rarely wait for a gap in oncoming traffic. We also apply the method, unchanged, to a warehouse robot in Isaac Sim. The navigation policy we test stops at blocked gaps in only one of three families, and two fine-tuned versions of it pass more gaps cleanly but no longer stop at all.",
+      "published_at": "2026-11-04T12:54:09+00:00",
+      "links": [
+        {
+          "label": "arxiv",
+          "url": "https://arxiv.org/abs/2611.06453v1"
+        },
+        {
+          "label": "html",
+          "url": "https://arxiv.org/html/2611.06453v1"
+        },
+        {
+          "label": "pdf",
+          "url": "https://arxiv.org/pdf/2611.06453v1"
+        },
+        {
+          "label": "papers.cool",
+          "url": "https://papers.cool/arxiv/2611.06453v1"
+        }
+      ],
+      "tags": [
+        "cs.CV"
+      ],
+      "subject": "paper",
+      "source": "arxiv",
+      "score": 0.0,
+      "title_zh": "超越违法行为 分数:对驾驶和机器人导航代理机进行闭环评价的失败边界简介",
+      "content_zh": "CARLA的闭路驾驶基准通过一个驾驶分数将完成路线乘以违纪处罚来给特工排队. 此分数并不区分在障碍前停留的代理人和推过障碍的代理人. 例如,在一个被两辆停靠的汽车封闭的走廊中,一个有接触者驾驶的特工在被阻断的宽度上平均为52.2,而平均停在37.8至40.6之间的特工. 我们提出失败边界简介,即一个评估,其中每个情况家族都不同一个衡量因素,如走廊宽度或到达流量的时空,每个变体从测量中被证明是代理人应该继续工作或停止工作。 沿着这个轴线,我们估计每个代理商的两个曲线,承诺(尝试通过的可能性)和胜任能力(没有接触的通过概率),并找出每个代理商跨越一半的地方,其间隔是计算模拟器运行中的差异的. 经认证的标签还给出了一个简要的衡量标准,决定准确度,将可通行的变体记为干净的,并停在被屏蔽的变体上。 我们评价了7个CARLA家庭的7个司机。 基于规则的专家达到了0.74和TFv6的判定精度,是得分最高的学习剂,0.60. 驾驶分数相似的特工以不同的方式失败,可靠地停在被封锁的走廊的特工仍然很少等待即将到来的交通缺口. 我们还对Isaac Sim的一个仓库机器人适用了这个方法,没有改变。 我们测试的导航政策只停留在三个家庭中的一个被堵住的缺口上,两个经过微调的版本更清晰地传递了更多的缺口,但再也不会停止."
+    },
+    {
+      "title": "Within-Family EfficientNet Scaling under Fixed-Resolution Transfer Learning for Spectral-Domain Optical Coherence Tomography Retinal Disease Classification",
+      "content": "Background/Objectives: CNNs perform well in retinal disease classification from spectral-domain optical coherence tomography (SD-OCT), but whether EfficientNet's natural-image scaling hierarchy transfers to medical-image transfer learning at fixed resolution remains unclear. This study evaluates EfficientNet-B0-B7 for four-class SD-OCT classification and accuracy-efficiency trade-offs. Methods: Eight ImageNet-pretrained variants (4.05-64.10M instantiated backbone parameters) were evaluated at 224x224 on the Kermany dataset. Grayscale images were replicated to RGB and processed using model-embedded preprocessing and augmentation. Training comprised frozen-backbone head training followed by partial fine-tuning. Metrics covered classification, discrimination, efficiency, and visual analyses. Results: Test accuracy varied non-monotonically from 95.93% (B0) to 96.95% (B1); B7 achieved 96.73%. B1 had the highest accuracy and Drusen F1 (0.8780), while B7 had Drusen F1 of 0.8720 and the highest Drusen recall (0.9177). Drusen had the lowest F1 across all variants and contributed 82.2% of the summed squared deviation in class-specific F1; class ranking remained Normal > CNV > DME > Drusen. The OCT accuracy ranking differed from the reported ImageNet hierarchy, where B7 ranked first. The accuracy-to-parameter ratio fell from 19.82 to 1.48 percentage points per million total parameters. The final train-test gap had a weak, non-significant association with test accuracy (r = 0.26, p = 0.53). Conclusions: Larger EfficientNet variants did not consistently improve SD-OCT classification. B1 achieved the highest accuracy and Drusen F1, whereas B7 showed a secondary accuracy recovery at greater model size and CPU latency, indicating task and protocol dependent scaling effects. As cross-partition duplicates have not been independently audited, results are conditional on the supplied split.",
+      "published_at": "2026-11-04T12:53:44+00:00",
+      "links": [
+        {
+          "label": "arxiv",
+          "url": "https://arxiv.org/abs/2611.06452v1"
+        },
+        {
+          "label": "html",
+          "url": "https://arxiv.org/html/2611.06452v1"
+        },
+        {
+          "label": "pdf",
+          "url": "https://arxiv.org/pdf/2611.06452v1"
+        },
+        {
+          "label": "papers.cool",
+          "url": "https://papers.cool/arxiv/2611.06452v1"
+        }
+      ],
+      "tags": [
+        "cs.CV"
+      ],
+      "subject": "paper",
+      "source": "arxiv",
+      "score": 0.0,
+      "title_zh": "家庭内部高效 在光谱-领域光学一致性的固定分辨率转移学习下的净扩展",
+      "content_zh": "背景/目标: CNN在从光谱域光学一致性图谱学(SD-OCT)进行视网膜疾病分类方面表现良好,但OfficialNet的自然成像分级转移到医学成像转移学习的固定分辨率是否仍然不清楚. 本研究评价了四类SD-OCT分类的高效Net-B0-B7和精度效率的权衡. 方法:在Kermany数据集上以224x224评价了8个ImageNet前置变体(4.05-64.10M即时主干参数). 灰度图像被复制到RGB,并使用模型嵌入的预处理和增强处理. 培训包括冷冻后骨头培训,然后进行部分微调。 计量包括分类、歧视、效率和视觉分析。 结果: 测试精度从95.93%(B0)到96.95%(B1)不等;B7达到96.73%。 B1的精确度最高,Drusen F1(0.8780),而B7的Drusen F1为0.8720,最高的Drusen召回(0.9177). 德鲁森在所有变种中拥有最低的F1,占特定类别F1中总和平方偏差的82.2%;班级排名仍然正常 > CNV > DME > 德鲁森. OCT精度排名与所报告的ImageNet等级不同,B7排名第一. 精确度与参数之比从每百万个总参数的19.82个百分点下降到1.48个百分点。 最终的列车试车间隙与试车精度(r = 0.26,p = 0.53)有微弱的非显著关联. 结论:大型高效网络变体没有一贯改进SD-OCT的分类。 B1实现了最高的精度和Drusen F1,而B7则在更大的模型大小和CPU的空闲度上表现出二级精度回收,表明任务和协议依赖的缩放效果. 由于交叉分部重复未进行独立审计,结果取决于所提供的分部。"
+    },
+    {
+      "title": "DreamRealm: Exploring and Materializing Hallucination Worlds for Trustworthy Vision-Language Models",
+      "content": "Multimodal large language models (MLLMs) remain prone to visual hallucinations when correct responses depend on subtle visual details. One line of post-training methods constructs visual contrasts through image retrieval, generation, or editing to improve fine-grained perception. However, these contrasts are not built around the model's own hallucinations, making it difficult to ensure that supervision targets its actual perceptual confusions. Another line suppresses hallucinated outputs through response correction or preference learning under fixed image conditions, but leaves the design of supervision signals on the image-input side underexplored. Inspired by how humans correct misconceptions, we introduce DreamRealm, a post-training framework that explores diverse latent hallucinated responses, minimally edits original images to make them valid, and trains the model to assign each response to its supporting image. Our data construction pipeline, RealmForgePipe, mines observed and latent hallucinations from a target model and materializes them through image editing. Using hallucinations mined from Qwen3.5-9B, we construct the Realized Hallucination Dataset (RealmSet). Our training objective, RealmMatch, constructs a likelihood score matrix across image--response combinations and combines supervised learning with bidirectional contrastive losses to reinforce correct matches and suppress mismatches. Compared with the original Qwen3.5-9B model, DreamRealm improves performance across six visual perception and hallucination benchmarks, including gains of 7.26 percentage points in HallusionBench accuracy and 11.34 percentage points in MMVP pair accuracy. Together with ablation studies on data construction and training methods, these results demonstrate that hallucination assignment is a promising paradigm for improving visual perception and mitigating hallucinations.",
+      "published_at": "2026-11-04T12:34:12+00:00",
+      "links": [
+        {
+          "label": "arxiv",
+          "url": "https://arxiv.org/abs/2611.06433v1"
+        },
+        {
+          "label": "html",
+          "url": "https://arxiv.org/html/2611.06433v1"
+        },
+        {
+          "label": "pdf",
+          "url": "https://arxiv.org/pdf/2611.06433v1"
+        },
+        {
+          "label": "papers.cool",
+          "url": "https://papers.cool/arxiv/2611.06433v1"
+        }
+      ],
+      "tags": [
+        "cs.CV"
+      ],
+      "subject": "paper",
+      "source": "arxiv",
+      "score": 0.0,
+      "title_zh": "DreamRealm:可信赖的视觉-语言模型世界的探索和物质化",
+      "content_zh": "多式联运大语言模型(MLLMs)仍然容易出现视觉幻觉,因为正确的反应取决于微妙的视觉细节. 一行的训练后方法通过图像检索,生成,或编辑构建视觉对比,以改善精细的感知. 然而,这些对比并不是围绕模型本身的幻觉构建的,因此很难确保监督针对其实际的知觉混淆. 另一行通过响应校正或者在固定图像条件下的偏好学习来抑制幻觉输出,但将监督信号的设计留在图像输入方上未得到充分探索. 受人类如何纠正误解的启发,我们引入了DreamRealm,一个后训练框架,探索各种潜在的幻觉反应,尽量减少原始图像的编辑,使其有效,并训练模型将每个反应分配到其辅助图像. 我们的数据建设管道RealmForgePipe、地雷和从目标模型中观察到的潜在幻觉通过图像编辑实现。 利用从Quen3.5-9B中挖掘出来的幻觉,我们构建了已实现的幻觉数据集(RealmSet)。 我们的训练目标RealmMatch构建了一个跨图像-应答组合的概率分数矩阵,并将有监督的学习与双向对比性损失结合起来,强化对匹配的正确性和抑制不匹配. 与最初的Quen3.5-9B模型相比,DreamRealm在6个视觉感知和幻觉基准上提高了性能,包括Hallusion Bench精度的7.26个百分点和MMVP对精度的11.34个百分点. 这些结果连同关于数据构建和培训方法的研究表明,幻觉分配是改善视觉感知和减轻幻觉的有希望的范例。"
+    },
+    {
+      "title": "A Framework for Context Enrichment and Selective Robustness in LLM Social Agents",
+      "content": "Researchers use large language models as agents in social simulations, where agents are prompted with observations and background information intended to shape their actions. Yet LLM agents have been shown to substantially change their behavior under meaning-preserving prompt variations, creating a validation problem for social simulation. One plausible hypothesis is that this brittleness reflects a lack of grounding and can be reduced by enriching the context provided to the agents. Whether richer context improves robustness remains unclear, in part because context richness and robustness are rarely defined in ways that support controlled comparisons. We address the first need with controlled context enrichment, a set of prompt substitution rules that systematically enriches distinct types of context: neutral padding, generic social background, descriptive decision grounding, and normative decision grounding. We address the second by introducing selective robustness as a validation criterion: insensitivity to meaning-preserving prompt variation combined with a directional response to decision-relevant changes in the social world. We demonstrate the framework in a Prisoner's Dilemma-like game, showing how it can be used to identify which forms of context enrichment produce more desirable and robust agent behavior. We find that these forms of enrichment produce distinct behavioral patterns that vary between the two models tested.",
+      "published_at": "2026-11-04T18:58:23+00:00",
+      "links": [
+        {
+          "label": "arxiv",
+          "url": "https://arxiv.org/abs/2611.06914v1"
+        },
+        {
+          "label": "html",
+          "url": "https://arxiv.org/html/2611.06914v1"
+        },
+        {
+          "label": "pdf",
+          "url": "https://arxiv.org/pdf/2611.06914v1"
+        },
+        {
+          "label": "papers.cool",
+          "url": "https://papers.cool/arxiv/2611.06914v1"
+        }
+      ],
+      "tags": [
+        "cs.CL"
+      ],
+      "subject": "paper",
+      "source": "arxiv",
+      "score": 0.0,
+      "title_zh": "《LLM社会代理人丰富背景和有选择的活力框架》",
+      "content_zh": "研究人员在社会模拟中使用大型语言模型作为代理,其中代理者受到旨在塑造其行动的观察和背景资料的激励. 然而,LLM剂已被证明在意义保留下的快速变异下大幅改变他们的行为,为社会模拟造成了验证问题. 一种合理的假设是,这种不易反映缺乏基础,可以通过丰富提供给代理人的背景来减少。 较丰富的环境是否改善了稳健性,这一点仍然不清楚,部分原因是环境的丰富性和稳健性很少被定义为支持有控制的比较。 我们首先需要控制环境的丰富,即一套能够系统地丰富不同类型环境的迅速替代规则:中性铺垫、一般社会背景、描述性决策基础和规范决策基础。 我们通过采用选择性强健性作为验证标准来处理第二个问题:对保留含义的迅速变化不敏感,再加上对社会世界中与决策相关的变化作出方向性反应。 我们在类似囚犯的“困境”游戏中演示这个框架,说明如何利用这个框架来确定哪些形式的上下文丰富产生更可取和更强有力的代理行为。 我们发现,这些浓缩形式产生了不同的行为模式,在所测试的两个模型之间有所不同."
+    },
+    {
+      "title": "SpecCompact: Accelerating LLM Agent Context Compaction with Slot-Parallel Semantic Speculative Verification",
+      "content": "LLM agents use context compaction to manage growing interaction histories, but summarizing long histories with large models can introduce substantial delays. Compaction therefore requires balancing information retention against latency. We observe that structured summary slots can retain information when generated independently. Based on this observation, we present SpecCompact, a framework that accelerates compaction through slot-parallel semantic speculation. SpecCompact fine-tunes a small drafter and generates slots in parallel. The target model verifies each proposed line and repairs rejected content, while subsequent drafting uses the updated slot prefix. System optimizations further reduce repeated context processing and model calls. Across AppWorld and $τ^3$ benchmarks with two target models, SpecCompact achieves $2.04$--$5.63\\times$ compaction speedups over Hermes-style summarization. Separate downstream evaluations reveal model- and task-dependent performance trade-offs. A user study within Hermes further shows an $8.68\\times$ median compaction speedup.",
+      "published_at": "2026-11-04T18:34:41+00:00",
+      "links": [
+        {
+          "label": "arxiv",
+          "url": "https://arxiv.org/abs/2611.06876v1"
+        },
+        {
+          "label": "html",
+          "url": "https://arxiv.org/html/2611.06876v1"
+        },
+        {
+          "label": "pdf",
+          "url": "https://arxiv.org/pdf/2611.06876v1"
+        },
+        {
+          "label": "papers.cool",
+          "url": "https://papers.cool/arxiv/2611.06876v1"
+        }
+      ],
+      "tags": [
+        "cs.CL"
+      ],
+      "subject": "paper",
+      "source": "arxiv",
+      "score": 0.0,
+      "title_zh": "Spec Compact: 加速 LLM 代理上下文压缩与 Slot-Parallel 语义光谱验证",
+      "content_zh": "LLM代理使用上下文收缩来管理不断增长的相互作用历史,但用大模型来总结漫长的历史可能会带来大量延误. 因此,压缩需要平衡信息保留与延迟。 我们注意到,结构化的汇总槽在独立生成时可以保留信息. 基于这一观察,我们提出SpecCompact,这个框架通过槽平行语义推测来加速收缩. SpecCompact对一个小的起草器进行微调,并生成平行的槽. 目标模型验证每条拟议线和拒绝的修复内容,而随后的起草则使用更新的槽前缀. 系统优化进一步减少了重复的上下文处理和模型调用. 在整个AppWorld和3美元的基准有两个目标模型,SpecCompact实现2.04美元-5.63美元/次收缩速度超过Hermes风格的汇总。 单独的下游评价揭示了取决于模式和任务的业绩权衡。 赫耳墨斯内部的用户研究进一步显示,中位收缩速度为8.68\\times$."
+    },
+    {
+      "title": "Balancing hierarchical representation and quantization: A performance trade-off in text embeddings",
+      "content": "Hierarchical text embedding models offer variable-length representations, while quantization reduces numerical precision; both aim to improve computational efficiency. This work is an empirical benchmark study of how these two orthogonal, already-established techniques interact. We evaluate 38 tasks from the Massive Text Embedding Benchmark (MTEB) using four transformer-based embedding models, covering 1D and 2D hierarchical representations combined with 32-bit, 8-bit, and binary quantization, for 168 configurations per task. We report each efficiency dimension separately: theoretical per-vector storage and end-to-end evaluation time. Under a Friedman test with Nemenyi post-hoc analysis, int8 quantization is statistically indistinguishable from float32 for pair classification and re-ranking and costs at most 1.5 percentage points overall, whereas binary quantization is significantly worse across every task category. Halving the embedding dimension once is not statistically detectable above $m=16$; two successive halvings always are. Combining an 8x dimensionality reduction with int8 yields a 32x reduction in per-vector storage at 94.4% of baseline effectiveness. Because evaluation times were measured once, we treat them as indicative: we find no evidence that quantization speeds up evaluation, whereas sampling from intermediate layers shortens it substantially. Retrieval degrades far faster than every other category, so we report findings per task category.",
+      "published_at": "2026-11-04T18:15:08+00:00",
+      "links": [
+        {
+          "label": "arxiv",
+          "url": "https://arxiv.org/abs/2611.06859v1"
+        },
+        {
+          "label": "html",
+          "url": "https://arxiv.org/html/2611.06859v1"
+        },
+        {
+          "label": "pdf",
+          "url": "https://arxiv.org/pdf/2611.06859v1"
+        },
+        {
+          "label": "papers.cool",
+          "url": "https://papers.cool/arxiv/2611.06859v1"
+        }
+      ],
+      "tags": [
+        "cs.CL"
+      ],
+      "subject": "paper",
+      "source": "arxiv",
+      "score": 0.0,
+      "title_zh": "平衡等级代表性和量化: 文本嵌入中的性能权衡",
+      "content_zh": "分级文本嵌入模型提供了可变长的表示,而量化则降低了数值精度;两者都旨在提高计算效率. 这项工作是对这两种已确立的正统技术如何相互作用的经验性基准研究。 我们用四个基于变压器的嵌入模型来评价来自Massive Text Embedding Basic(MTEB)的38项任务,涵盖1D和2D的分级表示,结合32位,8位,和二进制量化,每个任务168个配置. 我们分别报告每个效率方面:理论/每个媒介存储和端到端评价时间。 根据与Nemenyi hoc后分析的Friedman测试,在统计学上,Int8的量化与对等分类和重排的flom32是无法区分的,其成本总体最高为1.5个百分点,而二进制的量化则在每一个任务类别中都严重恶化。 从统计学上看,将嵌入维度减半一次无法检测到高于16,000美元;连续两次将嵌入维度减半总是如此。 将8x维度减小与整数8相结合后,每个载体储存量将减少32x,达到基准效力的94.4%。 由于评估时间被测量过一次,我们把它们视为指示性的:我们没有发现量化能加速评估的证据,而中间层的取样则大大缩短了评估。 检索的降解速度远快于其他类别,因此我们报告每个任务类别的调查结果。"
+    },
+    {
+      "title": "LongBanana: An Expert-Verified Benchmark for Long-Context Multi-Reference Image Synthesis",
+      "content": "We introduce LongBanana, to our knowledge the first expert-designed and expert-verified benchmark for long-context multi-reference image synthesis in the age of agent-driven image generation. The task requires retrieving dispersed visual evidence, rejecting distractors, binding entities and relations, and composing one coherent final image from multiple references. LongBanana contains 90 carefully designed tasks organized by a 3-by-3 taxonomy; each task includes about 32 reference images, 20 constraints, and 50 evaluation items, yielding 4,670 expert-specified atomic evaluation items in total. Its graph-grounded evaluation design instantiates each task with reference images and an entity-relation graph, then converts node, edge, and whole-graph obligations into checklist items for Content Fidelity, Relational Binding, and Global Constraint Satisfaction. Reviewed expert labels include a 15% double-labeled subset with 89.4% exact agreement and 0.83 quadratic weighted kappa. We further introduce LongBanana-Gen, an agent-harness framework for long-horizon image generation; experiments show that minimal agent harnesses improve over direct generation, while a ReAct-Plan-Exec-Reflect (RPR) workflow yields harness-dependent gains by strengthening evidence grounding and repair. Together, LongBanana provides an auditable testbed for measuring dense visual evidence use and a shared target for developing stronger agent-driven image-generation systems. Code and data are available at the project page: https://long-banana.com/.",
+      "published_at": "2026-11-04T18:11:56+00:00",
+      "links": [
+        {
+          "label": "arxiv",
+          "url": "https://arxiv.org/abs/2611.06856v1"
+        },
+        {
+          "label": "html",
+          "url": "https://arxiv.org/html/2611.06856v1"
+        },
+        {
+          "label": "pdf",
+          "url": "https://arxiv.org/pdf/2611.06856v1"
+        },
+        {
+          "label": "papers.cool",
+          "url": "https://papers.cool/arxiv/2611.06856v1"
+        }
+      ],
+      "tags": [
+        "cs.CL"
+      ],
+      "subject": "paper",
+      "source": "arxiv",
+      "score": 0.0,
+      "title_zh": "LongBanana:长文多参考图像综合专家验证基准",
+      "content_zh": "我们介绍了Long Banana, 据我们所知,这是在代理驱动图像生成时代,第一个由专家设计并经过专家验证的长文多参考图像合成基准。 这项任务需要检索分散的视觉证据,拒绝分散注意力者,约束实体和关系,并从多个参考物中编织一个连贯的最终图像. Long Banana包含由3乘3分类法精心设计的90项任务;每项任务包括大约32个参考图像,20个限制,以及50个评价项目,总共产生4,670个专家指定的原子评价项目. 其以图表为基础的评价设计将每个任务与参考图像和实体关系图一起进行即时分析,然后将节点、边缘和全图义务转换成内容Fidelity、关系约束和全球约束满意度清单项目。 经审查的专家标签包括一个15%的双标签子集,准确协议为89.4%和0.83四方加权卡帕. 我们进一步引入了长视图像生成的代理harness框架LongBanana-Gen;实验显示,最小的代理电源比直接电源改进,而ReAct-Plan-Exec-Reflect(RPR)工作流程通过加强证据地面和修复而产生依赖电源的收益。 LongBanana公司共同提供了一个可审计的测试台,用于测量密集的视觉证据使用情况,以及开发更强大的代理驱动图像生成系统的共同目标。 项目网页上有代码和数据:https://long-banana.com/。"
+    },
+    {
+      "title": "Persona Perspectives: Adopting Viewpoints Reorganizes Representations in LLMs",
+      "content": "Common methods for monitoring features in large language models (LLMs) such as linear probes and sparse autoencoders (SAEs) assume that features maintain a consistent representation across contexts. LLMs, however, can flexibly adopt different perspectives or \"personas\" that suggest different underlying systems of conceptual relations. In this paper, we examine whether prompting an LLM to adopt a persona alters the representational geometry of the model's latent space. We extract representations of over 9,000 common words and 33 semantic axes from models adopting liberal and conservative political personas and compare these against two neutral baselines. We find that persona conditioning systematically alters both the projections of words onto semantic axes and the alignments among the axes themselves in directions consistent with the specified ideology. We then test the implications of this reorganization for two safety-relevant features: truthfulness and morality. Linear probes, SAE-based classifiers, and classifiers built from manually selected word representations, all trained without a persona, produce divergent results when applied to models conditioned on political personas, producing politically slanted ratings of truth and morality on controversial statements. These findings suggest that internal representations, as they are conventionally extracted, can exhibit different geometric relations when the model adopts personas, potentially undermining monitoring efforts.",
+      "published_at": "2026-11-04T18:05:17+00:00",
+      "links": [
+        {
+          "label": "arxiv",
+          "url": "https://arxiv.org/abs/2611.06848v1"
+        },
+        {
+          "label": "html",
+          "url": "https://arxiv.org/html/2611.06848v1"
+        },
+        {
+          "label": "pdf",
+          "url": "https://arxiv.org/pdf/2611.06848v1"
+        },
+        {
+          "label": "papers.cool",
+          "url": "https://papers.cool/arxiv/2611.06848v1"
+        }
+      ],
+      "tags": [
+        "cs.CL"
+      ],
+      "subject": "paper",
+      "source": "arxiv",
+      "score": 0.0,
+      "title_zh": "人物视角:采用视图点重组法学硕士课程的代表",
+      "content_zh": "在大型语言模型(LLMs)中,例如线性探测器和稀疏的自动编码器(SAEs)中,监测特征的常用方法假设特征在各种上下文中保持一致的表示. 然而,LLMS可以灵活地采用不同的观点或\"人\",暗示概念关系的不同基础体系. 在本文中,我们研究了促使LLM采用一个人物a是否改变了模型潜在空间的表示几何. 我们从采用自由主义和保守主义政治人物的模型中提取9 000多个通用词语和33个语义轴,并与两个中立基线进行比较。 我们认为,人性化条件系统地改变了对语义轴的预测以及轴心之间与特定意识形态一致的方向。 然后,我们检验这次重组对两个与安全有关的特征的影响:真实性和道德。 线性探测器、基于SAE的分类器和由人工选择的单词表达法构建的分类器,都未经人称培训,在适用于以政治人称为条件的模型时产生不同的结果,在有争议的言论上产生政治上偏向真实和道德的评级。 这些调查结果表明,内部表述,如按惯例提取的,在模型采用人时,可能显示不同的几何关系,从而可能破坏监测工作。"
+    },
+    {
+      "title": "Before You Continue: Evaluating Time-Sensitive Safety Awareness in Conversational Assistants",
+      "content": "Large language model (LLM) assistants increasingly help users with everyday activities that involve time-dependent constraints. However, users may not mention these constraints in later requests, requiring assistants to recognize and adjust their advice accordingly. To evaluate such capability, we introduce TASC (Temporal Action Safety in Conversation), a benchmark that evaluates whether LLMs apply time-dependent constraints when responding to conversational requests. TASC consists of 3,418 inputs derived from 128 templates, along with a separate set of 33 scenarios designed to compare models' ability to calculate elapsed time with their ability to apply that information. Across 13 models, assistants account for time-dependent constraints in only 30.5% of cases where the proposed action violates a rule, while rarely warning users unnecessarily. More importantly, models fail to apply these constraints in 62.1% of cases despite correctly calculating the elapsed time. Explicitly providing the timing resolves only about half of these failures, revealing a gap between temporal reasoning and its application in conversational advice.",
+      "published_at": "2026-11-04T17:54:49+00:00",
+      "links": [
+        {
+          "label": "arxiv",
+          "url": "https://arxiv.org/abs/2611.06839v1"
+        },
+        {
+          "label": "html",
+          "url": "https://arxiv.org/html/2611.06839v1"
+        },
+        {
+          "label": "pdf",
+          "url": "https://arxiv.org/pdf/2611.06839v1"
+        },
+        {
+          "label": "papers.cool",
+          "url": "https://papers.cool/arxiv/2611.06839v1"
+        }
+      ],
+      "tags": [
+        "cs.CL"
+      ],
+      "subject": "paper",
+      "source": "arxiv",
+      "score": 0.0,
+      "title_zh": "在您继续前: 在对话助理中评价时间敏感安全意识",
+      "content_zh": "大型语言模型(LLM)助理越来越多地帮助用户开展日常活动,这些活动涉及时间上的限制。 然而,用户在以后的要求中可能没有提到这些限制,要求助理们承认并相应调整其建议。 为了评估这种能力,我们引入了TASC(对话中的时空行动安全)这一基准,用以评价LLMS在回应对话请求时是否应用了时间上依赖的限制. TASC包含来自128个模板的3,418个输入,还有一套单独的33个设想方案,旨在比较模型计算过期时间的能力与应用这些信息的能力。 在所有13种模式中,助理在拟议行动违反规则的案件中只占30.5%,而很少不必要地警告用户。 更重要的是,模型未能在62.1%的案例中适用这些限制,尽管正确计算了过去的时间。 明确提供时间只能解决其中约一半的失误,揭示出时间推理与其在对话建议中的应用之间的差距."
+    },
+    {
+      "title": "LooM: Loop-Invariant Memory for Causal Encoder-Decoder Language Models",
+      "content": "Looped Transformers increase effective depth by re-executing shared layers, but three limitations hinder their adoption: memory grows with the loop count, compute can only be adjusted in whole-block steps, and the loop count is hard to change after training. We propose LooM (Loop-invariant Memory), which addresses each in turn. In a causal encoder-decoder (CED), LooM loops only the decoder layers after the first, which read a global memory written once per token, and each of them publishes the key-value (KV) entry for a token only on its first visit, so the cache does not grow with the loop count. These layers loop independently, providing every budget from 3 to 21 layer executions per token, and one model trained on randomly sampled budgets covers all of them without a router. With enough loops, LooM outperforms a single-pass baseline trained on the same data on language modeling, zero-shot accuracy and long-context perplexity, while using the same cache size. Our analysis further shows that the training budget distribution decides what extra depth buys. These results suggest that a CED is a natural place to loop: memory is written once, and depth becomes a budget chosen at deployment.",
+      "published_at": "2026-11-04T17:52:11+00:00",
+      "links": [
+        {
+          "label": "arxiv",
+          "url": "https://arxiv.org/abs/2611.06835v1"
+        },
+        {
+          "label": "html",
+          "url": "https://arxiv.org/html/2611.06835v1"
+        },
+        {
+          "label": "pdf",
+          "url": "https://arxiv.org/pdf/2611.06835v1"
+        },
+        {
+          "label": "papers.cool",
+          "url": "https://papers.cool/arxiv/2611.06835v1"
+        }
+      ],
+      "tags": [
+        "cs.CL"
+      ],
+      "subject": "paper",
+      "source": "arxiv",
+      "score": 0.0,
+      "title_zh": "LooM: Causal Encoder-Decoder 语言模型的循环-内存",
+      "content_zh": "循环变换器通过重新激活共享层来增加有效深度,但有三种限制阻碍其采用:内存随循环计数而增长,计算只能以整块步骤调整,循环计数在训练后难以改变. 我们提议LooM(英语:Loop-invariant Memory),它依次讨论每个问题. 在因果编码器-解码器(CED)中,LooM环绕仅是首个之后的解码器层,每个符符读一次一个全局内存,每个符符只在其第一次访问时发布一个符符的密钥值(KV)条目,所以缓存不会随环数增长. 这些层层循环是独立的,每个符号提供从3到21层的每层处决预算,一个随机抽样预算的模型经过培训,在没有路由器的情况下覆盖所有的预算. 有了足够的环路,LooM就超越了在语言建模,零射精度和长康文字复杂度等相同数据上训练的单路基准,同时使用相同的缓存大小. 我们的分析进一步表明,培训预算的分配决定了额外深度的购买力。 这些结果表明,CED是循环的自然地点:内存写一次,深度成为部署时选择的预算."
+    },
+    {
+      "title": "SAUCE: Summary Analysis Using Conversation Entailment",
+      "content": "With the growing need for evaluating Large Language Models (LLMs) and their applications to speech, challenges persist in summarizing and evaluating conversations that lack a clear end goal. We introduce SAUCE -- a reference-free, fact-based evaluation pipeline for cross-lingual conversational speech summarization. It measures the accuracy and the fact coverage of a summary through the entailment between conversation and text. We compare SAUCE against several popular summarization metrics and demonstrate the effectiveness of capturing information loss due to transcription and translation error and identifying broken summaries. Crucially, unlike black-box LLM evaluators or dense embedding metrics, SAUCE is inherently explainable: it maps summary scores to discrete, verifiable facts, allowing users to pinpoint exact hallucinations or omissions. We illustrate how this interpretability helps developers systematically profile LLM behaviors and gives end-users an actionable tool to verify summary accuracy in noisy, real-world conditions. Preliminary investigations show SAUCE strongly align with human judgment.",
+      "published_at": "2026-11-04T17:25:40+00:00",
+      "links": [
+        {
+          "label": "arxiv",
+          "url": "https://arxiv.org/abs/2611.06812v1"
+        },
+        {
+          "label": "html",
+          "url": "https://arxiv.org/html/2611.06812v1"
+        },
+        {
+          "label": "pdf",
+          "url": "https://arxiv.org/pdf/2611.06812v1"
+        },
+        {
+          "label": "papers.cool",
+          "url": "https://papers.cool/arxiv/2611.06812v1"
+        }
+      ],
+      "tags": [
+        "cs.CL"
+      ],
+      "subject": "paper",
+      "source": "arxiv",
+      "score": 0.0,
+      "title_zh": "SAUCE:利用对话进行简要分析",
+      "content_zh": "随着对大语言模型及其语音应用的评价需求日益增长,在总结和评价缺乏明确最终目标的对话方面仍然存在挑战。 我们介绍SAUCE -- -- 一个无参考、基于事实的评估程序,用于跨语言对话的演讲总结。 它通过对话与文本之间的必然关系,衡量摘要的准确性和事实覆盖面。 我们比较了SCUCE与几个流行的总结计量标准,并展示了记录因抄录和翻译错误而导致的信息损失以及识别断裂摘要的有效性. 关键是,与黑箱LLM评价器或密集嵌入度量衡不同,SAUCE本质上是可以解释的:它将汇总分数映射到离散的,可核实的事实,允许用户精确地确定准确的幻觉或遗漏. 我们说明这种可解释性如何帮助开发者系统地剖析LLM行为,并给予最终用户一个可操作的工具,以验证在吵闹的现实世界条件下的简要准确性. 初步调查显示SAUCE与人类判断非常一致."
+    },
+    {
+      "title": "LLMs Don't Know What They Know: Benchmarking Temporal Self-Knowledge for Financial Backtesting",
+      "content": "Financial backtests of large language models (LLMs) are meaningful only if the model did not already know the outcomes it is asked to predict. Practitioners guard against this by trusting a vendor's stated knowledge cutoff, by asking the model what it knows, or by instructing it to answer as of a past date. To verify whether any of these safeguards can be trusted, we introduce FinDendro, a benchmark of 2,226 dated U.S. facts from 1999 to 2026, covering monthly macroeconomic series, month-end stock prices and Federal Reserve decisions. Each fact yields four prompts: a value question, Recall and Predict questions that pair each candidate value with a claim of knowing or guessing without a declared date, and a Predict question with a historical declared date. Controls for persistence and dominant outcomes keep chance accuracy near 0.27. Results show that for most frontier models, self-reports understate knowledge. GPT-5 answers 76% of controlled facts correctly but claims to know 38%, and answers 61% of the facts it says it does not know. Knowledge claims can persist beyond the measured knowledge boundary, by up to seven quarters, and a declared date removes most of the claims of prior knowledge while leaving accuracy unchanged. Backtests inside a model's training window therefore cannot be certified leak-free by self-report, instruction or stated cutoff. These findings motivate behavioral measurement of temporal knowledge boundaries, and FinDendro provides a benchmark and procedure for selecting backtest periods based on demonstrated factual knowledge.",
+      "published_at": "2026-11-04T17:24:02+00:00",
+      "links": [
+        {
+          "label": "arxiv",
+          "url": "https://arxiv.org/abs/2611.06808v1"
+        },
+        {
+          "label": "html",
+          "url": "https://arxiv.org/html/2611.06808v1"
+        },
+        {
+          "label": "pdf",
+          "url": "https://arxiv.org/pdf/2611.06808v1"
+        },
+        {
+          "label": "papers.cool",
+          "url": "https://papers.cool/arxiv/2611.06808v1"
+        }
+      ],
+      "tags": [
+        "cs.CL"
+      ],
+      "subject": "paper",
+      "source": "arxiv",
+      "score": 0.0,
+      "title_zh": "LLMS 不知道他们知道什么:为金融反测试确定时间自我认识的基准",
+      "content_zh": "大语言模型(LLMs)的财务反证只有在模型已经不知道它被要求预测的结果时才有意义. 从业人员通过信任一个供应商申报的知识截断、询问该模型知道什么或指示该模型在过去某个日期作出答复来防范这种情况。 为了核实这些保障措施是否可信,我们采用了FinDendro,这是1999年至2026年美国事实的2 226个基准,涵盖每月宏观经济系列、月终股票价格和美联储的决定。 每个事实都产生四个因素:价值问题、将每个候选人的价值与声称知道或猜测没有宣布的日期联系起来的回顾和预测问题,以及将预测性问题与历史宣布的日期联系起来的问题。 对持久性和主要结果的控制使概率精确度接近0.27。 结果表明,对于大多数前沿模型,自我报告低估了知识。 GPT-5正确回答76%的控制事实,但声称知道38%,回答61%说不知道的事实. 知识主张可以持续超过所计量的知识界限,最长可达7/4,一个宣布的日期可以消除以前知识主张的大部分,同时保持准确性不变. 因此,模型培训窗口内的反测试不能通过自我报告、指示或说明的截断来证明无漏。 这些发现激励了对时空知识边界的行为测量,FinDendro提供了基于已证实的事实知识选择回溯测试期的基准和程序."
+    },
+    {
+      "title": "Measuring Risk, Not Harm: Detecting Psychological Harm Risk Factors in LLM Conversations",
+      "content": "Psychological harms from interactions with large language models cannot be monitored directly because they may emerge over repeated interactions and depend strongly on subjective individual user context. We propose measuring risk, not harm: detecting observable AI behaviors that constitute risk factors for psychological harm at the AI response level and aggregating these signals to support longitudinal monitoring. We operationalize eight such behaviors and construct a synthetic multi-label corpus of 47,062 AI responses and 373,873 response-factor labels, with targeted human annotations for validation and evaluation. We then compare trained embedding-based classifiers, direct LLM judging, and a classifier--judge cascade. All detectors are model-agnostic and operate only on LLM outputs, requiring no access to internal model states. We apply these detectors to several out-of-distribution human-AI conversation data sets from prior research. On held-out human-labeled data, the best cascade achieves macro precision of 0.86, recall of 0.76, and F1 of 0.79. On WildChat, it reduces LLM-judge calls by 97.1\\% relative to direct judging. On DelusionEval, risk-factor detections cluster within conversations. Together, our results show that response-level behavioral risk-factor detection can provide a scalable measurement layer for longitudinal psychological-safety monitoring without conflating observable AI behavior with latent user harm.",
+      "published_at": "2026-11-04T17:22:23+00:00",
+      "links": [
+        {
+          "label": "arxiv",
+          "url": "https://arxiv.org/abs/2611.06806v1"
+        },
+        {
+          "label": "html",
+          "url": "https://arxiv.org/html/2611.06806v1"
+        },
+        {
+          "label": "pdf",
+          "url": "https://arxiv.org/pdf/2611.06806v1"
+        },
+        {
+          "label": "papers.cool",
+          "url": "https://papers.cool/arxiv/2611.06806v1"
+        }
+      ],
+      "tags": [
+        "cs.CL"
+      ],
+      "subject": "paper",
+      "source": "arxiv",
+      "score": 0.0,
+      "title_zh": "衡量风险,而不是伤害:检测心理 LLM 对话中的危害风险因素",
+      "content_zh": "与大语言模型互动产生的心理伤害无法直接监测,因为它们可能从反复互动中产生,并严重依赖主观个体用户背景. 我们建议衡量风险,而不是伤害:在AI反应层面检测构成心理伤害风险因素的可见AI行为,并汇总这些信号以支持纵向监测. 我们操作了八种这种行为,并构建了47,062人工智能回复和373,873个响应因子标签的合成多标签体,并附有有针对性的人类说明以供验证和评价。 然后我们比较训练有素的嵌入式分类器,直接进行LLM判断,以及进行分类式判断的级联. 所有探测器都具有模型不可知性,只使用LLM输出,不需要进入内部模型状态. 我们把这些探测器应用到 之前研究的几套分散式 人类-AI对话数据集中 根据被搁置的人类标记数据,最好的级联的宏观精确度为0.86,回顾0.76和F1为0.79。 在WildChat上,与直接判断相比,LLM法官的电话减少了97.1+%。 在DelusionEval上,在对话中进行风险因素检测集群. 我们的结果表明,反应层面的行为风险因素检测可为纵向心理-安全监测提供一个可伸缩的测量层,而不会将可观察到的AI行为与潜在的用户伤害混为一谈。"
+    },
+    {
+      "title": "Ranking Agreement Does Not Reveal Paragraph-Edit Agreement in Two Released Paper Acceptance Predictors",
+      "content": "A fast acceptance classifier could select revisions for a slower evaluator. We ask whether agreement on existing papers supports that use. We compare a classifier of word and document features with two released text-only acceptance predictors fine-tuned from the same language model with three billion parameters. For 198 papers from the International Conference on Learning Representations, we compare model rankings of the original papers and of paragraph rewrites screened automatically for unchanged facts, claim strength, and attribution. The classifier ranks original papers closely with one predictor and moderately with the other, but shows no detectable agreement with either on which rewrites raise scores. The tests specified in advance used reduced numerical precision. Rounding error dominated the small score responses. We therefore rescored the released weights in full 32-bit precision as a post hoc check; edit agreement remained near zero. At this precision, when each predictor chooses among five rewrites per paper, its average raw score is under two points out of 100 higher than with random choice. The evidence covers presentation rewrites and two open predictors from one family; transfer to costly evaluators remains untested. Revision selectors should therefore be checked against the intended evaluator on the revisions they rank.",
+      "published_at": "2026-11-04T17:03:30+00:00",
+      "links": [
+        {
+          "label": "arxiv",
+          "url": "https://arxiv.org/abs/2611.06789v1"
+        },
+        {
+          "label": "html",
+          "url": "https://arxiv.org/html/2611.06789v1"
+        },
+        {
+          "label": "pdf",
+          "url": "https://arxiv.org/pdf/2611.06789v1"
+        },
+        {
+          "label": "papers.cool",
+          "url": "https://papers.cool/arxiv/2611.06789v1"
+        }
+      ],
+      "tags": [
+        "cs.CL"
+      ],
+      "subject": "paper",
+      "source": "arxiv",
+      "score": 0.0,
+      "title_zh": "在两个发行的纸张接受指数中排位协议不揭示段落编辑协议",
+      "content_zh": "一个快速接受分类器可以为速度较慢的评价员选择修改. 我们问,就现有文件达成协议是否支持这种使用。 我们比较了一个单词和文档特性的分类器,与两个发布的仅文本的接受预测器从同一个语言模型中微调了30亿参数. 对于国际学习代表性会议的198篇论文,我们比较了对原始论文和段落进行自动重排的模型排名,以了解未变的事实、主张的力量和归属。 分类者将原始文件与一个预测器进行紧密的排序,与另一个预测器进行中度的排序,但并没有显示任何一种可察觉的协议,因为重写者会提高分数。 预先规定的试验采用了较低的数值精度。 四舍五入的错误在小分数的答复中占主导地位。 因此,我们以32位的精确度将释放的重量重新计分,作为临时检查;编辑协议仍然接近零。 在这种精准度下,当每个预测器在每张纸的5个重写中选择时,其平均原始得分低于比随机选择高100分中的2分. 证据包括一个家庭的列报重写和两个公开预测器;向费用昂贵的评价员的转让仍未经过测试。 因此,应对照预定评价人员对修订工作进行排序检查。"
+    },
+    {
+      "title": "Template Gap Reconstruction for Shell Output Simulation with Small Language Models",
+      "content": "Small language models offer a compact basis for shell simulation without executing submitted commands, but full-output decoding requires them to predict recurring utility structure alongside content that varies across executions. We introduce template gap reconstruction (TGR), which supplies reusable output literals interspersed with sentinels to be interleaved with autoregressively generated gaps. A template selector chooses which template to be reconstructed, with the empty template retaining full-output decoding. We construct a template bank from 18.7 million outputs collected across heterogeneous execution environments and train a template selector and five reconstruction models initialized from various small language model checkpoints on a target environment excluded from bank construction. Evaluation demonstrates that TGR improves output edit similarity (O-ES) over full-output decoding (FOD) when the optimal template covers more than 25\\% of the template, while performing similarly for lower-coverage outputs. Additionally, TGR outperforms FOD for shorter gap sequences, with O-ES values of 0.964 and 0.812, respectively, while maintaining similar performance for longer sequences. TGR reduces the number of tokens generated by 26.3--38.3\\% across used tokenizer families. These results support using a reusable output structure as a practical design choice for small shell simulators, improving response fidelity and shortening generation targets while keeping template selection and residual prediction central to response quality.",
+      "published_at": "2026-11-04T16:17:28+00:00",
+      "links": [
+        {
+          "label": "arxiv",
+          "url": "https://arxiv.org/abs/2611.06731v1"
+        },
+        {
+          "label": "html",
+          "url": "https://arxiv.org/html/2611.06731v1"
+        },
+        {
+          "label": "pdf",
+          "url": "https://arxiv.org/pdf/2611.06731v1"
+        },
+        {
+          "label": "papers.cool",
+          "url": "https://papers.cool/arxiv/2611.06731v1"
+        }
+      ],
+      "tags": [
+        "cs.CL"
+      ],
+      "subject": "paper",
+      "source": "arxiv",
+      "score": 0.0,
+      "title_zh": "用小语言模型模拟 Shell 输出的模板缺口重建",
+      "content_zh": "小型语言模型为壳体模拟提供了一个紧凑的基础,而无需执行提交的命令,但全输出代码要求它们与不同执行的内容一起预测经常性的效用结构. 我们采用了模板差距重建(TGR),它提供可重复使用的产出文字,与哨兵相交,与自动产生的差距相交。 模板选择器选择要重建的模板,空模板保留全输出代码. 我们从不同执行环境收集的1 870万项产出中建造一个模板库,并培训一个模板选择器和五个重建模型,这些模型是从各种小语言模式检查站启动的,其目标环境被排除在银行建筑之外。 评价表明,当最佳模板涵盖模板的25+%以上时,TGR会改进产出编辑的相似性(O-ES),而不是全产出代码(FOD),同时对覆盖度较低的产出进行类似的处理。 此外,TGR在较短的空隙序列方面优于FOD,O-ES值分别为0.964和0.812,同时保持较长序列的类似性能. TGR减少26.3-38.3XXX在常用的代币家庭产生的代币数量. 这些结果支持使用可重复使用的产出结构作为小壳模拟器的实用设计选择,提高响应忠心度并缩短生成目标,同时将模板选择和剩余预测保持在响应质量的核心."
+    },
+    {
+      "title": "Turns Matter: Advancing Streaming Video RL via Turn-Level Credit",
+      "content": "Streaming video understanding requires models to repeatedly decide whether to respond or continue observing. Recently, Group Relative Policy Optimization (GRPO) has been applied to this setting, with existing approaches emphasizing reward design while retaining a single trajectory-level advantage across turns. Such shared credit can reinforce redundant replies after earlier successes and discourage useful follow-ups after earlier failures. We propose TurnWise, a turn-level GRPO framework that aligns learning with individual streaming decisions. TurnWise addresses the mismatch between trajectory-level feedback and turn-level interaction, promoting informative responses and reducing redundancy. Specifically, turn-level credit assignment uses silence-completed prefix scoring to construct group-relative advantages from each decision's remaining return, separating its learning signal from earlier rewards. Turn-mean policy optimization averages token losses within each turn and then across turns, giving response and waiting decisions equal weight regardless of output length. These complementary designs improve streaming policy learning without a learned critic or additional rollouts. Extensive experiments show our method outperforms prior RL approaches for streaming video understanding.",
+      "published_at": "2026-11-04T16:16:27+00:00",
+      "links": [
+        {
+          "label": "arxiv",
+          "url": "https://arxiv.org/abs/2611.06728v1"
+        },
+        {
+          "label": "html",
+          "url": "https://arxiv.org/html/2611.06728v1"
+        },
+        {
+          "label": "pdf",
+          "url": "https://arxiv.org/pdf/2611.06728v1"
+        },
+        {
+          "label": "papers.cool",
+          "url": "https://papers.cool/arxiv/2611.06728v1"
+        }
+      ],
+      "tags": [
+        "cs.CL"
+      ],
+      "subject": "paper",
+      "source": "arxiv",
+      "score": 0.0,
+      "title_zh": "Turns matter: 通过 Turn- Level 信用来推进视频 RL",
+      "content_zh": "流畅的视频理解需要模型反复决定是回应还是继续观测. 最近,集团相对政策优化(GRPO)被应用于这一环境,现有做法强调奖励设计,同时保留单一的轨迹水平优势。 这种共享的信用可以强化先前成功之后的多余答复,并阻碍先前失败之后的有益后续行动。 我们提议TurnWise,这是一个使学习与个别流化决定相一致的回合级GPRO框架。 TurnWise处理轨迹级反馈和回合级互动之间的不匹配,促进信息化响应,减少冗余. 具体地说,回合级的信用分配使用静态完成的前缀评分来构建与每个决定的剩余回报有关的优势,将其学习信号与早期的奖励区分开来. 转动政策优化平均在每个转动周期内和转动周期内出现象征性损失,无论产出长度如何,给予响应和等待决定同等权重. 这些互补设计改进了无学问批评者或额外推出的流派政策学习。 广泛的实验显示,我们的方法在流传视频理解方面超过了以往的RL方法。"
+    },
+    {
+      "title": "Reasoning over Non-Parametric Memory in Multilingual LLMs: A Cognitive-Based Analysis of Relational Knowledge",
+      "content": "Retrieval-augmented generation (RAG) assumes that language models can reason over relations stated in their context rather than fall back on associations memorized during pretraining. We study this evidence-conditioned relational reasoning in isolation, with the facts supplied directly in the prompt rather than retrieved. \\textsc{Rel-Bloom} is a controlled multilingual diagnostic of 450 multiple-choice questions built from 30 Wikidata relations; the same source relations are instantiated at five Bloom-inspired levels (Remember, Understand, Apply, Analyze, Evaluate) and under three veracity conditions (Factual, Counterfactual, Neutralized). Across 43 models, six languages, and two multilingual settings (226,800 predictions), three findings stand out. First, accuracy drops sharply from Apply to Analyze in every evaluated open-weight model series, reaching 47.2 percentage points for the Large Granite bucket, but not for either Gemini model. Second, Evaluate items remain a bottleneck even for models near ceiling on the other task types: Gemini~3.1 Pro averages 99.5\\% on the other four levels but 60.7\\% on Evaluate. Third, item- and relation-level difficulty rankings are consistently preserved across languages, indicating a difficulty structure partly shared across languages within this benchmark. Across knowledge conditions, Counterfactual contexts are generally harder than Factual ones, while removing entity identities can improve higher-level performance in some model regimes. Greater model capability therefore does not by itself ensure reliable reasoning over supplied relational evidence. Relevant resources are available at: https://huggingface.co/spaces/QCRI/non-parametric-memory-relational-reasoning.",
+      "published_at": "2026-11-04T16:11:26+00:00",
+      "links": [
+        {
+          "label": "arxiv",
+          "url": "https://arxiv.org/abs/2611.06715v1"
+        },
+        {
+          "label": "html",
+          "url": "https://arxiv.org/html/2611.06715v1"
+        },
+        {
+          "label": "pdf",
+          "url": "https://arxiv.org/pdf/2611.06715v1"
+        },
+        {
+          "label": "papers.cool",
+          "url": "https://papers.cool/arxiv/2611.06715v1"
+        }
+      ],
+      "tags": [
+        "cs.CL"
+      ],
+      "subject": "paper",
+      "source": "arxiv",
+      "score": 0.0,
+      "title_zh": "多种语言课程中非参数内存的原因:基于认知的关联知识分析",
+      "content_zh": "检索增强的生成(RAG)假设语言模型可以解释其上下文所述的关系,而不是回到在预训期间被记住的协会。 我们孤立地研究这种以证据为条件的关系推理,直接提供事实,而不是直接取回。 \\textsc{Rel-Bloom}是一种从30 Wikidata关系建立起来的450个多选择问题的受控多语言诊断;同样的源关系在五个Bloom启发级别(记住,理解,应用,分析,评价)和三个真实条件下(事实,反事实,中立)被即时化. 在43个模型、6种语言和2个多语种环境(226 800个预测)中,有3个结论突出。 首先,在每个评估的开放重量模型系列中,精度从应用到分析急剧下降,大花岗岩桶的精度达到47.2个百分点,但双子座模型均没有达到47.2个百分点. 第二,我们... 即便对其他任务类型接近上限的模型而言,评价项目仍是一个瓶颈:双子座~3.1 其他四个级别平均有99.5×××, 而评价为60.7×××。 第三,各语文之间始终保留项目和关系级难度排名,表明在本基准内各语文之间部分共享的困难结构。 在整个知识条件下,反事实环境一般比事实环境更困难,而去除实体身份可以提高一些模型制度中的更高水平的性能. 因此,增强模型能力本身并不能确保就所提供的关系证据进行可靠的推理。 有关资源可在以下网址查阅:https://huggingface.co/spaces/QCRI/n-parameroy-memory-relation-reasoning。"
+    },
+    {
+      "title": "ALTO: African and Levantine Tech-Facilitated Gender-Based Violence Corpus",
+      "content": "Tech-facilitated gender based violence (TFGBV) is a pervasive online harm affecting women and gender minority groups through its many direct and covert forms. Current models and annotated datasets for gendered harm detection are dominated by data from, and models trained in, Global North languages. In collaboration with civil society organizations (CSOs) from Jordan, Francophone West Africa, and Kenya, we developed a community-led approach to crowdsource culturally and linguistically relevant instances of TFGBV in Levantine Arabic, African French, and Swahili. We annotated the crowdsourced data using active learning to develop a small but performant dataset (N=3022) called ALTO to improve TFGBV detection in the three languages. Through benchmarking and fine-tuning experiments, we show that existing harmful content detection models show poor TFGBV recall within ALTO and improve with fine-tuning. We found that models often miss covert harms across all languages, while error rates are markedly higher in Swahili. We report the experimental results and release the annotation taxonomy, dataset, and trained models.",
+      "published_at": "2026-11-04T16:06:15+00:00",
+      "links": [
+        {
+          "label": "arxiv",
+          "url": "https://arxiv.org/abs/2611.06706v1"
+        },
+        {
+          "label": "html",
+          "url": "https://arxiv.org/html/2611.06706v1"
+        },
+        {
+          "label": "pdf",
+          "url": "https://arxiv.org/pdf/2611.06706v1"
+        },
+        {
+          "label": "papers.cool",
+          "url": "https://papers.cool/arxiv/2611.06706v1"
+        }
+      ],
+      "tags": [
+        "cs.CL"
+      ],
+      "subject": "paper",
+      "source": "arxiv",
+      "score": 0.0,
+      "title_zh": "ALTO: 非洲和黎凡丁技术促进性别暴力公司",
+      "content_zh": "技术推动的性别暴力是一种普遍存在的在线伤害,通过许多直接和隐蔽的形式影响妇女和性别少数群体。 目前用于检测性别危害的模型和附加说明的数据集以来自全球北方语言的数据和培训的模型为主。 我们与来自约旦、西非法语国家和肯尼亚的民间社会组织合作,制订了一种由社区牵头的办法,以利万丁语、非洲法语和斯瓦希里语将过渡联邦政府的文化和语言相关案例集中起来。 我们用积极学习来开发一个名为ALTO的小型但能发挥效能的数据集(N=3022)来说明众包数据,以改善对三种语言的TRABBV的检测。 通过制定基准和微调试验,我们显示,现有的有害内容检测模型显示,ALTO内部的TRABV召回情况不佳,并经过微调而改进。 我们发现模型经常错过所有语言的隐蔽伤害,而斯瓦希里语的误差率明显较高. 我们报告实验结果 发布注释分类学 数据集 和训练有素的模型"
+    },
+    {
+      "title": "Beyond accuracy: what AI assurance needs to establish in public services",
+      "content": "Public bodies increasingly rely on AI-produced evidence, including classifications, summaries and assessments. These outputs can inform policy decisions and service delivery, making their reliability a matter of public accountability. Establishing whether this evidence can be relied upon requires testing its outputs and examining how organisations decide whether those tests are sufficient. We combine technical evaluation with analysis of AI governance requirements, informed by measurement theory and management-based regulation. We compare eight GPT-4o configurations classifying 1,200 UK Prime Minister's Questions into 21 policy topics, against human-coded labels and across unchanged repeats. Accuracy ranges from 68.2% to 70.3%, yet 24.3% of questions receive different labels, with changes in topic shares and rankings. Configurations agree more with one another than with human coding: agreement does not guarantee correctness. Under the implemented score-extraction procedure, the proportion flagged for human review ranges from 0.9% to 41.0%. We analyse 37 UK and EU policy documents. Both sets expect testing and oversight, but reporting expectations do not consistently cover changing answers, shared errors, selective evaluation, substantive conclusions or review routing. Some UK guidance explicitly addresses stability. The UK sample emphasises public bodies checking their own use; the EU places substantial testing duties on providers while leaving them important choices about measures and acceptance thresholds. Without appropriate checks, evidence could misrepresent policy issues, redirect attention or resources, and leave errors undetected. Public policy should require organisations to justify reliance through checks beyond aggregate accuracy, clear responsibility, access to expertise and scrutiny of results.",
+      "published_at": "2026-11-04T15:31:51+00:00",
+      "links": [
+        {
+          "label": "arxiv",
+          "url": "https://arxiv.org/abs/2611.06655v1"
+        },
+        {
+          "label": "html",
+          "url": "https://arxiv.org/html/2611.06655v1"
+        },
+        {
+          "label": "pdf",
+          "url": "https://arxiv.org/pdf/2611.06655v1"
+        },
+        {
+          "label": "papers.cool",
+          "url": "https://papers.cool/arxiv/2611.06655v1"
+        }
+      ],
+      "tags": [
+        "cs.CL"
+      ],
+      "subject": "paper",
+      "source": "arxiv",
+      "score": 0.0,
+      "title_zh": "超出准确性:大赦国际的保证需要在公共服务中确立什么",
+      "content_zh": "公共机构越来越依赖大赦国际提供的证据,包括分类、摘要和评估。 这些产出可以为政策决定和提供服务提供信息,使其可靠性成为公共问责问题。 要确定是否可以依赖这些证据,就必须测试其产出,并审查各组织如何决定这些测试是否充分。 我们把技术评估与AI治理要求的分析结合起来,以衡量理论和管理监管为基础。 我们比较了8个GPT-4o配置,将1,200个英国首相问题分为21个政策主题,对照人码标签和没有改变的重复。 准确率从68.2%到70.3%不等,然而24.3%的提问收到不同的标签,话题份额和排名都有变化. 配置相互之间比人类编码更一致:协议不能保证正确性. 根据已执行的分数提取程序,标注给人审查的比例从0.9%到41.0%不等。 我们分析了37份联合王国和欧盟政策文件。 这两套系统都期望进行测试和监督,但报告预期并不始终涵盖不断变化的答案、共同错误、选择性评价、实质性结论或审查路径。 联合王国的一些指导明确涉及稳定问题。 联合王国的样本强调公共机构检查自己的用途;欧盟对供应商规定了大量的测试义务,同时让他们对措施和接受阈值作出重要选择。 没有适当的检查,证据可能歪曲政策问题,转移注意力或资源,使错误不被察觉。 公共政策应当要求各组织通过超出总体准确性、明确责任、获得专门知识和对结果进行审查的检查来证明依赖的合理性。"
+    },
+    {
+      "title": "Replicability, Reproducibility, and Robustness in Political and Social Science Research with Large Language Models",
+      "content": "This chapter addresses the central reproducibility problem of research with large language models. LLM output is probabilistic and varies across models and versions, which can have significant effects on downstream statistical results. The chapter distinguishes between replicability, reproducibility, and robustness, and proposes a probabilistic standard based on the distribution of results, not identical outputs. It introduces a standardized prompt script, tests within-model variation for encoders and decoders, and develops error-structure analysis to diagnose where models err and whether their errors align. Using three datasets, the chapter shows that measurement choice can reverse the sign of downstream regression coefficients. Existing design-based corrections with gold-labeled subsamples restore validity, but come at the cost of estimate precision. The main contribution of the chapter is a stacked ensemble of open-weight models that improves precision in the correction step while retaining estimate validity.",
+      "published_at": "2026-11-04T15:20:03+00:00",
+      "links": [
+        {
+          "label": "arxiv",
+          "url": "https://arxiv.org/abs/2611.06639v1"
+        },
+        {
+          "label": "html",
+          "url": "https://arxiv.org/html/2611.06639v1"
+        },
+        {
+          "label": "pdf",
+          "url": "https://arxiv.org/pdf/2611.06639v1"
+        },
+        {
+          "label": "papers.cool",
+          "url": "https://papers.cool/arxiv/2611.06639v1"
+        }
+      ],
+      "tags": [
+        "cs.CL"
+      ],
+      "subject": "paper",
+      "source": "arxiv",
+      "score": 0.0,
+      "title_zh": "用大语言模型进行政治和社会科学研究的可复制性、可复制性和强性",
+      "content_zh": "本章论述大语言模型研究的中心再生产问题. LLM输出是概率性的,各模型和版本不同,可对下游统计结果产生重大影响. 本章区分了可复制性,可复制性,稳健性,并提出了基于结果分配的概率标准,而不是相同的产出. 它引入了标准化的即时脚本,测试编码器和解码器的模型内变异,并开发出错误结构分析,以判断模型哪里出错以及其错误是否一致. 本章使用三个数据集,表明测量选择可以逆转下游回归系数的标志. 现有的以设计为基础的带有金色标记的子样本的校正恢复了有效性,但以估计精度为代价。 该章的主要贡献是叠装的开量模型组合,在保持估计有效性的同时提高校正步骤的精度."
+    },
+    {
+      "title": "When Do Summaries Become Instructions? Unsupported Policy in LLM Agents' Self-Written Handoff Summaries",
+      "content": "Long-running LLM agents compact their context, replacing most history with a summary. We ask whether handoff summaries state permissions or requirements the record does not support, whether such sentences change what the next instance (the successor) does, and where they come from. Synthetic tool-use tasks carry a ground-truth permission ledger; same-snapshot replay reruns the successor with those whole sentences replaced by neutral filler. Two AI readers, reading only rule-flagged held-out summaries, confirmed unsupported restrictions in 1.2% and 2.4% of all readable summaries from two open-weight models, and unsupported authorizations in 0.1% and 1.3%. For restrictions, a pre-specified replay test was not significant (p = 0.58); a follow-up, planned after it, found a fragile effect (p = 0.027). Neutralizing false approvals cut unauthorized actions from 24 to 7 of 120 held-out runs (post hoc; later set: 17 to 11 of 48). Most development restrictions followed the agent's earlier reasoning that an action needs approval (post hoc). In pre-specified tests, replacing the system prompt's \"Some actions need approval.\" with one saying where requirements come from cut unsupported restrictions from 5.0% to 1.8% of development summaries and, on held-out templates, from 1.8% to 0.3% (both p < 10^-9), while requests for approvals the ledger requires barely changed. Code and data: https://github.com/Chuw1/handoff-audit",
+      "published_at": "2026-11-04T14:12:09+00:00",
+      "links": [
+        {
+          "label": "arxiv",
+          "url": "https://arxiv.org/abs/2611.06545v1"
+        },
+        {
+          "label": "html",
+          "url": "https://arxiv.org/html/2611.06545v1"
+        },
+        {
+          "label": "pdf",
+          "url": "https://arxiv.org/pdf/2611.06545v1"
+        },
+        {
+          "label": "papers.cool",
+          "url": "https://papers.cool/arxiv/2611.06545v1"
+        }
+      ],
+      "tags": [
+        "cs.CL"
+      ],
+      "subject": "paper",
+      "source": "arxiv",
+      "score": 0.0,
+      "title_zh": "总结何时成为指示? LLM 代理自写手势摘要中不支持的政策",
+      "content_zh": "长期运行的LLM代理压缩了他们的上下文,以摘要取代大多数历史. 我们询问,交接摘要是否说明记录不支持授权或要求,这些句子是否改变下个案例(继承者)的工作,以及它们来自何处。 合成工具- 使用任务带有一个地面真实权限分类账; 同一 snapshot 重播后继者, 并用中性填充器取代整个句子 。 两位AI阅读者只阅读标有规则的搁置摘要,证实两个开放量级模型所有可读摘要的1.2%和2.4%有不支持的限制,以及0.1%和1.3%。 对于限制,预设的重播测试并不显著(p=0.58);后续计划之后,后续发现脆弱效应(p=0.027). 消除虚假的核准行为将未经授权的行动从120次搁置(事后临时安排;后期安排:48次搁置中的17次削减至11次)中的24次削减至7次。 大多数发展限制都遵循了代理人早先的推理,即一项行动需要批准(事后临时). 在预先指定的测试中,将系统提示的“某些行动需要批准”替换为“要求从不支持的开发摘要的5.0%削减到1.8%,在搁置的模板中,要求从1.8%削减到0.3%(这两页都 < 10^-9),而要求批准分类账的要求几乎没有改变。 代码和数据:https://github.com/Chuw1/handoff-audit"
+    },
+    {
+      "title": "Dialect Matters: A Dialect-Aware Baseline for Igala-English Machine Translation",
+      "content": "The massive permeability of intelligent systems in every sphere of human activities have greatly enhanced clarity, ease of work, and increased general global understanding which has significantly awaken the use of intelligent systems by all users. Intelligent systems greatly rely on precise dataset/corpus for the correctness of their output. Despite efforts by researchers to address Low-resource language in the Natural Language Processing (NLP), Igala still has zero parallel corpora despite efforts by researchers. We present a dialect-aware baseline for Igala-English machine translation, among first open systems and first with dialectal variation analysis. Our dataset of 1137 sentences (899 training) is first with dialect tags: Idah 459 (40.4%), Ankpa 297 (26.1%), Ibaji 160 (14.1%), Other 187 (16.4%), Ogugu 32 (2.8%). Same English yields 20-60 Igala forms. Mixed-dialect training achieves balanced BLEU 11.66 versus Idah-only model which drops 4.7 BLEU on Ibaji (13.2 on Idah, 8.5 on Ibaji), proving dialect fairness requires mixing. Fine-tuned from Helsinki-NLP/opus-mt-en-mul (78M), epoch ablation shows convergence at 8 epochs and overfitting at 15. BLEU 11.66, chrF 46.69. Analysis shows 899 sentences on log-linear trend consistent with African low-resource literature. This work provides first dialectal impact analysis for Igala and establishes baseline for future work.",
+      "published_at": "2026-11-04T13:42:12+00:00",
+      "links": [
+        {
+          "label": "arxiv",
+          "url": "https://arxiv.org/abs/2611.06517v1"
+        },
+        {
+          "label": "html",
+          "url": "https://arxiv.org/html/2611.06517v1"
+        },
+        {
+          "label": "pdf",
+          "url": "https://arxiv.org/pdf/2611.06517v1"
+        },
+        {
+          "label": "papers.cool",
+          "url": "https://papers.cool/arxiv/2611.06517v1"
+        }
+      ],
+      "tags": [
+        "cs.CL"
+      ],
+      "subject": "paper",
+      "source": "arxiv",
+      "score": 0.0,
+      "title_zh": "Dialect matters: Igala-英文机器翻译的 Dialect-Aware 基线",
+      "content_zh": "智能系统在人类活动的每一个领域都具有巨大的渗透性,大大提高了清晰度和工作的便利性,提高了全球普遍的认识,大大唤醒了所有用户对智能系统的使用。 智能系统在输出的正确性上在很大程度上依赖于精确的数据集/公司. 尽管研究人员努力解决自然语言处理(NLP)中的低资源语言问题,但尽管研究人员作出了努力,伊加拉仍然拥有零平行的蝎子. 我们提出了Igala-英语机器翻译的方言认识基线,在第一个开放系统中,首先进行方言变化分析。 我们的1137句(899个训练)的数据集首先有方言标记:Idah 459(40.4%),Ankpa 297(26.1%),Ibaji 160(14.1%),其他187(16.4%),Ogugu 32(2.8%). 同样的英语产量为20-60 Igala形式. 混合射线培训实现平衡的BLEU 11.66比 证明方言公平需要混合。 由赫尔辛基-NLP/opus-mt-en-mul(78M)进行精细校正,划时代的弯曲显示在8个纪元时趋同,15岁时的弯曲过度. BLEU 11.66, chrF 46.69 (英语). 分析显示,与非洲低资源文献一致的对数线趋势有899句. 这项工作为伊加拉提供了第一次方言影响分析,并为今后的工作确定了基线。"
+    },
+    {
+      "title": "NaijaFacts: A Framework for Disentangling Language from Knowledge in Facts about Nigeria",
+      "content": "Multilingual benchmarks for African languages mostly translate generic questions into local languages, measuring linguistic competence but not whether models know facts about Africa. We introduce \\naija, a benchmark of factual and statistical questions about Nigeria, authored by native speakers and grounded in authoritative official statistics, with every question available in English, Nigerian Pidgin, \\yoruba, Igbo, and Hausa. Answering similar questions for the UK and US yields a country by language matrix that disentangles a language effect (the model knows the fact but degrades in a low-resource language) from a knowledge effect (the fact is absent in every language). Across eight frontier and Nigeria-adapted models, the knowledge effect dominates: English-query accuracy is 49--50\\% for the US/UK but 20\\% for Nigeria. The language effect is smaller and tracks web representation, degrading from English to \\yoruba{} (9 points on Nigeria, up to 24 on US/UK questions). We find scale does not help: the strongest models reach 66--79\\% on the UK and the US but none exceed 31\\% on Nigerian statistics. Extending to all 54 African countries with our best performing frontier model shows the same profile continent-wide, 96\\% on culture and 98\\% on politics against 26\\% on statistics, so the gap is not specific to Nigeria.",
+      "published_at": "2026-11-04T13:34:35+00:00",
+      "links": [
+        {
+          "label": "arxiv",
+          "url": "https://arxiv.org/abs/2611.06504v1"
+        },
+        {
+          "label": "html",
+          "url": "https://arxiv.org/html/2611.06504v1"
+        },
+        {
+          "label": "pdf",
+          "url": "https://arxiv.org/pdf/2611.06504v1"
+        },
+        {
+          "label": "papers.cool",
+          "url": "https://papers.cool/arxiv/2611.06504v1"
+        }
+      ],
+      "tags": [
+        "cs.CL"
+      ],
+      "subject": "paper",
+      "source": "arxiv",
+      "score": 0.0,
+      "title_zh": "Naija Facts:将语言与尼日利亚实际知识区分开来的框架",
+      "content_zh": "非洲语言的多种语文基准大多将一般问题翻译成当地语言,衡量的是语言能力,而不是模型是否了解非洲的事实。 我们介绍有关尼日利亚的事实和统计问题的基准, 由当地人撰写, 在回答英国和美国的类似问题时, 在八个前沿和尼日利亚适应的模型中,知识效应占主导地位:美国/英国的英语-query精度为49-50\\%,尼日利亚为20\\%。 语言效果较小,跟踪网络代表,从英语贬低到\\yoruba{}(尼日利亚9分,美国/联合王国问题最多24分)。 但尼日利亚统计中, 以我们最佳的前沿模式推广到所有54个非洲国家,"
+    },
+    {
+      "title": "CRESiST: Self-Enhancing Explorative Policy Learning for Simultaneous Speech Translation",
+      "content": "Simultaneous Speech Translation (SimulST) requires balancing translation quality and latency. While Large Language Models (LLMs) excel in offline translation, current LLM-based SimulST systems predominantly rely on prefix-incremental generation. This paradigm suffers from redundant Key-Value cache recomputation and necessitates external Voice Activity Detection to process unbounded streams. To overcome these bottlenecks, we propose an end-to-end interleaved read-write framework built upon an omni-modal LLM. By interleaving speech chunks and text tokens, our architecture achieves full KV cache reuse, natively supporting segmentation-free, infinite-length inference. Furthermore, to learn optimal streaming policies without rigid offline alignments, we introduce a novel Actor-Critic self-enhancement pipeline. An RNN-T Actor dynamically samples read-write trajectories, while an LLM-based Critic evaluates these paths via intrinsic semantic and latency rewards, distilling the optimal policy back to the Actor. Extensive experiments on sentence-level (FLEURS, CoVoST2) and document-level (MuST-C, ACL 60/60) benchmarks demonstrate that our model establishes new state-of-the-art quality-latency Pareto frontiers, substantially outperforming existing cascaded and static-alignment baselines.",
+      "published_at": "2026-11-04T13:32:57+00:00",
+      "links": [
+        {
+          "label": "arxiv",
+          "url": "https://arxiv.org/abs/2611.06501v1"
+        },
+        {
+          "label": "html",
+          "url": "https://arxiv.org/html/2611.06501v1"
+        },
+        {
+          "label": "pdf",
+          "url": "https://arxiv.org/pdf/2611.06501v1"
+        },
+        {
+          "label": "papers.cool",
+          "url": "https://papers.cool/arxiv/2611.06501v1"
+        }
+      ],
+      "tags": [
+        "cs.CL"
+      ],
+      "subject": "paper",
+      "source": "arxiv",
+      "score": 0.0,
+      "title_zh": "CRESiST:自强探索性政策学习,同时翻译演讲",
+      "content_zh": "同时进行语音翻译(SimulST)需要平衡翻译质量和时间。 虽然大语言模型(LLMs)在离线翻译方面表现优异,但目前基于LLM的SimulST系统主要依赖于前缀增量生成. 这个范式存在冗余的密钥-Value缓存重算问题,需要外部语音活动检测来处理未绑定的流. 为了克服这些瓶颈,我们提议在全方位LLM的基础上建立一个端到端的互页读写框架。 通过切换语音块和文本符号,我们的架构实现了完整的 KV 缓存再利用, 本土支持无分割,无限长的推论. 此外,为了学习最佳的流线政策,而不僵硬的离线调整,我们引入了一个新的演员-批评自我增强管道。 一个RNN-T演员动态采样读写轨迹,而基于LLM的批评者通过内在的语义和时间性奖励来评价这些路径,将最佳政策提炼回演员. 关于句子一级(FLEURS, CoVoST2)和文件一级(MuST-C, ACL 60/60)基准的广泛实验表明,我们的模式建立了新的最先进的质量不老的帕雷托边界线,大大超过了现有的级联和静态调整基线。"
+    },
+    {
+      "title": "LibriSpeech-Real-QA: A Benchmark for Streaming Question Answering",
+      "content": "Most speech large language models (SLMs) still process speech in an offline manner. They only start responding after they receive the complete speech segment. However, many real-world applications require streaming speech interaction, for which the audio continuously flows in and the machine is required to answer questions based on the so far received audio chunks. For example, a user may ask the system to continuously count how many times a person's name has been mentioned while they are speaking. We observe a lack of benchmarks and evaluation protocols for real-time speech interaction. Motivated by this, we propose LibriSpeech-Real-QA, a dataset and a benchmark for real-time speech interaction. We construct different types of real-time question-answer pairs from LibriSpeech to evaluate whether speech LLMs can identify target words in streaming audio. We evaluate several popular real-time commercial models and find that they still tend to respond only after the speech turn has finished. We demonstrate that we can enable a pretrained SLM to perform this task, where we explore several modeling designs and establish a solid baseline for future research.",
+      "published_at": "2026-11-04T13:30:54+00:00",
+      "links": [
+        {
+          "label": "arxiv",
+          "url": "https://arxiv.org/abs/2611.06496v1"
+        },
+        {
+          "label": "html",
+          "url": "https://arxiv.org/html/2611.06496v1"
+        },
+        {
+          "label": "pdf",
+          "url": "https://arxiv.org/pdf/2611.06496v1"
+        },
+        {
+          "label": "papers.cool",
+          "url": "https://papers.cool/arxiv/2611.06496v1"
+        }
+      ],
+      "tags": [
+        "cs.CL"
+      ],
+      "subject": "paper",
+      "source": "arxiv",
+      "score": 0.0,
+      "title_zh": "LibriSpeech-Real-QA:简化问题回答基准",
+      "content_zh": "大多数语音大语言模型(SLMS)仍然以离线方式处理语音. 他们只有在收到完整的演讲部分后才开始回应. 然而,许多现实世界的应用需要流体语音交互,为此音频持续流进,机器需要根据迄今为止收到的音频块回答问题. 例如,一个用户可能会要求系统在说话时不断计算一个人的名字被提及的次数. 我们注意到缺乏实时语音互动的基准和评价协议。 为此,我们提议LibriSpeech-Real-QA,一个数据集和一个实时语音互动的基准. 我们从 LibriSpeech 构造了不同类型的实时问答对,以评估语音 LLMS 能否识别流音中的目标单词. 我们评价了几个流行的实时商业模型,发现它们仍然倾向于只在演讲回合结束后才作出反应. 我们表明,我们能够使经过预先培训的可持续土地管理能够完成这项任务,在那里,我们探索若干模型设计,并为今后的研究确定坚实的基线。"
+    },
+    {
+      "title": "What Does Multi-Turn Reinforcement Learning Really Improve in LLM Agents?",
+      "content": "While multi-turn agentic reinforcement learning (RL) excels on long-horizon tasks, its performance gains remain highly sensitive to interaction constraints. Evaluating across sampling breadth $K$ and interaction depth $T$ via $Pass@(K,T)$, we show that trajectory-level RL advantages depend on sufficient turn budgets, diminishing significantly when budgets tighten. Besides, agentic RL does not uniformly elevate single-step decision quality; rather, its strength concentrates in error recovery and long-horizon resilience. To mitigate the deployment risks caused by this budget dependence, we provide a preliminary discussion on the benefits and limitations of process supervision signals and introduce BudgetMix RL as an alternative that varies interaction budgets during training. Experiments demonstrate that BudgetMix RL achieves robust performance across diverse execution settings. Project Page: https://rethinking-agentic-rl.github.io/",
+      "published_at": "2026-11-04T13:24:54+00:00",
+      "links": [
+        {
+          "label": "arxiv",
+          "url": "https://arxiv.org/abs/2611.06483v1"
+        },
+        {
+          "label": "html",
+          "url": "https://arxiv.org/html/2611.06483v1"
+        },
+        {
+          "label": "pdf",
+          "url": "https://arxiv.org/pdf/2611.06483v1"
+        },
+        {
+          "label": "papers.cool",
+          "url": "https://papers.cool/arxiv/2611.06483v1"
+        }
+      ],
+      "tags": [
+        "cs.CL"
+      ],
+      "subject": "paper",
+      "source": "arxiv",
+      "score": 0.0,
+      "title_zh": "在LLM代理中,多窗强化学习真正有什么改进?",
+      "content_zh": "虽然多回合促进强化学习(RL)在长期任务上表现优异,但其业绩的提高仍然对互动制约高度敏感。 在通过美元Pass@(K,T)美元进行抽样广度和互动深度评估时,我们显示轨迹水平的RL优势取决于充足的转折预算,在预算紧缩时大幅降低。 此外,代理RL并没有统一提升单步骤决策质量;相反,其强度集中在错误回收和长视距抗御能力上。 为了减轻这种预算依赖性造成的部署风险,我们初步讨论了流程监督信号的好处和局限性,并引入了预算混合资源,作为培训期间互动预算的替代办法。 实验表明,预算混合RL在不同的执行环境中取得了强劲的业绩. 项目网页:https://rethinking-agentic-rl.github.io/"
+    },
+    {
+      "title": "ArcRAG: Agentic Compositional Retrieval over Knowledge Graphs",
+      "content": "Graph-based retrieval-augmented generation (GraphRAG) answers questions by retrieving over a knowledge graph built from a corpus. Yet retrieval strategies are designed around the structure their own construction pipeline produces, and whether they survive a change of construction is rarely tested. We study this cross-construction portability: whether one retrieval procedure, with no construction-specific schema, relation names, or retuning, stays effective when the graph is built differently. We introduce ArcRAG, which induces a query-local graph interface at inference time (the node labels, relation descriptors, and property keys reachable from the entities a question names), plans multi-hop traversals against it, and executes and repairs them as Cypher. We build each of the MuSiQue, HotpotQA, and TriviaQA corpora as a schema-guided graph (typed nodes, a closed relation set, source provenance) and as an open-information-extraction graph (untyped nodes, free-text relations), with the retriever's configuration fixed across them. We compare against a construction-agnostic Direct-Cypher agent, ablate each stage across retry and pass budgets on both graph families, and compare with results reported for prior GraphRAG systems, most of which design retrieval together with their own graph construction. Across the two constructions, we find that retrieval need not be co-designed with the graph: query-time interface induction keeps a construction-agnostic retriever effective when the construction changes, although construction still shapes absolute accuracy.",
+      "published_at": "2026-11-04T13:20:51+00:00",
+      "links": [
+        {
+          "label": "arxiv",
+          "url": "https://arxiv.org/abs/2611.06481v1"
+        },
+        {
+          "label": "html",
+          "url": "https://arxiv.org/html/2611.06481v1"
+        },
+        {
+          "label": "pdf",
+          "url": "https://arxiv.org/pdf/2611.06481v1"
+        },
+        {
+          "label": "papers.cool",
+          "url": "https://papers.cool/arxiv/2611.06481v1"
+        }
+      ],
+      "tags": [
+        "cs.CL"
+      ],
+      "subject": "paper",
+      "source": "arxiv",
+      "score": 0.0,
+      "title_zh": "ArcRAG:对知识图的代理结构检索",
+      "content_zh": "基于图形的检索增强生成(GraphRAG)通过对从一个实体中构建的知识图进行检索来回答问题. 然而,回收战略是围绕着它们自己生产的建筑管道的结构设计的,它们是否在建筑改变后幸存下来很少经过测试。 我们研究了这种跨构造的可移植性:当图形的构建不同时,一个没有特定构造方案、关系名称或重新调整的检索程序是否仍然有效。 我们引入了ArcRAG,它诱导了一个在推论时间的查询-局部图界面(节点标签,关系描述符,以及实体可以到达的属性密钥一个问号),计划了多跳转对它,并作为Cypher执行和修复. 我们把MusiQue,HotpotQA,TriviaQA corpora 的每个图建成一个以图示为指南的图集(型号为节点,闭合关系集,源代码为源代码),并作为开放信息采集图集(非型号为节点,自由文本关系),其间固定了检索器的配置. 我们比较了一种构造不可知的直线-线圈剂,通过两个图系的重试和通过预算来降低每个阶段,并与以往的GraphRAG系统报告的结果进行比较,这些系统大多是设计检索和自己的图构造。 在整个两个构造中,我们发现检索不需要与图表共同设计:查询-时间界面感应在构造改变时保持一个构造-不可知的检索器有效,尽管构造仍然塑造绝对的准确性."
+    },
+    {
+      "title": "EvoGuard: Mitigating Degradation in Online Skill Evolution",
+      "content": "Skills let language agents reuse experience across tasks as natural-language documents. Recent work evolves skills from interaction, but existing methods have limitations when skills evolve online. Prior methods update a skill offline from a batch of trajectories collected over many tasks. Some then adopt the new skill without any check, which can degrade the skill over time. Others keep it only if it improves performance on a held-out validation set, which is too slow and costly to run after every update. We introduce EvoGuard, a pairwise skill selector that mitigates skill degradation at low latency and cost. We first run the agent iteratively to build pools of skills and score each skill on a private test set to obtain utility labels. We pair the skills and use rejection sampling to keep only pairs with a clear utility gap. The selector is trained on the logits of two label tokens to pick the better skill. At deployment it decides in a single forward pass, which is significantly faster than evaluation on the private test set. Compared with adopting every new skill, EvoGuard improves success by 11.0% on ALFWorld, 5.9% on ScienceWorld, and 2.7% on LiveCodeBench.",
+      "published_at": "2026-11-04T12:47:32+00:00",
+      "links": [
+        {
+          "label": "arxiv",
+          "url": "https://arxiv.org/abs/2611.06444v1"
+        },
+        {
+          "label": "html",
+          "url": "https://arxiv.org/html/2611.06444v1"
+        },
+        {
+          "label": "pdf",
+          "url": "https://arxiv.org/pdf/2611.06444v1"
+        },
+        {
+          "label": "papers.cool",
+          "url": "https://papers.cool/arxiv/2611.06444v1"
+        }
+      ],
+      "tags": [
+        "cs.CL"
+      ],
+      "subject": "paper",
+      "source": "arxiv",
+      "score": 0.0,
+      "title_zh": "EvoGuard: 减轻在线技能演变中的退化",
+      "content_zh": "技能使语言代理人能够重新利用各种任务的经验作为自然语言文件。 最近的工作从互动中演化出技能,但当技能在线演化时,现有方法有局限性. 先前的方法从通过许多任务收集的一批轨迹上更新了一种离线技能. 有些人然后在没有检查的情况下采用新技能,这可能会随着时间的推移而降低技能。 其他人只保留它,只要它在被搁置的验证套件上改进性能,每次更新后运行速度太慢,成本太高. 我们引入了EvoGuard,一种双向技能选择器,以低延迟和低成本缓解技能退化. 我们首先迭代运行代理 建立技能的集合 在每个技能在私人测试集中得分 以获得公用事业标签。 我们把技能配对,使用拒绝抽样,只保留有明显效用差距的对子. 选择者在两个标签符号的日志上接受训练,以选择更好的技能. 在部署时,它决定采用单一的前进通道,这大大快于对私人测试集的评价。 与采用每种新技能相比,EvoGuard在ALFWorld上提高了11.0%,在ScienceWorld上提高了5.9%,在LiveCode Bench上提高了2.7%."
+    }
+  ]
+}
